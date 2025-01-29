@@ -13,7 +13,7 @@ MainMenuScreen::MainMenuScreen( int windowWidth, int windowHeight, ScreenManager
     _font = AssetManager::instance().font( FontType::Arial );
 
     _title.setFont( _font );
-    _title.setString( "Geometric Defense" );
+    _title.setString( "Shape Defense" );
     _title.setCharacterSize( 50 );
     _title.setFillColor( sf::Color::White );
     _title.setPosition( 200, 100 );

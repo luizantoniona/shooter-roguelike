@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15.0)
-project(TowerDefense VERSION 0.1.0 LANGUAGES C CXX)
+project(ShapeDefense VERSION 0.1.0 LANGUAGES C CXX)
 
 include_directories( ${includes} )
 

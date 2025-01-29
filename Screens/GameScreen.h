@@ -4,13 +4,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Entity/Map/Map.h>
-#include <GUI/MainPanel.h>
 #include <Screens/Screen.h>
 #include <Screens/ScreenGlobals.h>
 
-using Entity::Map;
-using GUI::MainPanel;
 using Screens::Screen;
 
 BEGIN_SCREEN_NAMESPACE
@@ -24,11 +20,6 @@ public:
     void render( sf::RenderWindow& window ) override;
 
 private:
-    std::unique_ptr<MainPanel> _mainPanel;
-    std::unique_ptr<Map> _map;
-    // Aqui, podemos adicionar membros como o mapa, torres, inimigos, etc.
-    // Exemplo simples de um objeto de jogo
-    // Outros elementos do jogo (inimigos, torres, etc.)
 };
 
 END_SCREEN_NAMESPACE

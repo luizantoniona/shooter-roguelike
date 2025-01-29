@@ -1,6 +1,5 @@
 #include "AssetManager.h"
 
-#include <fstream>
 #include <string>
 
 #include <jsoncpp/json/json.h>
@@ -31,22 +30,6 @@ const sf::Font& AssetManager::font( FontType fontType ) {
     return fonts[ fontType ];
 }
 
-const Json::Value& AssetManager::map( MapType mapType ) {
-    auto& maps = instance()._maps;
-
-    auto it = maps.find( mapType );
-    if ( it != maps.end() ) {
-        return it->second;
-    }
-
-    std::ifstream jsonFile( mapPath( mapType ) );
-    Json::Value mapJson;
-    jsonFile >> mapJson;
-
-    _maps[ mapType ] = std::move( mapJson );
-    return _maps[ mapType ];
-}
-
 std::string AssetManager::fontPath( FontType fontType ) {
     std::string fontPath = "";
     switch ( fontType ) {
@@ -60,21 +43,6 @@ std::string AssetManager::fontPath( FontType fontType ) {
     }
 
     return fontPath;
-}
-
-std::string AssetManager::mapPath( MapType mapType ) {
-    std::string mapPath = "";
-    switch ( mapType ) {
-    case MapType::Teste: {
-        mapPath = "../Asset/Maps/Teste.json";
-        break;
-    }
-    default: {
-        break;
-    }
-    }
-
-    return mapPath;
 }
 
 END_MANAGER_NAMESPACE
