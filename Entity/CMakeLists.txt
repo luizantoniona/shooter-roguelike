@@ -2,6 +2,7 @@ set(SOURCES
 Enemy/Enemy.cpp
 Map/Map.cpp
 Player/Player.cpp
+Skill/Skill.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

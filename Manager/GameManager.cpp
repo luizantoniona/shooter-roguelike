@@ -26,6 +26,7 @@ GameManager::GameManager() : _window( sf::VideoMode::getDesktopMode(), DISPLAY_N
     _screenManager.addScreen( ScreenType::MainMenuScreen,
                               std::make_shared<MainMenuScreen>( windowWidth, windowHeight, _screenManager ) );
     _screenManager.addScreen( ScreenType::GameScreen, std::make_shared<GameScreen>( windowWidth, windowHeight ) );
+
     _screenManager.setScreen( ScreenType::MainMenuScreen );
 }
 
