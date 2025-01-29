@@ -1,7 +1,5 @@
 #include "GameScreen.h"
 
-#include <memory>
-
 BEGIN_SCREEN_NAMESPACE
 
 GameScreen::GameScreen( int windowWidth, int windowHeight ) : Screen( windowWidth, windowHeight ) {

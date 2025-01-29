@@ -1,7 +1,5 @@
 #pragma once
 
-#include <memory>
-
 #include <SFML/Graphics.hpp>
 
 #include <Screens/Screen.h>
