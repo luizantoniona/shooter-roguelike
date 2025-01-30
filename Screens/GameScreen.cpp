@@ -15,23 +15,11 @@ GameScreen::GameScreen( int windowWidth, int windowHeight )
 }
 
 void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
-    if ( event.type == sf::Event::KeyPressed ) {
-        if ( event.key.code == sf::Keyboard::Escape ) {
-        }
-    }
-
-    _player.handleInput( event );
+    _inputHandler.handleInput( event, _player );
 }
 
-void GameScreen::update( sf::Time& deltaTime ) {
-
-    _player.update( deltaTime );
-
-    for ( auto& enemy : _enemies ) {
-        enemy.update( deltaTime );
-    }
-
-    _map.update( deltaTime );
+void GameScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
+    _updateHandler.update( deltaTime, _player, _enemies, _map );
 }
 
 void GameScreen::render( sf::RenderWindow& window ) {
