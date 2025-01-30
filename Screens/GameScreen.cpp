@@ -2,7 +2,8 @@
 
 BEGIN_SCREEN_NAMESPACE
 
-GameScreen::GameScreen( int windowWidth, int windowHeight ) : Screen( windowWidth, windowHeight ) {
+GameScreen::GameScreen( int windowWidth, int windowHeight )
+    : Screen( windowWidth, windowHeight ), _map( windowWidth, windowHeight ),
 }
 
 void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
@@ -13,9 +14,11 @@ void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 }
 
 void GameScreen::update( sf::Time& deltaTime ) {
+    _map.update( deltaTime );
 }
 
 void GameScreen::render( sf::RenderWindow& window ) {
+    _map.render( window );
 }
 
 END_SCREEN_NAMESPACE

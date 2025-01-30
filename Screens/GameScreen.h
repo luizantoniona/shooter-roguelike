@@ -2,9 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <Entity/Map/Map.h>
 #include <Screens/Screen.h>
 #include <Screens/ScreenGlobals.h>
 
+using Entity::Map;
 using Screens::Screen;
 
 BEGIN_SCREEN_NAMESPACE
@@ -18,6 +20,7 @@ public:
     void render( sf::RenderWindow& window ) override;
 
 private:
+    Map _map;
 };
 
 END_SCREEN_NAMESPACE
