@@ -9,7 +9,7 @@ using Screens::MainMenuScreen;
 using Screens::ScreenType;
 
 namespace {
-constexpr const char* DISPLAY_NAME = "Geometric Defense";
+constexpr const char* DISPLAY_NAME = "Roguelike";
 } // namespace
 
 BEGIN_MANAGER_NAMESPACE
