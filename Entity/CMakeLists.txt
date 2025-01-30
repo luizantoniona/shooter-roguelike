@@ -3,6 +3,7 @@ Enemy/Enemy.cpp
 Map/Map.cpp
 Player/Player.cpp
 Shape.cpp
+Skill/Projectile.cpp
 Skill/Skill.cpp
 )
 
