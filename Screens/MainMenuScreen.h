@@ -18,7 +18,7 @@ public:
     MainMenuScreen( int windowWidth, int windowHeight, ScreenManager& screenManager );
 
     void handleInput( const sf::Event& event, sf::Time& deltaTime ) override;
-    void update( sf::Time& deltaTime ) override;
+    void update( sf::RenderWindow& window, sf::Time& deltaTime ) override;
     void render( sf::RenderWindow& window ) override;
 
 private:

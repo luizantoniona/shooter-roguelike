@@ -16,7 +16,7 @@ BEGIN_HANDLER_NAMESPACE
 
 class UpdateHandler {
 public:
-    void update( sf::Time& deltaTime, Player& player, std::vector<Enemy>& enemies, Map& map );
+    void update( sf::RenderWindow& window, sf::Time& deltaTime, Player& player, std::vector<Enemy>& enemies, Map& map );
     void checkCollisions( Player& player, std::vector<Enemy>& enemies );
 };
 

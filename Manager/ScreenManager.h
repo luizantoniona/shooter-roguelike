@@ -21,7 +21,7 @@ public:
     void setScreen( const ScreenType& screenType );
     void addScreen( const ScreenType& screenType, std::shared_ptr<Screen> screen );
     void handleInput( const sf::Event& event, sf::Time& deltaTime );
-    void update( sf::Time& deltaTime );
+    void update( sf::RenderWindow& window, sf::Time& deltaTime );
     void render( sf::RenderWindow& window );
 
 private:

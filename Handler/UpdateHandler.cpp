@@ -2,9 +2,9 @@
 
 BEGIN_HANDLER_NAMESPACE
 
-void UpdateHandler::update( sf::Time& deltaTime, Entity::Player& player, std::vector<Entity::Enemy>& enemies,
-                            Entity::Map& map ) {
-    player.update( deltaTime );
+void UpdateHandler::update( sf::RenderWindow& window, sf::Time& deltaTime, Entity::Player& player,
+                            std::vector<Entity::Enemy>& enemies, Entity::Map& map ) {
+    player.update( window, deltaTime );
 
     for ( auto& enemy : enemies ) {
         enemy.update( deltaTime );

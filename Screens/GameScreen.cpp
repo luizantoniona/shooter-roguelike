@@ -19,7 +19,7 @@ void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 }
 
 void GameScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
-    _updateHandler.update( deltaTime, _player, _enemies, _map );
+    _updateHandler.update( window, deltaTime, _player, _enemies, _map );
 }
 
 void GameScreen::render( sf::RenderWindow& window ) {

@@ -55,7 +55,7 @@ void GameManager::processEvents( sf::Time& deltaTime ) {
 }
 
 void GameManager::update( sf::Time& deltaTime ) {
-    _screenManager.update( deltaTime );
+    _screenManager.update( _window, deltaTime );
 }
 
 void GameManager::render() {

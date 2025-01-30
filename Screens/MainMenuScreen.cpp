@@ -47,7 +47,7 @@ void MainMenuScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) 
     }
 }
 
-void MainMenuScreen::update( sf::Time& deltaTime ) {
+void MainMenuScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     for ( size_t i = 0; i < _menuOptions.size(); ++i ) {
         if ( i == _selectedOption ) {
             _menuOptions[ i ].setFillColor( sf::Color::Red );

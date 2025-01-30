@@ -19,9 +19,9 @@ void ScreenManager::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
     }
 }
 
-void ScreenManager::update( sf::Time& deltaTime ) {
+void ScreenManager::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     if ( _activeScreen ) {
-        _activeScreen->update( deltaTime );
+        _activeScreen->update( window, deltaTime );
     }
 }
 
