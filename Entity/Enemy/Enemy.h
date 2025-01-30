@@ -7,7 +7,7 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-class Enemy : Shape {
+class Enemy : public Shape {
 public:
     Enemy( int sides, float radius, const sf::Vector2f& position, const sf::Color& color );
     ~Enemy();
