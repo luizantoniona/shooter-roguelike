@@ -5,6 +5,7 @@
 #include <Entity/EntityGlobals.h>
 #include <Entity/Map/Map.h>
 #include <Entity/Shape.h>
+#include <Entity/Skill/Projectile.h>
 
 BEGIN_ENTITY_NAMESPACE
 
@@ -14,11 +15,21 @@ public:
     ~Player();
 
     void handleInput( const sf::Event& event );
-    void update( sf::Time& deltaTime );
+    void update( const sf::RenderWindow& window, sf::Time& deltaTime );
     void render( sf::RenderWindow& window );
+
+    std::vector<Projectile>& getProjectiles();
 
 private:
     const Map& _map;
+    float _fireRate;
+    sf::Clock _fireClock;
+    std::vector<Projectile> _projectiles;
+
+    void updatePosition( sf::Time& deltaTime );
+    void updateProjectiles( sf::Time& deltaTime );
+
+    void fireProjectile( const sf::Vector2f& target );
 };
 
 END_ENTITY_NAMESPACE
