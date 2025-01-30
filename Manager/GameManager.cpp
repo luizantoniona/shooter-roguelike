@@ -33,25 +33,29 @@ GameManager::GameManager() : _window( sf::VideoMode::getDesktopMode(), DISPLAY_N
 void GameManager::run() {
     adjustView();
 
+    sf::Clock clock;
     while ( _window.isOpen() ) {
-        processEvents();
-        update();
+
+        sf::Time deltaTime = clock.restart();
+
+        processEvents( deltaTime );
+        update( deltaTime );
         render();
     }
 }
 
-void GameManager::processEvents() {
+void GameManager::processEvents( sf::Time& deltaTime ) {
     sf::Event event;
     while ( _window.pollEvent( event ) ) {
         if ( event.type == sf::Event::Closed ) {
             _window.close();
         }
-        _screenManager.handleInput( event );
+        _screenManager.handleInput( event, deltaTime );
     }
 }
 
-void GameManager::update() {
-    _screenManager.update();
+void GameManager::update( sf::Time& deltaTime ) {
+    _screenManager.update( deltaTime );
 }
 
 void GameManager::render() {

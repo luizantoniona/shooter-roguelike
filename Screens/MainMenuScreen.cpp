@@ -21,7 +21,7 @@ MainMenuScreen::MainMenuScreen( int windowWidth, int windowHeight, ScreenManager
     initMenu();
 }
 
-void MainMenuScreen::handleInput( const sf::Event& event ) {
+void MainMenuScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::MouseMoved ) {
         sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
@@ -47,7 +47,7 @@ void MainMenuScreen::handleInput( const sf::Event& event ) {
     }
 }
 
-void MainMenuScreen::update() {
+void MainMenuScreen::update( sf::Time& deltaTime ) {
     for ( size_t i = 0; i < _menuOptions.size(); ++i ) {
         if ( i == _selectedOption ) {
             _menuOptions[ i ].setFillColor( sf::Color::Red );

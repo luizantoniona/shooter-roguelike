@@ -13,15 +13,15 @@ void ScreenManager::addScreen( const ScreenType& screenType, std::shared_ptr<Scr
     _screens[ screenType ] = screen;
 }
 
-void ScreenManager::handleInput( const sf::Event& event ) {
+void ScreenManager::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
     if ( _activeScreen ) {
-        _activeScreen->handleInput( event );
+        _activeScreen->handleInput( event, deltaTime );
     }
 }
 
-void ScreenManager::update() {
+void ScreenManager::update( sf::Time& deltaTime ) {
     if ( _activeScreen ) {
-        _activeScreen->update();
+        _activeScreen->update( deltaTime );
     }
 }
 

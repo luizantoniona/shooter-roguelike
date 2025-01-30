@@ -19,8 +19,8 @@ private:
     sf::View _view;
     ScreenManager _screenManager;
 
-    void processEvents();
-    void update();
+    void processEvents( sf::Time& deltaTime );
+    void update( sf::Time& deltaTime );
     void render();
     void adjustView();
 };

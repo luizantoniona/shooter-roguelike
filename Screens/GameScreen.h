@@ -13,8 +13,8 @@ class GameScreen : public Screen {
 public:
     GameScreen( int windowWidth, int windowHeight );
 
-    void handleInput( const sf::Event& event ) override;
-    void update() override;
+    void handleInput( const sf::Event& event, sf::Time& deltaTime ) override;
+    void update( sf::Time& deltaTime ) override;
     void render( sf::RenderWindow& window ) override;
 
 private:
