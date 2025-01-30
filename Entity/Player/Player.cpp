@@ -2,35 +2,48 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Player::Player( int sides, float radius, const sf::Vector2f& position, const sf::Color& color )
-    : Shape( sides, radius, position, color ) {
+Player::Player( int sides, float radius, const sf::Vector2f& position, const sf::Color& color, const Map& map )
+    : Shape( sides, radius, position, color ), _map( map ) {
 }
 
 Player::~Player() {
 }
 
 void Player::handleInput( const sf::Event& event ) {
-    if ( event.type == sf::Event::KeyPressed ) {
-        switch ( event.key.code ) {
-        case sf::Keyboard::W:
-            move( sf::Vector2f( 0, -10 ) );
-            break;
-        case sf::Keyboard::S:
-            move( sf::Vector2f( 0, 10 ) );
-            break;
-        case sf::Keyboard::A:
-            move( sf::Vector2f( -10, 0 ) );
-            break;
-        case sf::Keyboard::D:
-            move( sf::Vector2f( 10, 0 ) );
-            break;
-        default:
-            break;
-        }
-    }
 }
 
-void Player::update() {
+void Player::update( sf::Time& deltaTime ) {
+    sf::Vector2f movement( 0, 0 );
+    if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) ) {
+        movement.y -= 100 * deltaTime.asSeconds();
+    }
+    if ( sf::Keyboard::isKeyPressed( sf::Keyboard::S ) ) {
+        movement.y += 100 * deltaTime.asSeconds();
+    }
+    if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A ) ) {
+        movement.x -= 100 * deltaTime.asSeconds();
+    }
+    if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D ) ) {
+        movement.x += 100 * deltaTime.asSeconds();
+    }
+    move( movement );
+
+    sf::Vector2f position = getPosition();
+    if ( !_map.isInsideBounds( position ) ) {
+        if ( position.x < 0 ) {
+            position.x = 0;
+        }
+        if ( position.y < 0 ) {
+            position.y = 0;
+        }
+        if ( position.x > _map.getWidth() ) {
+            position.x = _map.getWidth();
+        }
+        if ( position.y > _map.getHeight() ) {
+            position.y = _map.getHeight();
+        }
+        setPosition( position );
+    }
 }
 
 void Player::render( sf::RenderWindow& window ) {

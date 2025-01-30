@@ -41,6 +41,11 @@ void Shape::updateShape() {
     }
 }
 
+void Shape::setPosition( const sf::Vector2f& position ) {
+    _position = position;
+    updateShape();
+}
+
 sf::Vector2f Shape::getPosition() const {
     return _position;
 }

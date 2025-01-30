@@ -9,7 +9,10 @@ Enemy::Enemy( int sides, float radius, const sf::Vector2f& position, const sf::C
 Enemy::~Enemy() {
 }
 
-void Enemy::update() {
+void Enemy::update( sf::Time& deltaTime ) {
+    sf::Vector2f offset( ( std::rand() % 3 - 1 ) * 10 * deltaTime.asSeconds(),
+                         ( std::rand() % 3 - 1 ) * 10 * deltaTime.asSeconds() );
+    move( offset );
 }
 
 void Enemy::render( sf::RenderWindow& window ) {

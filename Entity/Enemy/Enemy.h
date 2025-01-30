@@ -12,7 +12,7 @@ public:
     Enemy( int sides, float radius, const sf::Vector2f& position, const sf::Color& color );
     ~Enemy();
 
-    void update();
+    void update( sf::Time& deltaTime );
     void render( sf::RenderWindow& window );
 };
 
