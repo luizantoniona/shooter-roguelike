@@ -1,7 +1,17 @@
-## Tower Defense Game Project
+## Shoot 'Em Up Roguelike Game
+
+## Stack 
 - C++
 - CMake
 - SFML
+
+## Requisites:
+
+## How to Install:
+
+## How to Run:
+
+---
 
 <p align="center">
   <img alt="GitHub count language" src="https://img.shields.io/github/languages/count/luizantoniona/tower-defense" />
