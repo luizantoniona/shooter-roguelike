@@ -2,6 +2,7 @@ set(SOURCES
 Enemy/Enemy.cpp
 Map/Map.cpp
 Player/Player.cpp
+Shape.cpp
 Skill/Skill.cpp
 )
 
