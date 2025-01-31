@@ -1,5 +1,5 @@
 set(SOURCES
-AssetManager.cpp
+Asset/FontManager.cpp
 GameManager.cpp
 ScreenManager.cpp
 )

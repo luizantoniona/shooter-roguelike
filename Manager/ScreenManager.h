@@ -6,8 +6,8 @@
 #include <SFML/Graphics.hpp>
 
 #include <Manager/ManagerGlobals.h>
-#include <Screens/Screen.h>
-#include <Screens/ScreenType.h>
+#include <Screen/Screen.h>
+#include <Screen/ScreenType.h>
 
 using Screens::Screen;
 using Screens::ScreenType;

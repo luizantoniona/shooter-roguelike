@@ -7,21 +7,21 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include <Asset/AssetType.h>
+#include <Asset/FontType.h>
 #include <Manager/ManagerGlobals.h>
 
 BEGIN_MANAGER_NAMESPACE
 
-class AssetManager {
+class FontManager {
 public:
-    static AssetManager& instance();
+    static FontManager& instance();
 
     const sf::Font& font( FontType fontType );
 
 private:
-    AssetManager() = default;
-    AssetManager( const AssetManager& ) = delete;
-    AssetManager& operator=( const AssetManager& ) = delete;
+    FontManager() = default;
+    FontManager( const FontManager& ) = delete;
+    FontManager& operator=( const FontManager& ) = delete;
 
     std::string fontPath( FontType fontType );
 

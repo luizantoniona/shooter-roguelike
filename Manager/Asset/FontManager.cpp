@@ -1,4 +1,4 @@
-#include "AssetManager.h"
+#include "FontManager.h"
 
 #include <string>
 
@@ -8,12 +8,12 @@ using namespace Json;
 
 BEGIN_MANAGER_NAMESPACE
 
-AssetManager& AssetManager::instance() {
-    static AssetManager instance;
+FontManager& FontManager::instance() {
+    static FontManager instance;
     return instance;
 }
 
-const sf::Font& AssetManager::font( FontType fontType ) {
+const sf::Font& FontManager::font( FontType fontType ) {
     auto& fonts = instance()._fonts;
 
     auto it = fonts.find( fontType );
@@ -30,7 +30,7 @@ const sf::Font& AssetManager::font( FontType fontType ) {
     return fonts[ fontType ];
 }
 
-std::string AssetManager::fontPath( FontType fontType ) {
+std::string FontManager::fontPath( FontType fontType ) {
     std::string fontPath = "";
     switch ( fontType ) {
     case FontType::Arial: {

@@ -1,8 +1,9 @@
 #include "GameManager.h"
 
-#include <Screens/GameScreen.h>
-#include <Screens/MainMenuScreen.h>
-#include <Screens/ScreenType.h>
+#include <Screen/Game/GameScreen.h>
+#include <Screen/MainMenu/MainMenuScreen.h>
+#include <Screen/ScreenType.h>
+#include <Screen/Upgrade/UpgradeScreen.h>
 
 using Screens::GameScreen;
 using Screens::MainMenuScreen;
@@ -14,7 +15,9 @@ constexpr const char* DISPLAY_NAME = "Roguelike";
 
 BEGIN_MANAGER_NAMESPACE
 
-GameManager::GameManager() : _window( sf::VideoMode::getDesktopMode(), DISPLAY_NAME, sf::Style::Fullscreen ), _screenManager() {
+GameManager::GameManager() :
+    _window( sf::VideoMode::getDesktopMode(), DISPLAY_NAME, sf::Style::Fullscreen ),
+    _screenManager() {
 
     sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
     int windowWidth = desktopMode.width;
@@ -23,8 +26,7 @@ GameManager::GameManager() : _window( sf::VideoMode::getDesktopMode(), DISPLAY_N
     _view.reset( sf::FloatRect( 0, 0, float( windowWidth ), float( windowHeight ) ) );
     _window.setView( _view );
 
-    _screenManager.addScreen( ScreenType::MainMenuScreen,
-                              std::make_shared<MainMenuScreen>( windowWidth, windowHeight, _screenManager ) );
+    _screenManager.addScreen( ScreenType::MainMenuScreen, std::make_shared<MainMenuScreen>( windowWidth, windowHeight, _screenManager ) );
     _screenManager.addScreen( ScreenType::GameScreen, std::make_shared<GameScreen>( windowWidth, windowHeight ) );
 
     _screenManager.setScreen( ScreenType::MainMenuScreen );
@@ -65,7 +67,8 @@ void GameManager::render() {
 }
 
 void GameManager::adjustView() {
-    _view.setCenter( float( sf::VideoMode::getDesktopMode().width ) / 2, float( sf::VideoMode::getDesktopMode().height ) / 2 );
+    _view.setCenter( float( sf::VideoMode::getDesktopMode().width ) / 2,
+                     float( sf::VideoMode::getDesktopMode().height ) / 2 );
     _window.setView( _view );
 }
 
