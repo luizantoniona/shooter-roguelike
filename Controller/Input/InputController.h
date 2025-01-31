@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <Controller/ControllerGlobals.h>
+
 #include <Entity/Player/Player.h>
 
 using Entity::Player;
