@@ -2,8 +2,8 @@
 
 BEGIN_SCREEN_NAMESPACE
 
-UpgradeScreen::UpgradeScreen( int windowWidth, int windowHeight ) :
-    Screen( windowWidth, windowHeight ) {
+UpgradeScreen::UpgradeScreen() :
+    Screen() {
 }
 
 void UpgradeScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {

@@ -25,6 +25,8 @@ public:
 private:
     std::map<ScreenType, Screen*> _screens;
     Screen* _activeScreen;
+
+    void createScreen( const ScreenType& screenType );
 };
 
 END_MANAGER_NAMESPACE

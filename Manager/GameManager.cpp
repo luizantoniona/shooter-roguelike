@@ -53,8 +53,7 @@ void GameManager::render() {
 }
 
 void GameManager::adjustView() {
-    _view.setCenter( float( sf::VideoMode::getDesktopMode().width ) / 2,
-                     float( sf::VideoMode::getDesktopMode().height ) / 2 );
+    _view.setCenter( float( sf::VideoMode::getDesktopMode().width ) / 2, float( sf::VideoMode::getDesktopMode().height ) / 2 );
     _window.setView( _view );
 }
 

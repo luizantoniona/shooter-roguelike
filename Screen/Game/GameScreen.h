@@ -13,6 +13,7 @@
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Map/Map.h>
 #include <Entity/Player/Player.h>
+#include <Manager/ScreenManager.h>
 #include <Screen/Screen.h>
 
 using Controller::CollisionController;
@@ -22,19 +23,22 @@ using Controller::UpdateController;
 using Entity::Enemy;
 using Entity::Map;
 using Entity::Player;
+using Manager::ScreenManager;
 using Screens::Screen;
 
 BEGIN_SCREEN_NAMESPACE
 
 class GameScreen : public Screen {
 public:
-    GameScreen( int windowWidth, int windowHeight );
+    GameScreen( int windowWidth, int windowHeight, ScreenManager& screenManager );
 
     void handleInput( const sf::Event& event, sf::Time& deltaTime ) override;
     void update( sf::RenderWindow& window, sf::Time& deltaTime ) override;
     void render( sf::RenderWindow& window ) override;
 
 private:
+    ScreenManager& _screenManager;
+
     Map _map;
     Player _player;
     std::vector<Enemy> _enemies;

@@ -10,7 +10,7 @@ BEGIN_SCREEN_NAMESPACE
 
 class UpgradeScreen : public Screen {
 public:
-    UpgradeScreen( int windowWidth, int windowHeight );
+    UpgradeScreen();
 
     void handleInput( const sf::Event& event, sf::Time& deltaTime ) override;
     void update( sf::RenderWindow& window, sf::Time& deltaTime ) override;

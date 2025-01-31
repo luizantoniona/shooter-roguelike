@@ -7,9 +7,9 @@ using Manager::FontManager;
 
 BEGIN_SCREEN_NAMESPACE
 
-MainMenuScreen::MainMenuScreen( int windowWidth, int windowHeight, ScreenManager& screenManager ) :
-    Screen( windowWidth, windowHeight ),
-    _selectedOption( -1 ),
+MainMenuScreen::MainMenuScreen( ScreenManager& screenManager ) :
+    Screen(),
+    _selectedOption( ScreenType::UNKNOW ),
     _buttons( {} ),
     _screenManager( screenManager ) {
 
@@ -22,32 +22,26 @@ void MainMenuScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) 
 
     if ( event.type == sf::Event::MouseMoved ) {
         sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
-        _selectedOption = -1;
+        _selectedOption = ScreenType::UNKNOW;
 
         for ( size_t i = 0; i < _buttons.size(); ++i ) {
             if ( _buttons[ i ].isMouseOver( mousePos ) ) {
-                _selectedOption = i;
+                _selectedOption = static_cast<ScreenType>( i );
                 break;
             }
         }
     }
 
     if ( event.type == sf::Event::MouseButtonPressed ) {
-        if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != -1 ) {
-
-            if ( _selectedOption == 0 ) {
-                _screenManager.setScreen( ScreenType::GameScreen );
-
-            } else if ( _selectedOption == 3 ) {
-                // Sair do jogo
-            }
+        if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != ScreenType::UNKNOW ) {
+            _screenManager.setScreen( _selectedOption );
         }
     }
 }
 
 void MainMenuScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     for ( size_t i = 0; i < _buttons.size(); ++i ) {
-        if ( i == _selectedOption ) {
+        if ( i == static_cast<int>( _selectedOption ) ) {
             _buttons[ i ].setFillColor( sf::Color::Red );
         } else {
             _buttons[ i ].setFillColor( sf::Color::White );

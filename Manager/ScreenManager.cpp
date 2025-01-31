@@ -15,16 +15,14 @@ BEGIN_MANAGER_NAMESPACE
 ScreenManager::ScreenManager() :
     _activeScreen( nullptr ) {
 
-    int windowWidth = sf::VideoMode::getDesktopMode().width;
-    int windowHeight = sf::VideoMode::getDesktopMode().height;
-
-    addScreen( ScreenType::MainMenuScreen, new MainMenuScreen( windowWidth, windowHeight, *this ) );
-    addScreen( ScreenType::GameScreen, new GameScreen( windowWidth, windowHeight ) );
-    addScreen( ScreenType::UpgradeScreen, new UpgradeScreen( windowWidth, windowHeight ) );
     setScreen( ScreenType::MainMenuScreen );
 }
 
 void ScreenManager::setScreen( const ScreenType& screenType ) {
+    if ( _screens.find( screenType ) == _screens.end() ) {
+        createScreen( screenType );
+    }
+
     _activeScreen = _screens.at( screenType );
 }
 
@@ -47,6 +45,26 @@ void ScreenManager::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
 void ScreenManager::render( sf::RenderWindow& window ) {
     if ( _activeScreen ) {
         _activeScreen->render( window );
+    }
+}
+
+void ScreenManager::createScreen( const ScreenType& screenType ) {
+
+    int windowWidth = sf::VideoMode::getDesktopMode().width;
+    int windowHeight = sf::VideoMode::getDesktopMode().height;
+
+    switch ( screenType ) {
+    case ScreenType::MainMenuScreen:
+        addScreen( ScreenType::MainMenuScreen, new MainMenuScreen( *this ) );
+        break;
+    case ScreenType::GameScreen:
+        addScreen( ScreenType::GameScreen, new GameScreen( windowWidth, windowHeight, *this ) );
+        break;
+    case ScreenType::UpgradeScreen:
+        addScreen( ScreenType::UpgradeScreen, new UpgradeScreen() );
+        break;
+    default:
+        break;
     }
 }
 

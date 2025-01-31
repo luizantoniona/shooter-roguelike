@@ -2,14 +2,20 @@
 
 BEGIN_SCREEN_NAMESPACE
 
-GameScreen::GameScreen( int windowWidth, int windowHeight ) :
-    Screen( windowWidth, windowHeight ),
+GameScreen::GameScreen( int windowWidth, int windowHeight, ScreenManager& screenManager ) :
+    Screen(),
+    _screenManager( screenManager ),
     _map( windowWidth, windowHeight ),
     _player( 3, 20.0f, sf::Vector2f( windowWidth / 2.0, windowHeight / 2.0 ), sf::Color::Green, _map ),
     _enemies( {} ) {
 }
 
 void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
+
+    if ( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape ) {
+        _screenManager.setScreen( ScreenType::MainMenuScreen );
+    }
+
     _inputController.handleInput( event, _player );
 }
 
