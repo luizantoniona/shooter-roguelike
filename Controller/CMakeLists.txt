@@ -1,4 +1,5 @@
 set(SOURCES
+Collision/CollisionController.cpp
 Input/InputController.cpp
 Update/UpdateController.cpp
 )

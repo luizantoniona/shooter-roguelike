@@ -6,6 +6,7 @@
 
 #include <Screen/ScreenGlobals.h>
 
+#include <Controller/Collision/CollisionController.h>
 #include <Controller/Input/InputController.h>
 #include <Controller/Update/UpdateController.h>
 #include <Entity/Enemy/Enemy.h>
@@ -13,6 +14,7 @@
 #include <Entity/Player/Player.h>
 #include <Screen/Screen.h>
 
+using Controller::CollisionController;
 using Controller::InputController;
 using Controller::UpdateController;
 using Entity::Enemy;
@@ -34,6 +36,8 @@ private:
     Map _map;
     Player _player;
     std::vector<Enemy> _enemies;
+
+    CollisionController _collisionController;
     InputController _inputController;
     UpdateController _updateController;
 };
