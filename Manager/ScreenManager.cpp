@@ -12,8 +12,11 @@ using Screens::UpgradeScreen;
 
 BEGIN_MANAGER_NAMESPACE
 
-ScreenManager::ScreenManager( int windowWidth, int windowHeight ) :
+ScreenManager::ScreenManager() :
     _activeScreen( nullptr ) {
+
+    int windowWidth = sf::VideoMode::getDesktopMode().width;
+    int windowHeight = sf::VideoMode::getDesktopMode().height;
 
     addScreen( ScreenType::MainMenuScreen, new MainMenuScreen( windowWidth, windowHeight, *this ) );
     addScreen( ScreenType::GameScreen, new GameScreen( windowWidth, windowHeight ) );

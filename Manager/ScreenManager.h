@@ -14,7 +14,7 @@ BEGIN_MANAGER_NAMESPACE
 
 class ScreenManager {
 public:
-    ScreenManager( int windowWidth, int windowHeight );
+    ScreenManager();
 
     void setScreen( const ScreenType& screenType );
     void addScreen( const ScreenType& screenType, Screen* screen );

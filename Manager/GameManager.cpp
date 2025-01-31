@@ -8,7 +8,7 @@ BEGIN_MANAGER_NAMESPACE
 
 GameManager::GameManager() :
     _window( sf::VideoMode::getDesktopMode(), DISPLAY_NAME, sf::Style::Fullscreen ),
-    _screenManager( sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height ) {
+    _screenManager() {
 
     sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
     int windowWidth = desktopMode.width;
