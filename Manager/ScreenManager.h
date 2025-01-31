@@ -1,8 +1,5 @@
 #pragma once
 
-#include <memory>
-#include <unordered_map>
-
 #include <SFML/Graphics.hpp>
 
 #include <Manager/ManagerGlobals.h>
@@ -17,17 +14,17 @@ BEGIN_MANAGER_NAMESPACE
 
 class ScreenManager {
 public:
-    ScreenManager();
+    ScreenManager( int windowWidth, int windowHeight );
 
     void setScreen( const ScreenType& screenType );
-    void addScreen( const ScreenType& screenType, std::shared_ptr<Screen> screen );
+    void addScreen( const ScreenType& screenType, Screen* screen );
     void handleInput( const sf::Event& event, sf::Time& deltaTime );
     void update( sf::RenderWindow& window, sf::Time& deltaTime );
     void render( sf::RenderWindow& window );
 
 private:
-    std::unordered_map<ScreenType, std::shared_ptr<Screen>> _screens;
-    std::shared_ptr<Screen> _activeScreen;
+    std::map<ScreenType, Screen*> _screens;
+    Screen* _activeScreen;
 };
 
 END_MANAGER_NAMESPACE
