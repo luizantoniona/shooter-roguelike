@@ -1,6 +1,7 @@
 set(SOURCES
-GameScreen.cpp
-MainMenuScreen.cpp
+Game/GameScreen.cpp
+MainMenu/MainMenuScreen.cpp
+Upgrade/UpgradeScreen.cpp
 Screen.cpp
 )
 

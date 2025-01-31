@@ -1,0 +1,5 @@
+#include "UpgradeScreen.h"
+
+BEGIN_SCREEN_NAMESPACE
+
+END_SCREEN_NAMESPACE

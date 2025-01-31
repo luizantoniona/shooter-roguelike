@@ -1,22 +1,19 @@
 #include "MainMenuScreen.h"
 
-#include <Manager/AssetManager.h>
-#include <Screens/ScreenType.h>
+#include <Manager/Asset/FontManager.h>
+#include <Screen/ScreenType.h>
 
-using Manager::AssetManager;
+using Manager::FontManager;
 
 BEGIN_SCREEN_NAMESPACE
 
-MainMenuScreen::MainMenuScreen( int windowWidth, int windowHeight, ScreenManager& screenManager )
-    : Screen( windowWidth, windowHeight ), _screenManager( screenManager ), _selectedOption( -1 ) {
+MainMenuScreen::MainMenuScreen( int windowWidth, int windowHeight, ScreenManager& screenManager ) :
+    Screen( windowWidth, windowHeight ),
+    _selectedOption( -1 ),
+    _buttons( {} ),
+    _screenManager( screenManager ) {
 
-    _font = AssetManager::instance().font( FontType::Arial );
-
-    _title.setFont( _font );
-    _title.setString( "Shape Defense" );
-    _title.setCharacterSize( 50 );
-    _title.setFillColor( sf::Color::White );
-    _title.setPosition( 200, 100 );
+    _font = FontManager::instance().font( FontType::Arial );
 
     initMenu();
 }
@@ -27,8 +24,8 @@ void MainMenuScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) 
         sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
         _selectedOption = -1;
 
-        for ( size_t i = 0; i < _menuOptions.size(); ++i ) {
-            if ( isMouseOverOption( _menuOptions[ i ], mousePos ) ) {
+        for ( size_t i = 0; i < _buttons.size(); ++i ) {
+            if ( _buttons[ i ].isMouseOver( mousePos ) ) {
                 _selectedOption = i;
                 break;
             }
@@ -40,7 +37,8 @@ void MainMenuScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) 
 
             if ( _selectedOption == 0 ) {
                 _screenManager.setScreen( ScreenType::GameScreen );
-            } else if ( _selectedOption == 4 ) {
+
+            } else if ( _selectedOption == 3 ) {
                 // Sair do jogo
             }
         }
@@ -48,11 +46,11 @@ void MainMenuScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) 
 }
 
 void MainMenuScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
-    for ( size_t i = 0; i < _menuOptions.size(); ++i ) {
+    for ( size_t i = 0; i < _buttons.size(); ++i ) {
         if ( i == _selectedOption ) {
-            _menuOptions[ i ].setFillColor( sf::Color::Red );
+            _buttons[ i ].setFillColor( sf::Color::Red );
         } else {
-            _menuOptions[ i ].setFillColor( sf::Color::White );
+            _buttons[ i ].setFillColor( sf::Color::White );
         }
     }
 }
@@ -60,22 +58,25 @@ void MainMenuScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
 void MainMenuScreen::render( sf::RenderWindow& window ) {
     window.draw( _title );
 
-    for ( const auto& option : _menuOptions ) {
-        window.draw( option );
+    for ( const auto& button : _buttons ) {
+        button.render( window );
     }
 }
 
 void MainMenuScreen::initMenu() {
+
+    _title.setFont( _font );
+    _title.setString( "Roguelike" );
+    _title.setCharacterSize( 50 );
+    _title.setFillColor( sf::Color::White );
+    _title.setPosition( 200, 100 );
+
     std::vector<std::string> options = { "Start Game", "Upgrades", "Settings", "Exit" };
 
     for ( size_t i = 0; i < options.size(); ++i ) {
-        sf::Text option;
-        option.setFont( _font );
-        option.setString( options[ i ] );
-        option.setCharacterSize( 30 );
-        option.setFillColor( sf::Color::White );
-        option.setPosition( 250, 200 + i * 50 );
-        _menuOptions.push_back( option );
+        Button button( options[ i ], _font, 30 );
+        button.setPosition( 250, 200 + i * 50 );
+        _buttons.push_back( button );
     }
 }
 

@@ -20,7 +20,7 @@ add_subdirectory(Entity)
 add_subdirectory(GUI)
 add_subdirectory(Handler)
 add_subdirectory(Manager)
-add_subdirectory(Screens)
+add_subdirectory(Screen)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 

@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Screens/ScreenGlobals.h>
-#include <Screens/ScreenType.h>
+#include <Screen/ScreenGlobals.h>
+#include <Screen/ScreenType.h>
 
 BEGIN_SCREEN_NAMESPACE
 

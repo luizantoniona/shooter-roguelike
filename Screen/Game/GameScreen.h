@@ -9,8 +9,8 @@
 #include <Entity/Player/Player.h>
 #include <Handler/InputHandler.h>
 #include <Handler/UpdateHandler.h>
-#include <Screens/Screen.h>
-#include <Screens/ScreenGlobals.h>
+#include <Screen/Screen.h>
+#include <Screen/ScreenGlobals.h>
 
 using Entity::Enemy;
 using Entity::Map;
