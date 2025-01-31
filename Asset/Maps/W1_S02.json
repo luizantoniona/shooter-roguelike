@@ -1,0 +1,49 @@
+{
+    "world": 1,
+    "stage": 2,
+    "height": 4,
+    "widht": 4,
+    "nr_waves": 10,
+    "waves": [
+        {
+            "wave": 1,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 2,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 3,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 4,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 5,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 6,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 7,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 8,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 9,
+            "nr_enemies": 10
+        },
+        {
+            "wave": 10,
+            "nr_enemies": 10
+        }
+    ]
+}
