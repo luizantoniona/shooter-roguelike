@@ -1,6 +1,7 @@
 set(SOURCES
 Collision/CollisionController.cpp
 Input/InputController.cpp
+Spawn/SpawnController.cpp
 Update/UpdateController.cpp
 )
 

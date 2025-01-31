@@ -8,6 +8,7 @@
 
 #include <Controller/Collision/CollisionController.h>
 #include <Controller/Input/InputController.h>
+#include <Controller/Spawn/SpawnController.h>
 #include <Controller/Update/UpdateController.h>
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Map/Map.h>
@@ -16,6 +17,7 @@
 
 using Controller::CollisionController;
 using Controller::InputController;
+using Controller::SpawnController;
 using Controller::UpdateController;
 using Entity::Enemy;
 using Entity::Map;
@@ -39,6 +41,7 @@ private:
 
     CollisionController _collisionController;
     InputController _inputController;
+    SpawnController _spawnController;
     UpdateController _updateController;
 };
 
