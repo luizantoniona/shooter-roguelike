@@ -2,10 +2,12 @@
 Language: Cpp
 BasedOnStyle: LLVM
 AccessModifierOffset: -4
-IndentWidth: 4
+AllowShortFunctionsOnASingleLine: None
+BreakConstructorInitializers: AfterColon
+ColumnLimit: 0
 DerivePointerAlignment: false
+EmptyLineBeforeAccessModifier: Always
+IndentWidth: 4
 PointerAlignment: Left
 SpacesInParentheses: true
 SpacesInSquareBrackets: true
-ColumnLimit: 128
-AllowShortFunctionsOnASingleLine: None
