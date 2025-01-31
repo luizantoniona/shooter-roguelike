@@ -1,8 +1,8 @@
-#include "InputHandler.h"
+#include "InputController.h"
 
-BEGIN_HANDLER_NAMESPACE
+BEGIN_CONTROLLER_NAMESPACE
 
-void InputHandler::handleInput( const sf::Event& event, Player& player ) {
+void InputController::handleInput( const sf::Event& event, Player& player ) {
     if ( event.type == sf::Event::KeyPressed ) {
         if ( event.key.code == sf::Keyboard::Escape ) {
         }
@@ -11,4 +11,4 @@ void InputHandler::handleInput( const sf::Event& event, Player& player ) {
     player.handleInput( event );
 }
 
-END_HANDLER_NAMESPACE
+END_CONTROLLER_NAMESPACE

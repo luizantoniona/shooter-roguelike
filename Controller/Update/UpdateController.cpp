@@ -1,9 +1,9 @@
-#include "UpdateHandler.h"
+#include "UpdateController.h"
 
-BEGIN_HANDLER_NAMESPACE
+BEGIN_CONTROLLER_NAMESPACE
 
-void UpdateHandler::update( sf::RenderWindow& window, sf::Time& deltaTime, Entity::Player& player,
-                            std::vector<Entity::Enemy>& enemies, Entity::Map& map ) {
+void UpdateController::update( sf::RenderWindow& window, sf::Time& deltaTime, Entity::Player& player,
+                               std::vector<Entity::Enemy>& enemies, Entity::Map& map ) {
     player.update( window, deltaTime );
 
     for ( auto& enemy : enemies ) {
@@ -15,7 +15,7 @@ void UpdateHandler::update( sf::RenderWindow& window, sf::Time& deltaTime, Entit
     checkCollisions( player, enemies );
 }
 
-void UpdateHandler::checkCollisions( Entity::Player& player, std::vector<Entity::Enemy>& enemies ) {
+void UpdateController::checkCollisions( Entity::Player& player, std::vector<Entity::Enemy>& enemies ) {
     auto& projectiles = player.getProjectiles();
     for ( auto it = projectiles.begin(); it != projectiles.end(); ) {
         bool hit = false;
@@ -36,4 +36,4 @@ void UpdateHandler::checkCollisions( Entity::Player& player, std::vector<Entity:
     }
 }
 
-END_HANDLER_NAMESPACE
+END_CONTROLLER_NAMESPACE

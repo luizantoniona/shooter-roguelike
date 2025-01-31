@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <Entity/EntityGlobals.h>
+
 #include <Entity/Map/Map.h>
 #include <Entity/Shape.h>
 #include <Entity/Skill/Projectile.h>

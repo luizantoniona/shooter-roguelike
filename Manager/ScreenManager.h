@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <Manager/ManagerGlobals.h>
+
 #include <Screen/Screen.h>
 #include <Screen/ScreenType.h>
 

@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Handler/HandlerGlobals.h>
+#include <Controller/ControllerGlobals.h>
 
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Map/Map.h>
@@ -12,12 +12,12 @@ using Entity::Enemy;
 using Entity::Map;
 using Entity::Player;
 
-BEGIN_HANDLER_NAMESPACE
+BEGIN_CONTROLLER_NAMESPACE
 
-class UpdateHandler {
+class UpdateController {
 public:
     void update( sf::RenderWindow& window, sf::Time& deltaTime, Player& player, std::vector<Enemy>& enemies, Map& map );
     void checkCollisions( Player& player, std::vector<Enemy>& enemies );
 };
 
-END_HANDLER_NAMESPACE
+END_CONTROLLER_NAMESPACE

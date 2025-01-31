@@ -4,19 +4,20 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <Screen/ScreenGlobals.h>
+
+#include <Controller/Input/InputController.h>
+#include <Controller/Update/UpdateController.h>
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Map/Map.h>
 #include <Entity/Player/Player.h>
-#include <Handler/InputHandler.h>
-#include <Handler/UpdateHandler.h>
 #include <Screen/Screen.h>
-#include <Screen/ScreenGlobals.h>
 
+using Controller::InputController;
+using Controller::UpdateController;
 using Entity::Enemy;
 using Entity::Map;
 using Entity::Player;
-using Handler::InputHandler;
-using Handler::UpdateHandler;
 using Screens::Screen;
 
 BEGIN_SCREEN_NAMESPACE
@@ -33,8 +34,8 @@ private:
     Map _map;
     Player _player;
     std::vector<Enemy> _enemies;
-    InputHandler _inputHandler;
-    UpdateHandler _updateHandler;
+    InputController _inputController;
+    UpdateController _updateController;
 };
 
 END_SCREEN_NAMESPACE

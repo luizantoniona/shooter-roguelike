@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <Manager/ManagerGlobals.h>
+
 #include <Manager/ScreenManager.h>
 
 using Manager::ScreenManager;

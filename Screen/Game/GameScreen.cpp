@@ -5,7 +5,7 @@ BEGIN_SCREEN_NAMESPACE
 GameScreen::GameScreen( int windowWidth, int windowHeight ) :
     Screen( windowWidth, windowHeight ),
     _map( windowWidth, windowHeight ),
-    _player( 6, 20.0f, sf::Vector2f( windowWidth / 2.0, windowHeight / 2.0 ), sf::Color::Green, _map ),
+    _player( 3, 20.0f, sf::Vector2f( windowWidth / 2.0, windowHeight / 2.0 ), sf::Color::Green, _map ),
     _enemies( {} ) {
 
     for ( int i = 0; i < 5; ++i ) {
@@ -17,11 +17,11 @@ GameScreen::GameScreen( int windowWidth, int windowHeight ) :
 }
 
 void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
-    _inputHandler.handleInput( event, _player );
+    _inputController.handleInput( event, _player );
 }
 
 void GameScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
-    _updateHandler.update( window, deltaTime, _player, _enemies, _map );
+    _updateController.update( window, deltaTime, _player, _enemies, _map );
 }
 
 void GameScreen::render( sf::RenderWindow& window ) {

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <Entity/EntityGlobals.h>
+
 #include <Entity/Shape.h>
 
 BEGIN_ENTITY_NAMESPACE

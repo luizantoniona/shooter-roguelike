@@ -1,0 +1,2 @@
+#define BEGIN_CONTROLLER_NAMESPACE namespace Controller {
+#define END_CONTROLLER_NAMESPACE }

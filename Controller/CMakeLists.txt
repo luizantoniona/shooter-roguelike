@@ -1,6 +1,6 @@
 set(SOURCES
-InputHandler.cpp
-UpdateHandler.cpp
+Input/InputController.cpp
+Update/UpdateController.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

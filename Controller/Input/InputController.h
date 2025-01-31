@@ -2,16 +2,16 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <Controller/ControllerGlobals.h>
 #include <Entity/Player/Player.h>
-#include <Handler/HandlerGlobals.h>
 
 using Entity::Player;
 
-BEGIN_HANDLER_NAMESPACE
+BEGIN_CONTROLLER_NAMESPACE
 
-class InputHandler {
+class InputController {
 public:
     void handleInput( const sf::Event& event, Player& player );
 };
 
-END_HANDLER_NAMESPACE
+END_CONTROLLER_NAMESPACE
