@@ -4,8 +4,10 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Player::Player( int sides, float radius, const sf::Vector2f& position, const sf::Color& color, const Map& map )
-    : Shape( sides, radius, position, color ), _map( map ), _fireRate( 0.5f ) {
+Player::Player( int sides, float radius, const sf::Vector2f& position, const sf::Color& color, const Map& map ) :
+    Shape( sides, radius, position, color ),
+    _map( map ),
+    _fireRate( 0.5f ) {
 }
 
 Player::~Player() {
@@ -74,11 +76,13 @@ void Player::updateProjectiles( sf::Time& deltaTime ) {
         projectile.update( deltaTime );
     }
 
-    _projectiles.erase( std::remove_if( _projectiles.begin(), _projectiles.end(),
-                                        [ this ]( const Projectile& projectile ) -> bool {
-                                            return projectile.isOutOfBounds( _map.getWidth(), _map.getHeight() );
-                                        } ),
-                        _projectiles.end() );
+    _projectiles.erase(
+        std::remove_if(
+            _projectiles.begin(), _projectiles.end(),
+            [ this ]( const Projectile& projectile ) -> bool {
+                return projectile.isOutOfBounds( _map.getWidth(), _map.getHeight() );
+            } ),
+        _projectiles.end() );
 }
 
 void Player::fireProjectile( const sf::Vector2f& target ) {

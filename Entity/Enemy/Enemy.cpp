@@ -2,8 +2,8 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Enemy::Enemy( int sides, float radius, const sf::Vector2f& position, const sf::Color& color )
-    : Shape( sides, radius, position, color ) {
+Enemy::Enemy( int sides, float radius, const sf::Vector2f& position, const sf::Color& color ) :
+    Shape( sides, radius, position, color ) {
 }
 
 Enemy::~Enemy() {

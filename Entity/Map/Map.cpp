@@ -2,7 +2,10 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Map::Map( int width, int height ) : _width( width ), _height( height ) {
+Map::Map( int width, int height ) :
+    _width( width ),
+    _height( height ) {
+
     _border.setSize( sf::Vector2f( _width, _height ) );
     _border.setFillColor( sf::Color::Transparent );
     _border.setOutlineColor( sf::Color::White );
