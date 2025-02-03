@@ -1,6 +1,7 @@
 set(SOURCES
 Enemy/Enemy.cpp
 Map/Map.cpp
+Map/Background/Background.cpp
 Map/Wave/Wave.cpp
 Player/Player.cpp
 Shape.cpp
