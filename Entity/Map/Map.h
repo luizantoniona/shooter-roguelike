@@ -1,10 +1,13 @@
 #pragma once
 
+#include <queue>
 #include <vector>
 
 #include <SFML/Graphics.hpp>
 
 #include <Entity/EntityGlobals.h>
+
+#include <Map/Wave/Wave.h>
 
 BEGIN_ENTITY_NAMESPACE
 
@@ -25,8 +28,10 @@ private:
     int _width;
     int _height;
     sf::RectangleShape _border;
-    std::vector<sf::CircleShape> _stars;
+    std::queue<Wave> _waves;
 
+    // TODO: Move this to a background class
+    std::vector<sf::CircleShape> _stars;
     void initializeStars();
     void updateStars( sf::Time& deltaTime );
 };

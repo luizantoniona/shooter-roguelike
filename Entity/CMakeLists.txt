@@ -1,6 +1,7 @@
 set(SOURCES
 Enemy/Enemy.cpp
 Map/Map.cpp
+Map/Wave/Wave.cpp
 Player/Player.cpp
 Shape.cpp
 Skill/Projectile.cpp
