@@ -1,4 +1,7 @@
 set(SOURCES
+Map/Background/BackgroundFactory.cpp
+Map/Wave/WaveFactory.cpp
+Map/MapFactory.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <vector>
 
 #include <SFML/Graphics.hpp>
@@ -39,7 +40,7 @@ public:
 private:
     ScreenManager& _screenManager;
 
-    Map _map;
+    std::shared_ptr<Map> _map;
     Player _player;
     std::vector<Enemy> _enemies;
 

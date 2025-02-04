@@ -2,76 +2,99 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Map::Map( int width, int height ) :
-    _width( width ),
-    _height( height ) {
+Map::Map() :
+    _width( 0 ),
+    _height( 0 ),
+    _shape(),
+    _background(),
+    _waves() {
+}
 
-    _border.setSize( sf::Vector2f( _width, _height ) );
-    _border.setFillColor( sf::Color::Transparent );
-    _border.setOutlineColor( sf::Color::White );
-    _border.setOutlineThickness( 5.0f );
-    _border.setPosition( 0, 0 );
-
-    initializeStars();
-    std::srand( static_cast<unsigned>( std::time( nullptr ) ) );
+Map::Map( const Map& map ) :
+    _width( map._width ),
+    _height( map._height ),
+    _shape( map._shape ),
+    _background( map._background ),
+    _waves( map._waves ) {
 }
 
 Map::~Map() {
-}
-
-void Map::initializeStars() {
-    for ( int i = 0; i < 50; ++i ) {
-        sf::CircleShape star( 2.0f );
-        star.setFillColor( sf::Color::Yellow );
-        star.setPosition( std::rand() % _width, std::rand() % _height );
-        _stars.push_back( star );
-    }
-}
-
-void Map::update( sf::Time& deltaTime ) {
-    updateStars( deltaTime );
-}
-
-void Map::updateStars( sf::Time& deltaTime ) {
-    for ( auto& star : _stars ) {
-        sf::Vector2f offset( ( std::rand() % 3 - 1 ) * 10 * deltaTime.asSeconds(),
-                             ( std::rand() % 3 - 1 ) * 10 * deltaTime.asSeconds() );
-        sf::Vector2f newPosition = star.getPosition() + offset;
-
-        if ( newPosition.x < 0 ) {
-            newPosition.x = 0;
-        }
-        if ( newPosition.y < 0 ) {
-            newPosition.y = 0;
-        }
-        if ( newPosition.x > _width ) {
-            newPosition.x = _width;
-        }
-        if ( newPosition.y > _height ) {
-            newPosition.y = _height;
-        }
-
-        star.setPosition( newPosition );
-    }
-}
-
-void Map::render( sf::RenderWindow& window ) {
-    window.draw( _border );
-    for ( const auto& star : _stars ) {
-        window.draw( star );
-    }
-}
-
-bool Map::isInsideBounds( const sf::Vector2f& position ) const {
-    return position.x >= 0 && position.x <= _width && position.y >= 0 && position.y <= _height;
 }
 
 int Map::getWidth() const {
     return _width;
 }
 
+void Map::setWidth( const int width ) {
+    _width = width;
+}
+
 int Map::getHeight() const {
     return _height;
+}
+
+void Map::setHeight( const int height ) {
+    _height = height;
+}
+
+std::string Map::getWorldName() const {
+    return _worldName;
+}
+
+void Map::setWorldName( const std::string& worldName ) {
+    _worldName = worldName;
+}
+
+std::string Map::getStageName() const {
+    return _stageName;
+}
+
+void Map::setStageName( const std::string& stageName ) {
+    _stageName = stageName;
+}
+
+Background Map::getBackground() {
+    return _background;
+}
+
+void Map::setBackground( const Background& background ) {
+    _background = background;
+}
+
+std::queue<Wave> Map::getWaves() {
+    return _waves;
+}
+
+void Map::setWaves( const std::queue<Wave>& wave ) {
+    _waves = wave;
+}
+
+void Map::addWaves( const Wave& wave ) {
+    _waves.push( wave );
+}
+
+void Map::popWave() {
+    _waves.pop();
+}
+
+void Map::build() {
+    _shape.setSize( sf::Vector2f( _width, _height ) );
+    _shape.setFillColor( sf::Color::Transparent );
+    _shape.setOutlineColor( sf::Color::White );
+    _shape.setOutlineThickness( 5.0f );
+    _shape.setPosition( 0, 0 );
+}
+
+void Map::update( sf::Time& deltaTime ) {
+    // _background.update( deltaTime );
+}
+
+void Map::render( sf::RenderWindow& window ) {
+    window.draw( _shape );
+}
+
+bool Map::isInsideBounds( const sf::Vector2f& position ) const {
+    return position.x >= 0 && position.x <= _width && position.y >= 0 && position.y <= _height;
 }
 
 END_ENTITY_NAMESPACE
