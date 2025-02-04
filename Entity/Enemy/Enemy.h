@@ -10,11 +10,21 @@ BEGIN_ENTITY_NAMESPACE
 
 class Enemy : public Shape {
 public:
-    Enemy( int sides, float radius, const sf::Vector2f& position, const sf::Color& color );
+    Enemy();
     ~Enemy();
+
+    void setHealth( int health );
+    int getHealth() const;
+
+    void setSpeed( int speed );
+    int getSpeed() const;
 
     void update( sf::Time& deltaTime );
     void render( sf::RenderWindow& window );
+
+private:
+    int _health;
+    int _speed;
 };
 
 END_ENTITY_NAMESPACE

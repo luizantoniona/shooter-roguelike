@@ -2,8 +2,47 @@
 
 #include <cmath>
 
-Shape::Shape( int sides, float radius, const sf::Vector2f& position, const sf::Color& color )
-    : _sides( sides ), _radius( radius ), _position( position ), _color( color ), _shape( sf::TrianglesFan ) {
+Shape::Shape() :
+    _sides( 3 ),
+    _radius( 0 ),
+    _position( 0, 0 ),
+    _color( sf::Color::White ),
+    _shape( sf::TrianglesFan ) {
+}
+
+void Shape::setSides( int sides ) {
+    _sides = sides;
+}
+
+int Shape::getSides() const {
+    return _sides;
+}
+
+void Shape::setRadius( float radius ) {
+    _radius = radius;
+}
+
+float Shape::getRadius() const {
+    return _radius;
+}
+
+void Shape::setColor( const sf::Color& color ) {
+    _color = color;
+}
+
+sf::Color Shape::getColor() const {
+    return _color;
+}
+
+void Shape::setPosition( const sf::Vector2f& position ) {
+    _position = position;
+}
+
+sf::Vector2f Shape::getPosition() const {
+    return _position;
+}
+
+void Shape::build() {
 
     _shape.append( sf::Vertex( _position, _color ) );
 
@@ -22,20 +61,6 @@ void Shape::render( sf::RenderWindow& window ) {
 void Shape::move( const sf::Vector2f& offset ) {
     _position += offset;
     updateShape();
-}
-
-void Shape::setColor( const sf::Color& color ) {
-    _color = color;
-    updateShape();
-}
-
-void Shape::setPosition( const sf::Vector2f& position ) {
-    _position = position;
-    updateShape();
-}
-
-sf::Vector2f Shape::getPosition() const {
-    return _position;
 }
 
 sf::FloatRect Shape::getGlobalBounds() const {

@@ -5,9 +5,15 @@
 BEGIN_ENTITY_NAMESPACE
 
 Player::Player( int sides, float radius, const sf::Vector2f& position, const sf::Color& color, const Map& map ) :
-    Shape( sides, radius, position, color ),
+    Shape(),
     _map( map ),
     _fireRate( 0.5f ) {
+
+    setSides( sides );
+    setRadius( radius );
+    setPosition( position );
+    setColor( color );
+    build();
 }
 
 Player::~Player() {

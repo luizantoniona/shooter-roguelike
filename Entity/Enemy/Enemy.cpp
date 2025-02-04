@@ -2,11 +2,27 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Enemy::Enemy( int sides, float radius, const sf::Vector2f& position, const sf::Color& color ) :
-    Shape( sides, radius, position, color ) {
+Enemy::Enemy() :
+    Shape() {
 }
 
 Enemy::~Enemy() {
+}
+
+void Enemy::setHealth( int health ) {
+    _health = health;
+}
+
+int Enemy::getHealth() const {
+    return _health;
+}
+
+void Enemy::setSpeed( int speed ) {
+    _speed = speed;
+}
+
+int Enemy::getSpeed() const {
+    return _speed;
 }
 
 void Enemy::update( sf::Time& deltaTime ) {

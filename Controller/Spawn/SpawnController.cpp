@@ -1,11 +1,13 @@
 #include "SpawnController.h"
 
+#include <Factory/Enemy/EnemyFactory.h>
 #include <Helper/Color/ColorHelper.h>
 #include <Map/Wave/Wave.h>
 #include <Map/Wave/WaveEnemyInfo.h>
 
 using Entity::Wave;
 using Entity::WaveEnemyInfo;
+using Factory::EnemyFactory;
 using Helper::ColorHelper;
 
 BEGIN_CONTROLLER_NAMESPACE
@@ -24,9 +26,14 @@ void SpawnController::checkSpawn( Map& map, std::vector<Enemy>& enemies ) {
 
             sf::Vector2f position( std::rand() % map.getWidth(), std::rand() % map.getHeight() );
             if ( map.isInsideBounds( position ) ) {
-
-                // TODO: USE EnemyFactory to generate enemies
-                enemies.emplace_back( enemyInfo.getSides(), enemyInfo.getSize(), position, sf::Color::Red );
+                enemies.emplace_back(
+                    *EnemyFactory::createEnemy(
+                        enemyInfo.getHealth(),
+                        enemyInfo.getSpeed(),
+                        enemyInfo.getSides(),
+                        enemyInfo.getSize(),
+                        ColorHelper::colorFromString( enemyInfo.getColor() ),
+                        position ) );
             }
         }
     }
