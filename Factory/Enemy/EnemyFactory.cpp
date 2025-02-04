@@ -1,0 +1,5 @@
+#include "EnemyFactory.h"
+
+BEGIN_FACTORY_NAMESPACE
+
+END_FACTORY_NAMESPACE

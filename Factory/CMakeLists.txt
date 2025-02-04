@@ -1,4 +1,5 @@
 set(SOURCES
+Enemy/EnemyFactory.cpp
 Map/Background/BackgroundFactory.cpp
 Map/Wave/WaveFactory.cpp
 Map/MapFactory.cpp
