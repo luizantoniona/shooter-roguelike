@@ -2,7 +2,7 @@
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void CollisionController::checkCollisions( Entity::Player& player, std::vector<Entity::Enemy>& enemies ) {
+void CollisionController::checkCollisions( Entity::Player& player, std::vector<Enemy>& enemies ) {
     auto& projectiles = player.getProjectiles();
     for ( auto it = projectiles.begin(); it != projectiles.end(); ) {
         bool hit = false;
