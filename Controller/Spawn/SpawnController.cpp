@@ -1,14 +1,12 @@
 #include "SpawnController.h"
 
+#include <Helper/Color/ColorHelper.h>
 #include <Map/Wave/Wave.h>
 #include <Map/Wave/WaveEnemyInfo.h>
 
 using Entity::Wave;
 using Entity::WaveEnemyInfo;
-
-namespace {
-constexpr double SPAWN_RADIUS = 20.0;
-}
+using Helper::ColorHelper;
 
 BEGIN_CONTROLLER_NAMESPACE
 

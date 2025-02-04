@@ -20,6 +20,7 @@ add_subdirectory(Controller)
 add_subdirectory(Entity)
 add_subdirectory(Factory)
 add_subdirectory(GUI)
+add_subdirectory(Helper)
 add_subdirectory(Manager)
 add_subdirectory(Screen)
 
