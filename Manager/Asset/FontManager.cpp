@@ -34,7 +34,7 @@ std::string FontManager::fontPath( FontType fontType ) {
     std::string fontPath = "";
     switch ( fontType ) {
     case FontType::Arial: {
-        fontPath = "../Asset/Fonts/Arial.ttf";
+        fontPath = "Asset/Fonts/Arial.ttf";
         break;
     }
     default: {

@@ -15,7 +15,6 @@ sfml-window
 
 target_link_libraries(${PROJECT_NAME} ${EXTERNAL_LIBRARIES})
 
-add_subdirectory(Asset)
 add_subdirectory(Controller)
 add_subdirectory(Entity)
 add_subdirectory(Factory)
@@ -29,3 +28,5 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
+
+file(COPY ${CMAKE_SOURCE_DIR}/Asset DESTINATION ${CMAKE_BINARY_DIR})

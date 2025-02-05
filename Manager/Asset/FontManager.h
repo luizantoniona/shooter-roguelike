@@ -7,7 +7,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include <Asset/FontType.h>
+#include <Manager/Asset/FontType.h>
 #include <Manager/ManagerGlobals.h>
 
 BEGIN_MANAGER_NAMESPACE
