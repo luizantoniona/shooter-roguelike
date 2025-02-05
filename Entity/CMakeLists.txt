@@ -5,6 +5,7 @@ Map/Background/Background.cpp
 Map/Wave/Wave.cpp
 Map/Wave/WaveEnemyInfo.cpp
 Player/Player.cpp
+Player/PlayerStatus.cpp
 Shape.cpp
 Skill/Projectile.cpp
 Skill/Skill.cpp
