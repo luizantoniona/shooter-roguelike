@@ -10,14 +10,6 @@ Map::Map() :
     _waves() {
 }
 
-Map::Map( const Map& map ) :
-    _width( map._width ),
-    _height( map._height ),
-    _shape( map._shape ),
-    _background( map._background ),
-    _waves( map._waves ) {
-}
-
 Map::~Map() {
 }
 

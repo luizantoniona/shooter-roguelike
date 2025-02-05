@@ -15,7 +15,6 @@ BEGIN_ENTITY_NAMESPACE
 class Map {
 public:
     Map();
-    Map( const Map& map );
     ~Map();
 
     int getWidth() const;
