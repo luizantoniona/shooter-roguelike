@@ -1,0 +1,13 @@
+{
+    "player_status": {
+        "health": 10,
+        "speed": 1,
+        "gold": 0,
+        "projectile_status": {
+            "projectile_fire_rate": 1.0,
+            "projectile_speed": 1.0,
+            "projectile_size": 1.0,
+            "projectile_damage": 1.0
+        }
+    }
+}
