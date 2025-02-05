@@ -21,7 +21,7 @@ constexpr const char* WAVES_KEY = "waves";
 BEGIN_FACTORY_NAMESPACE
 
 std::shared_ptr<Map> MapFactory::generateMap( const MapType& mapType ) {
-    std::string filePath = "../Asset/Maps/" + mapFileNameByType( mapType );
+    std::string filePath = "Asset/Maps/" + mapFileNameByType( mapType );
     Json::Value mapJson = loadJson( filePath );
 
     auto map = std::make_shared<Map>();
