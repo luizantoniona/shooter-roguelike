@@ -32,7 +32,6 @@ private:
 
     sf::Clock _fireClock;
     std::vector<Projectile> _projectiles;
-    PlayerStatus _status;
 
     void updatePosition( const sf::Time& deltaTime );
     void updateProjectiles( const sf::Time& deltaTime );
