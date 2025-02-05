@@ -14,25 +14,13 @@ public:
     void setSpeed( int speed );
     int getSpeed() const;
 
-    void setFireRate( float fireRate );
-    float getFireRate() const;
-
-    void setProjectileSpeed( float projectileSpeed );
-    float getProjectileSpeed() const;
-
-    void setProjectileSize( float projectileSize );
-    float getProjectileSize() const;
-
-    void setProjectileDamage( float projectileDamage );
-    float getProjectileDamage() const;
+    void setGold( int gold );
+    int getGold() const;
 
 private:
     int _health;
     int _speed;
-    float _fireRate;
-    float _projectileSpeed;
-    float _projectileSize;
-    float _projectileDamage;
+    int _gold;
 };
 
 END_ENTITY_NAMESPACE

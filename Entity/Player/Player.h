@@ -5,6 +5,8 @@
 #include <Entity/EntityGlobals.h>
 
 #include <Entity/Map/Map.h>
+#include <Entity/Player/PlayerProjectileStatus.h>
+#include <Entity/Player/PlayerStatus.h>
 #include <Entity/Shape.h>
 #include <Entity/Skill/Projectile.h>
 
@@ -12,23 +14,27 @@ BEGIN_ENTITY_NAMESPACE
 
 class Player : public Shape {
 public:
-    Player( int sides, float radius, const sf::Vector2f& position, const sf::Color& color, const Map& map );
+    Player( const Map& map );
     ~Player();
 
-    void handleInput( const sf::Event& event );
-    void update( const sf::RenderWindow& window, sf::Time& deltaTime );
-    void render( sf::RenderWindow& window );
-
     std::vector<Projectile>& getProjectiles();
+    PlayerStatus getPlayerStatus() const;
+    PlayerProjectileStatus getPlayerProjectileStatus() const;
+
+    void handleInput( const sf::Event& event );
+    void update( const sf::RenderWindow& window, const sf::Time& deltaTime );
+    void render( sf::RenderWindow& window );
 
 private:
     const Map& _map;
-    float _fireRate;
+    PlayerStatus _status;
+    PlayerProjectileStatus _projectileStatus;
+
     sf::Clock _fireClock;
     std::vector<Projectile> _projectiles;
 
-    void updatePosition( sf::Time& deltaTime );
-    void updateProjectiles( sf::Time& deltaTime );
+    void updatePosition( const sf::Time& deltaTime );
+    void updateProjectiles( const sf::Time& deltaTime );
 
     void fireProjectile( const sf::Vector2f& target );
 };

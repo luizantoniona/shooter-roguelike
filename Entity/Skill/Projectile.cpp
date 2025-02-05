@@ -2,8 +2,8 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Projectile::Projectile( const sf::Vector2f& position, const sf::Vector2f& direction, float speed )
-    : _direction( direction ), _speed( speed ) {
+Projectile::Projectile( const sf::Vector2f& position, const sf::Vector2f& direction, float speed ) :
+    _direction( direction ), _speed( speed ) {
     _shape.setRadius( 5.0f );
     _shape.setFillColor( sf::Color::Yellow );
     _shape.setPosition( position );
@@ -12,7 +12,7 @@ Projectile::Projectile( const sf::Vector2f& position, const sf::Vector2f& direct
 Projectile::~Projectile() {
 }
 
-void Projectile::update( sf::Time& deltaTime ) {
+void Projectile::update( const sf::Time& deltaTime ) {
     sf::Vector2f movement = _direction * _speed * deltaTime.asSeconds();
     _shape.move( movement );
 }
