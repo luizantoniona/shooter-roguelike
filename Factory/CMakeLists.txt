@@ -3,6 +3,7 @@ Enemy/EnemyFactory.cpp
 Map/Background/BackgroundFactory.cpp
 Map/Wave/WaveFactory.cpp
 Map/MapFactory.cpp
+Player/PlayerFactory.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

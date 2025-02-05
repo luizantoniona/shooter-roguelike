@@ -41,7 +41,7 @@ private:
     ScreenManager& _screenManager;
 
     std::shared_ptr<Map> _map;
-    Player _player;
+    std::unique_ptr<Player> _player;
     std::vector<Enemy> _enemies;
 
     CollisionController _collisionController;
