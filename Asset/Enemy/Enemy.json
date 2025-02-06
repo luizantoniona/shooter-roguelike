@@ -1,14 +1,14 @@
 {
     "triangle": {
         "health": 100,
-        "speed": 10.0,
+        "speed": 80.0,
         "sides": 3,
         "size": 10.0,
         "color": "red"
     },
     "square": {
         "health": 150,
-        "speed": 10.0,
+        "speed": 50.0,
         "sides": 4,
         "size": 10.0,
         "color": "blue"
