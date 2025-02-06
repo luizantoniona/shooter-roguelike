@@ -1,13 +1,13 @@
 #include "MapFactory.h"
 
-#include <fstream>
-#include <iostream>
 #include <map>
-#include <memory>
 #include <string>
 
 #include <Factory/Map/Background/BackgroundFactory.h>
 #include <Factory/Map/Wave/WaveFactory.h>
+#include <Helper/Json/JsonHelper.h>
+
+using Helper::JsonHelper;
 
 namespace {
 constexpr const char* WIDTH_KEY = "width";
@@ -20,11 +20,11 @@ constexpr const char* WAVES_KEY = "waves";
 
 BEGIN_FACTORY_NAMESPACE
 
-std::shared_ptr<Map> MapFactory::generateMap( const MapType& mapType ) {
+std::unique_ptr<Map> MapFactory::generateMap( const MapType& mapType ) {
     std::string filePath = "Asset/Maps/" + mapFileNameByType( mapType );
-    Json::Value mapJson = loadJson( filePath );
+    Json::Value mapJson = JsonHelper::loadJson( filePath );
 
-    auto map = std::make_shared<Map>();
+    auto map = std::make_unique<Map>();
     map->setWidth( mapJson[ WIDTH_KEY ].asInt() * sf::VideoMode::getDesktopMode().width );
     map->setHeight( mapJson[ HEIGHT_KEY ].asInt() * sf::VideoMode::getDesktopMode().height );
     map->setWorldName( mapJson[ WORLD_KEY ].asString() );
@@ -34,18 +34,6 @@ std::shared_ptr<Map> MapFactory::generateMap( const MapType& mapType ) {
     map->build();
 
     return map;
-}
-
-Json::Value MapFactory::loadJson( const std::string& filePath ) {
-    std::ifstream file( filePath );
-    if ( !file.is_open() ) {
-        std::cerr << "Could not open file: " << filePath << std::endl;
-        return Json::Value();
-    }
-
-    Json::Value jsonData;
-    file >> jsonData;
-    return jsonData;
 }
 
 std::string MapFactory::mapFileNameByType( const MapType& mapType ) {

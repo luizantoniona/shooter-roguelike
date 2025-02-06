@@ -1,8 +1,10 @@
 #include "PlayerFactory.h"
 
-#include <fstream>
-#include <iostream>
-#include <memory>
+#include <jsoncpp/json/json.h>
+
+#include <Helper/Json/JsonHelper.h>
+
+using Helper::JsonHelper;
 
 namespace {
 constexpr const char* PLAYER_STATUS_KEY = "player_status";
@@ -20,7 +22,7 @@ BEGIN_FACTORY_NAMESPACE
 
 std::unique_ptr<Player> PlayerFactory::createPlayer( const Map& map ) {
     std::string filePath = "Asset/Player/Player.json";
-    Json::Value playerJson = loadJson( filePath );
+    Json::Value playerJson = JsonHelper::loadJson( filePath );
 
     auto player = std::make_unique<Player>( map );
     player->setSides( 3 );
@@ -42,18 +44,6 @@ std::unique_ptr<Player> PlayerFactory::createPlayer( const Map& map ) {
     player->build();
 
     return player;
-}
-
-Json::Value PlayerFactory::loadJson( const std::string& filePath ) {
-    std::ifstream file( filePath );
-    if ( !file.is_open() ) {
-        std::cerr << "Could not open file: " << filePath << std::endl;
-        return Json::Value();
-    }
-
-    Json::Value jsonData;
-    file >> jsonData;
-    return jsonData;
 }
 
 END_FACTORY_NAMESPACE

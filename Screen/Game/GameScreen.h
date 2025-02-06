@@ -40,7 +40,7 @@ public:
 private:
     ScreenManager& _screenManager;
 
-    std::shared_ptr<Map> _map;
+    std::unique_ptr<Map> _map;
     std::unique_ptr<Player> _player;
     std::vector<Enemy> _enemies;
 

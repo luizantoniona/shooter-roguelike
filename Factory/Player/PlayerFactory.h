@@ -1,6 +1,6 @@
 #pragma once
 
-#include <jsoncpp/json/json.h>
+#include <memory>
 
 #include <Factory/FactoryGlobals.h>
 
@@ -15,9 +15,6 @@ BEGIN_FACTORY_NAMESPACE
 class PlayerFactory {
 public:
     static std::unique_ptr<Player> createPlayer( const Map& map );
-
-private:
-    static Json::Value loadJson( const std::string& filePath );
 };
 
 END_FACTORY_NAMESPACE

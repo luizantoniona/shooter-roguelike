@@ -1,6 +1,6 @@
 #pragma once
 
-#include <jsoncpp/json/json.h>
+#include <memory>
 
 #include <Factory/FactoryGlobals.h>
 
@@ -13,10 +13,9 @@ BEGIN_FACTORY_NAMESPACE
 
 class MapFactory {
 public:
-    static std::shared_ptr<Map> generateMap( const MapType& mapType );
+    static std::unique_ptr<Map> generateMap( const MapType& mapType );
 
 private:
-    static Json::Value loadJson( const std::string& filePath );
     static std::string mapFileNameByType( const MapType& mapType );
 };
 
