@@ -2,7 +2,11 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-PlayerProjectileStatus::PlayerProjectileStatus() {
+PlayerProjectileStatus::PlayerProjectileStatus() :
+    _projectileFireRate( 0.0f ),
+    _projectileSpeed( 0.0f ),
+    _projectileSize( 0.0f ),
+    _projectileDamage( 0.0f ) {
 }
 
 void PlayerProjectileStatus::setProjectileFireRate( float projectileFireRate ) {

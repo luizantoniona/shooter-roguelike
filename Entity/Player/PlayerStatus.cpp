@@ -2,7 +2,10 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-PlayerStatus::PlayerStatus() {
+PlayerStatus::PlayerStatus() :
+    _health( 0 ),
+    _speed( 0 ),
+    _gold( 0 ) {
 }
 
 void PlayerStatus::setHealth( int health ) {
