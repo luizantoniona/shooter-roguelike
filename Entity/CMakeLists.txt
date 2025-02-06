@@ -1,4 +1,5 @@
 set(SOURCES
+BaseEntity.cpp
 Enemy/Enemy.cpp
 Map/Map.cpp
 Map/Background/Background.cpp
