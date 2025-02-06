@@ -17,14 +17,14 @@ public:
     int getHealth() const;
     void setHealth( const int health );
 
-    int getSpeed() const;
-    void setSpeed( const int speed );
-
     int getSides() const;
     void setSides( const int sides );
 
-    int getSize() const;
-    void setSize( const int size );
+    float getSpeed() const;
+    void setSpeed( const float speed );
+
+    float getSize() const;
+    void setSize( const float size );
 
     std::string getColor() const;
     void setColor( const std::string& color );
@@ -32,9 +32,9 @@ public:
 private:
     int _amount;
     int _health;
-    int _speed;
     int _sides;
-    int _size;
+    float _speed;
+    float _size;
     std::string _color;
 };
 

@@ -39,7 +39,7 @@ std::unique_ptr<Player> PlayerFactory::createPlayer( const Map& map ) {
     player->getPlayerProjectileStatus().setProjectileFireRate( playerProjectileStatusJson[ PROJECTILE_FIRE_RATE_KEY ].asFloat() );
     player->getPlayerProjectileStatus().setProjectileSpeed( playerProjectileStatusJson[ PROJECTILE_SPEED_KEY ].asFloat() );
     player->getPlayerProjectileStatus().setProjectileSize( playerProjectileStatusJson[ PROJECTILE_SIZE_KEY ].asFloat() );
-    player->getPlayerProjectileStatus().setProjectileDamage( playerProjectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asFloat() );
+    player->getPlayerProjectileStatus().setProjectileDamage( playerProjectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
 
     player->build();
 

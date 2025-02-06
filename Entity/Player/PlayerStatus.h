@@ -8,19 +8,19 @@ class PlayerStatus {
 public:
     PlayerStatus();
 
-    void setHealth( int health );
+    void setHealth( const int health );
     int getHealth() const;
 
-    void setSpeed( int speed );
-    int getSpeed() const;
-
-    void setGold( int gold );
+    void setGold( const int gold );
     int getGold() const;
+
+    void setSpeed( const float speed );
+    float getSpeed() const;
 
 private:
     int _health;
-    int _speed;
     int _gold;
+    float _speed;
 };
 
 END_ENTITY_NAMESPACE

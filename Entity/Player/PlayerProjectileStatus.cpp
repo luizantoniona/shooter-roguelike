@@ -9,7 +9,15 @@ PlayerProjectileStatus::PlayerProjectileStatus() :
     _projectileDamage( 0.0f ) {
 }
 
-void PlayerProjectileStatus::setProjectileFireRate( float projectileFireRate ) {
+void PlayerProjectileStatus::setProjectileDamage( const int projectileDamage ) {
+    _projectileDamage = projectileDamage;
+}
+
+int PlayerProjectileStatus::getProjectileDamage() const {
+    return _projectileDamage;
+}
+
+void PlayerProjectileStatus::setProjectileFireRate( const float projectileFireRate ) {
     _projectileFireRate = projectileFireRate;
 }
 
@@ -17,7 +25,7 @@ float PlayerProjectileStatus::getProjectileFireRate() const {
     return _projectileFireRate;
 }
 
-void PlayerProjectileStatus::setProjectileSpeed( float projectileSpeed ) {
+void PlayerProjectileStatus::setProjectileSpeed( const float projectileSpeed ) {
     _projectileSpeed = projectileSpeed;
 }
 
@@ -25,20 +33,12 @@ float PlayerProjectileStatus::getProjectileSpeed() const {
     return _projectileSpeed;
 }
 
-void PlayerProjectileStatus::setProjectileSize( float projectileSize ) {
+void PlayerProjectileStatus::setProjectileSize( const float projectileSize ) {
     _projectileSize = projectileSize;
 }
 
 float PlayerProjectileStatus::getProjectileSize() const {
     return _projectileSize;
-}
-
-void PlayerProjectileStatus::setProjectileDamage( float projectileDamage ) {
-    _projectileDamage = projectileDamage;
-}
-
-float PlayerProjectileStatus::getProjectileDamage() const {
-    return _projectileDamage;
 }
 
 END_ENTITY_NAMESPACE

@@ -12,7 +12,7 @@ BEGIN_FACTORY_NAMESPACE
 
 class EnemyFactory {
 public:
-    static Enemy* createEnemy( int health, int speed, int sides, float radius, const sf::Color& color, const sf::Vector2f& position );
+    static Enemy* createEnemy( int health, float speed, int sides, float radius, const sf::Color& color, const sf::Vector2f& position );
 };
 
 END_FACTORY_NAMESPACE

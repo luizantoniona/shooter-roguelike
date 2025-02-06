@@ -17,11 +17,11 @@ int Enemy::getHealth() const {
     return _health;
 }
 
-void Enemy::setSpeed( int speed ) {
+void Enemy::setSpeed( float speed ) {
     _speed = speed;
 }
 
-int Enemy::getSpeed() const {
+float Enemy::getSpeed() const {
     return _speed;
 }
 

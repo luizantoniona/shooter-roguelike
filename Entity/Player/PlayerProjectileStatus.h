@@ -8,23 +8,23 @@ class PlayerProjectileStatus {
 public:
     PlayerProjectileStatus();
 
-    void setProjectileFireRate( float projectileFireRate );
+    void setProjectileDamage( const int projectileDamage );
+    int getProjectileDamage() const;
+
+    void setProjectileFireRate( const float projectileFireRate );
     float getProjectileFireRate() const;
 
-    void setProjectileSpeed( float projectileSpeed );
+    void setProjectileSpeed( const float projectileSpeed );
     float getProjectileSpeed() const;
 
-    void setProjectileSize( float projectileSize );
+    void setProjectileSize( const float projectileSize );
     float getProjectileSize() const;
 
-    void setProjectileDamage( float projectileDamage );
-    float getProjectileDamage() const;
-
 private:
+    int _projectileDamage;
     float _projectileFireRate;
     float _projectileSpeed;
     float _projectileSize;
-    float _projectileDamage;
 };
 
 END_ENTITY_NAMESPACE

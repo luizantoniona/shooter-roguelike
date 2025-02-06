@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Skill/Projectile.h"
 
 #include <cmath>
 
@@ -98,7 +99,16 @@ void Player::fireProjectile( const sf::Vector2f& target ) {
 
         if ( length > 0.0f ) {
             direction /= length;
-            _projectiles.emplace_back( getPosition(), direction, 300.0f );
+
+            Projectile projectile;
+            projectile.setDirection( direction );
+            projectile.setPosition( getPosition() );
+            projectile.setSize( getPlayerProjectileStatus().getProjectileSize() );
+            projectile.setSpeed( getPlayerProjectileStatus().getProjectileSpeed() );
+            projectile.setDamage( getPlayerProjectileStatus().getProjectileDamage() );
+            projectile.build();
+
+            _projectiles.emplace_back( projectile );
             _fireClock.restart();
         }
     }

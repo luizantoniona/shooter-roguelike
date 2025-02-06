@@ -11,17 +11,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -32,17 +32,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -53,17 +53,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -74,17 +74,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -95,17 +95,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -116,17 +116,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -137,17 +137,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -158,17 +158,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -179,17 +179,17 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 }
             ]
@@ -200,25 +200,25 @@
                 {
                     "amount": 25,
                     "health": 100,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 5,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "red"
                 },
                 {
                     "amount": 25,
                     "health": 150,
-                    "speed": 10,
+                    "speed": 10.0,
                     "sides": 3,
-                    "size": 1,
+                    "size": 10.0,
                     "color": "blue"
                 },
                 {
                     "amount": 1,
                     "health": 1500,
-                    "speed": 5,
+                    "speed": 5.0,
                     "sides": 10,
-                    "size": 5,
+                    "size": 50.0,
                     "color": "white"
                 }
             ]

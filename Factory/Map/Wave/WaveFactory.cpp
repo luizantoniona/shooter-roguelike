@@ -26,9 +26,9 @@ std::queue<Wave> WaveFactory::generateWaves( Json::Value& wavesJson ) {
             WaveEnemyInfo enemyInfo;
             enemyInfo.setAmount( enemyJson[ AMOUNT_KEY ].asInt() );
             enemyInfo.setHealth( enemyJson[ HEALTH_KEY ].asInt() );
-            enemyInfo.setSpeed( enemyJson[ SPEED_KEY ].asInt() );
+            enemyInfo.setSpeed( enemyJson[ SPEED_KEY ].asFloat() );
             enemyInfo.setSides( enemyJson[ SIDES_KEY ].asInt() );
-            enemyInfo.setSize( enemyJson[ SIZE_KEY ].asInt() );
+            enemyInfo.setSize( enemyJson[ SIZE_KEY ].asFloat() );
             enemyInfo.setColor( enemyJson[ COLOR_KEY ].asString() );
 
             wave.addEnemy( enemyInfo );
