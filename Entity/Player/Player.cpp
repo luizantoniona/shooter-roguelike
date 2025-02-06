@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "Player/PlayerStatus.h"
 
 #include <cmath>
 
@@ -17,11 +16,11 @@ std::vector<Projectile>& Player::getProjectiles() {
     return _projectiles;
 }
 
-PlayerStatus Player::getPlayerStatus() const {
+PlayerStatus& Player::getPlayerStatus() {
     return _status;
 }
 
-PlayerProjectileStatus Player::getPlayerProjectileStatus() const {
+PlayerProjectileStatus& Player::getPlayerProjectileStatus() {
     return _projectileStatus;
 }
 

@@ -18,8 +18,8 @@ public:
     ~Player();
 
     std::vector<Projectile>& getProjectiles();
-    PlayerStatus getPlayerStatus() const;
-    PlayerProjectileStatus getPlayerProjectileStatus() const;
+    PlayerStatus& getPlayerStatus();
+    PlayerProjectileStatus& getPlayerProjectileStatus();
 
     void handleInput( const sf::Event& event );
     void update( const sf::RenderWindow& window, const sf::Time& deltaTime );
