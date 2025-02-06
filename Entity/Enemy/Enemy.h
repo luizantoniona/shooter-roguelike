@@ -1,17 +1,22 @@
 #pragma once
 
+#include <memory>
+
 #include <SFML/Graphics.hpp>
 
 #include <Entity/EntityGlobals.h>
 
+#include <Entity/Player/Player.h>
 #include <Entity/Shape.h>
 
 BEGIN_ENTITY_NAMESPACE
 
 class Enemy : public Shape {
 public:
-    Enemy();
+    Enemy( Player* player );
     ~Enemy();
+
+    std::unique_ptr<Enemy> clone() const;
 
     void setHealth( int health );
     int getHealth() const;
@@ -23,6 +28,7 @@ public:
     void render( sf::RenderWindow& window );
 
 private:
+    Player* _player;
     int _health;
     float _speed;
 };

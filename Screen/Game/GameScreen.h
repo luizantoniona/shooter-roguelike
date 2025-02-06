@@ -42,7 +42,7 @@ private:
 
     std::unique_ptr<Map> _map;
     std::unique_ptr<Player> _player;
-    std::vector<Enemy> _enemies;
+    std::vector<std::unique_ptr<Enemy>> _enemies;
 
     CollisionController _collisionController;
     InputController _inputController;

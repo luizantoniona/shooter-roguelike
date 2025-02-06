@@ -14,7 +14,7 @@ BEGIN_CONTROLLER_NAMESPACE
 
 class CollisionController {
 public:
-    void checkCollisions( Player& player, std::vector<Enemy>& enemies );
+    void checkCollisions( Player& player, std::vector<std::unique_ptr<Enemy>>& enemies );
 };
 
 END_CONTROLLER_NAMESPACE

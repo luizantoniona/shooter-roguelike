@@ -2,12 +2,12 @@
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void CollisionController::checkCollisions( Entity::Player& player, std::vector<Enemy>& enemies ) {
+void CollisionController::checkCollisions( Entity::Player& player, std::vector<std::unique_ptr<Enemy>>& enemies ) {
     auto& projectiles = player.getProjectiles();
     for ( auto it = projectiles.begin(); it != projectiles.end(); ) {
         bool hit = false;
         for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
-            if ( enemyIt->getGlobalBounds().intersects( it->getGlobalBounds() ) ) {
+            if ( enemyIt->get()->getGlobalBounds().intersects( it->getGlobalBounds() ) ) {
                 enemyIt = enemies.erase( enemyIt );
                 hit = true;
                 break;

@@ -13,7 +13,7 @@ GameScreen::GameScreen( int windowWidth, int windowHeight, ScreenManager& screen
     _screenManager( screenManager ),
     _map( MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
     _player( PlayerFactory::createPlayer( *_map ) ),
-    _enemies( {} ) {
+    _enemies() {
 
     std::srand( std::time( nullptr ) );
 }
@@ -30,7 +30,7 @@ void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 void GameScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     _updateController.update( window, deltaTime, *_player, _enemies, *_map );
     _collisionController.checkCollisions( *_player, _enemies );
-    _spawnController.checkSpawn( *_map, _enemies );
+    _spawnController.checkSpawn( *_map, _enemies, _player.get() );
 }
 
 void GameScreen::render( sf::RenderWindow& window ) {
@@ -44,7 +44,7 @@ void GameScreen::render( sf::RenderWindow& window ) {
     _player->render( window );
 
     for ( auto& enemy : _enemies ) {
-        enemy.render( window );
+        enemy->render( window );
     }
 }
 

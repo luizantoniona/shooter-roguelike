@@ -1,12 +1,19 @@
 #include "Enemy.h"
 
+#include <cmath>
+
 BEGIN_ENTITY_NAMESPACE
 
-Enemy::Enemy() :
-    Shape() {
+Enemy::Enemy( Player* player ) :
+    Shape(),
+    _player( player ) {
 }
 
 Enemy::~Enemy() {
+}
+
+std::unique_ptr<Enemy> Enemy::clone() const {
+    return std::make_unique<Enemy>( *this );
 }
 
 void Enemy::setHealth( int health ) {
@@ -26,9 +33,14 @@ float Enemy::getSpeed() const {
 }
 
 void Enemy::update( sf::Time& deltaTime ) {
-    sf::Vector2f offset( ( std::rand() % 3 - 1 ) * 10 * deltaTime.asSeconds(),
-                         ( std::rand() % 3 - 1 ) * 10 * deltaTime.asSeconds() );
-    move( offset );
+
+    sf::Vector2f direction = _player->getPosition() - getPosition();
+    float length = std::hypot( direction.x, direction.y );
+
+    if ( length > 0.0f ) {
+        direction /= length;
+        move( direction * _speed * deltaTime.asSeconds() );
+    }
 }
 
 void Enemy::render( sf::RenderWindow& window ) {
