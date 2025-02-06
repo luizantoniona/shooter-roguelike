@@ -7,8 +7,8 @@
 #include <Entity/Map/Map.h>
 #include <Entity/Player/PlayerProjectileStatus.h>
 #include <Entity/Player/PlayerStatus.h>
+#include <Entity/Projectile/Projectile.h>
 #include <Entity/Shape.h>
-#include <Entity/Skill/Projectile.h>
 
 BEGIN_ENTITY_NAMESPACE
 

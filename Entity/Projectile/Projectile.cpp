@@ -1,5 +1,4 @@
 #include "Projectile.h"
-#include <SFML/System/Vector2.hpp>
 
 BEGIN_ENTITY_NAMESPACE
 

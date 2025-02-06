@@ -7,8 +7,8 @@ Map/Wave/WaveEnemyInfo.cpp
 Player/Player.cpp
 Player/PlayerProjectileStatus.cpp
 Player/PlayerStatus.cpp
+Projectile/Projectile.cpp
 Shape.cpp
-Skill/Projectile.cpp
 Skill/Skill.cpp
 )
 
