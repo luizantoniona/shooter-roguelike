@@ -1,0 +1,23 @@
+{
+    "triangle": {
+        "health": 100,
+        "speed": 10.0,
+        "sides": 3,
+        "size": 10.0,
+        "color": "red"
+    },
+    "square": {
+        "health": 150,
+        "speed": 10.0,
+        "sides": 4,
+        "size": 10.0,
+        "color": "blue"
+    },
+    "icosagon": {
+        "health": 1500,
+        "speed": 5.0,
+        "sides": 20,
+        "size": 50.0,
+        "color": "white"
+    }
+}

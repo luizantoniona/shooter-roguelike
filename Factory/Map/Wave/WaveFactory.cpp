@@ -7,11 +7,7 @@ using Entity::WaveEnemyInfo;
 namespace {
 constexpr const char* ENEMIES_KEY = "enemies";
 constexpr const char* AMOUNT_KEY = "amount";
-constexpr const char* HEALTH_KEY = "health";
-constexpr const char* SPEED_KEY = "speed";
-constexpr const char* SIDES_KEY = "sides";
-constexpr const char* SIZE_KEY = "size";
-constexpr const char* COLOR_KEY = "color";
+constexpr const char* TYPE_KEY = "type";
 } // namespace
 
 BEGIN_FACTORY_NAMESPACE
@@ -25,11 +21,7 @@ std::queue<Wave> WaveFactory::generateWaves( Json::Value& wavesJson ) {
         for ( auto& enemyJson : waveJson[ ENEMIES_KEY ] ) {
             WaveEnemyInfo enemyInfo;
             enemyInfo.setAmount( enemyJson[ AMOUNT_KEY ].asInt() );
-            enemyInfo.setHealth( enemyJson[ HEALTH_KEY ].asInt() );
-            enemyInfo.setSpeed( enemyJson[ SPEED_KEY ].asFloat() );
-            enemyInfo.setSides( enemyJson[ SIDES_KEY ].asInt() );
-            enemyInfo.setSize( enemyJson[ SIZE_KEY ].asFloat() );
-            enemyInfo.setColor( enemyJson[ COLOR_KEY ].asString() );
+            enemyInfo.setEnemyType( enemyJson[ TYPE_KEY ].asString() );
 
             wave.addEnemy( enemyInfo );
         }

@@ -4,11 +4,7 @@ BEGIN_ENTITY_NAMESPACE
 
 WaveEnemyInfo::WaveEnemyInfo() :
     _amount( 0 ),
-    _health( 0 ),
-    _sides( 0 ),
-    _speed( 0.0 ),
-    _size( 0.0 ),
-    _color( "" ) {
+    _enemyType( "" ) {
 }
 
 WaveEnemyInfo::~WaveEnemyInfo() {
@@ -22,44 +18,12 @@ void WaveEnemyInfo::setAmount( const int amount ) {
     _amount = amount;
 }
 
-int WaveEnemyInfo::getHealth() const {
-    return _health;
+std::string WaveEnemyInfo::getEnemyType() const {
+    return _enemyType;
 }
 
-void WaveEnemyInfo::setHealth( const int health ) {
-    _health = health;
-}
-
-int WaveEnemyInfo::getSides() const {
-    return _sides;
-}
-
-void WaveEnemyInfo::setSides( const int sides ) {
-    _sides = sides;
-}
-
-float WaveEnemyInfo::getSpeed() const {
-    return _speed;
-}
-
-void WaveEnemyInfo::setSpeed( const float speed ) {
-    _speed = speed;
-}
-
-float WaveEnemyInfo::getSize() const {
-    return _size;
-}
-
-void WaveEnemyInfo::setSize( const float size ) {
-    _size = size;
-}
-
-std::string WaveEnemyInfo::getColor() const {
-    return _color;
-}
-
-void WaveEnemyInfo::setColor( const std::string& color ) {
-    _color = color;
+void WaveEnemyInfo::setEnemyType( const std::string& enemyType ) {
+    _enemyType = enemyType;
 }
 
 END_ENTITY_NAMESPACE
