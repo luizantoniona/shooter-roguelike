@@ -23,10 +23,10 @@ std::unique_ptr<Enemy> EnemyFactory::createEnemy( Player* player, std::string en
     auto enemy = std::make_unique<Enemy>( player );
     enemy->setHealth( enemyJson[ HEALTH_KEY ].asInt() );
     enemy->setSpeed( enemyJson[ SPEED_KEY ].asFloat() );
-    enemy->setSides( enemyJson[ SIDES_KEY ].asInt() );
-    enemy->setRadius( enemyJson[ SIZE_KEY ].asFloat() );
-    enemy->setColor( ColorHelper::colorFromString( enemyJson[ COLOR_KEY ].asString() ) );
-    enemy->build();
+    enemy->getShape().setSides( enemyJson[ SIDES_KEY ].asInt() );
+    enemy->getShape().setRadius( enemyJson[ SIZE_KEY ].asFloat() );
+    enemy->getShape().setColor( ColorHelper::colorFromString( enemyJson[ COLOR_KEY ].asString() ) );
+    enemy->getShape().build();
 
     return enemy;
 }

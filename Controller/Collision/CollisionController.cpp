@@ -7,7 +7,7 @@ void CollisionController::checkCollisions( Entity::Player& player, std::vector<s
     for ( auto it = projectiles.begin(); it != projectiles.end(); ) {
         bool hit = false;
         for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
-            if ( enemyIt->get()->getGlobalBounds().intersects( it->getGlobalBounds() ) ) {
+            if ( enemyIt->get()->getShape().getGlobalBounds().intersects( it->getGlobalBounds() ) ) {
                 enemyIt = enemies.erase( enemyIt );
                 hit = true;
                 break;

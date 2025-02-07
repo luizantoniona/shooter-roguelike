@@ -6,7 +6,7 @@ void UpdateController::update( sf::RenderWindow& window, sf::Time& deltaTime, Pl
     player.update( window, deltaTime );
 
     for ( auto& enemy : enemies ) {
-        enemy->update( deltaTime );
+        enemy->update( window, deltaTime );
     }
 
     map.update( deltaTime );

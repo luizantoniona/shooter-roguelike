@@ -36,7 +36,7 @@ void GameScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
 void GameScreen::render( sf::RenderWindow& window ) {
 
     sf::View view = window.getView();
-    view.setCenter( _player->getPosition() );
+    view.setCenter( _player->getShape().getPosition() );
     window.setView( view );
 
     _map->render( window );
