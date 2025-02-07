@@ -1,5 +1,5 @@
 set(SOURCES
-Shape/Regular/RegularShape.cpp
+Regular/RegularShape.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

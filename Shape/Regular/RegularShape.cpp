@@ -63,7 +63,6 @@ void RegularShape::move( const sf::Vector2f& offset ) {
 }
 
 void RegularShape::build() {
-
     _shape.setPointCount( _sides );
 
     float angleStep = 2 * 3.14159f / _sides;
