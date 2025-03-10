@@ -1,45 +1,42 @@
-#include "MainMenuScreen.h"
+#include "MainMenuManager.h"
 
 #include <Manager/Asset/FontManager.h>
-#include <Screen/ScreenType.h>
 
 using Manager::FontManager;
 
-BEGIN_SCREEN_NAMESPACE
+BEGIN_MANAGER_NAMESPACE
 
-MainMenuScreen::MainMenuScreen( ScreenManager& screenManager ) :
-    Screen(),
-    _selectedOption( ScreenType::UNKNOW ),
-    _buttons( {} ),
-    _screenManager( screenManager ) {
+MainMenuManger::MainMenuManger() :
+    _selectedOption( 0 ),
+    _buttons( {} ) {
 
     _font = FontManager::instance().font( FontType::Arial );
 
     initMenu();
 }
 
-void MainMenuScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
+void MainMenuManger::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::MouseMoved ) {
         sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
-        _selectedOption = ScreenType::UNKNOW;
+        // _selectedOption = ScreenType::UNKNOW;
 
         for ( size_t i = 0; i < _buttons.size(); ++i ) {
             if ( _buttons[ i ].isMouseOver( mousePos ) ) {
-                _selectedOption = static_cast<ScreenType>( i );
+                // _selectedOption = static_cast<ScreenType>( i );
                 break;
             }
         }
     }
 
     if ( event.type == sf::Event::MouseButtonPressed ) {
-        if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != ScreenType::UNKNOW ) {
-            _screenManager.setScreen( _selectedOption );
-        }
+        // if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != ScreenType::UNKNOW ) {
+        //     // _screenManager.setScreen( _selectedOption );
+        // }
     }
 }
 
-void MainMenuScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
+void MainMenuManger::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     for ( size_t i = 0; i < _buttons.size(); ++i ) {
         if ( i == static_cast<int>( _selectedOption ) ) {
             _buttons[ i ].setFillColor( sf::Color::Red );
@@ -49,7 +46,7 @@ void MainMenuScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     }
 }
 
-void MainMenuScreen::render( sf::RenderWindow& window ) {
+void MainMenuManger::render( sf::RenderWindow& window ) {
     window.draw( _title );
 
     for ( const auto& button : _buttons ) {
@@ -57,7 +54,7 @@ void MainMenuScreen::render( sf::RenderWindow& window ) {
     }
 }
 
-void MainMenuScreen::initMenu() {
+void MainMenuManger::initMenu() {
 
     _title.setFont( _font );
     _title.setString( "Roguelike" );
@@ -74,8 +71,8 @@ void MainMenuScreen::initMenu() {
     }
 }
 
-bool MainMenuScreen::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
+bool MainMenuManger::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
     return option.getGlobalBounds().contains( mousePos );
 }
 
-END_SCREEN_NAMESPACE
+END_MANAGER_NAMESPACE

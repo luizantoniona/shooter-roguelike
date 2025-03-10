@@ -1,0 +1,5 @@
+#include "UpgradeManager.h"
+
+BEGIN_MANAGER_NAMESPACE
+
+END_MANAGER_NAMESPACE

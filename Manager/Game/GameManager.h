@@ -1,11 +1,8 @@
 #pragma once
 
-#include <memory>
-#include <vector>
-
 #include <SFML/Graphics.hpp>
 
-#include <Screen/ScreenGlobals.h>
+#include <Manager/ManagerGlobals.h>
 
 #include <Controller/Collision/CollisionController.h>
 #include <Controller/Input/InputController.h>
@@ -14,8 +11,6 @@
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Map/Map.h>
 #include <Entity/Player/Player.h>
-#include <Manager/ScreenManager.h>
-#include <Screen/Screen.h>
 
 using Controller::CollisionController;
 using Controller::InputController;
@@ -24,22 +19,18 @@ using Controller::UpdateController;
 using Entity::Enemy;
 using Entity::Map;
 using Entity::Player;
-using Manager::ScreenManager;
-using Screens::Screen;
 
-BEGIN_SCREEN_NAMESPACE
+BEGIN_MANAGER_NAMESPACE
 
-class GameScreen : public Screen {
+class GameManager {
 public:
-    GameScreen( int windowWidth, int windowHeight, ScreenManager& screenManager );
+    GameManager();
 
-    void handleInput( const sf::Event& event, sf::Time& deltaTime ) override;
-    void update( sf::RenderWindow& window, sf::Time& deltaTime ) override;
-    void render( sf::RenderWindow& window ) override;
+    void handleInput( const sf::Event& event, sf::Time& deltaTime );
+    void update( sf::RenderWindow& window, sf::Time& deltaTime );
+    void render( sf::RenderWindow& window );
 
 private:
-    ScreenManager& _screenManager;
-
     std::unique_ptr<Map> _map;
     std::unique_ptr<Player> _player;
     std::vector<std::unique_ptr<Enemy>> _enemies;
@@ -50,4 +41,4 @@ private:
     UpdateController _updateController;
 };
 
-END_SCREEN_NAMESPACE
+END_MANAGER_NAMESPACE

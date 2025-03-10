@@ -4,21 +4,16 @@
 
 #include <Manager/ManagerGlobals.h>
 
-#include <Manager/ScreenManager.h>
-
-using Manager::ScreenManager;
-
 BEGIN_MANAGER_NAMESPACE
 
-class GameManager {
+class MainManager {
 public:
-    GameManager();
+    MainManager();
     void run();
 
 private:
     sf::RenderWindow _window;
     sf::View _view;
-    ScreenManager _screenManager;
 
     void processEvents( sf::Time& deltaTime );
     void update( sf::Time& deltaTime );

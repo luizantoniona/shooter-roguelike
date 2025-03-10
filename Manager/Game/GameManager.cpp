@@ -1,4 +1,4 @@
-#include "GameScreen.h"
+#include "GameManager.h"
 
 #include <Factory/Map/MapFactory.h>
 #include <Factory/Player/PlayerFactory.h>
@@ -6,11 +6,9 @@
 using Factory::MapFactory;
 using Factory::PlayerFactory;
 
-BEGIN_SCREEN_NAMESPACE
+BEGIN_MANAGER_NAMESPACE
 
-GameScreen::GameScreen( int windowWidth, int windowHeight, ScreenManager& screenManager ) :
-    Screen(),
-    _screenManager( screenManager ),
+GameManager::GameManager() :
     _map( MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
     _player( PlayerFactory::createPlayer( *_map ) ),
     _enemies() {
@@ -18,22 +16,22 @@ GameScreen::GameScreen( int windowWidth, int windowHeight, ScreenManager& screen
     std::srand( std::time( nullptr ) );
 }
 
-void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
+void GameManager::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape ) {
-        _screenManager.setScreen( ScreenType::MainMenuScreen );
+        // _screenManager.setScreen( ScreenType::MainMenuScreen );
     }
 
     _inputController.handleInput( event, *_player );
 }
 
-void GameScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
+void GameManager::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     _updateController.update( window, deltaTime, *_player, _enemies, *_map );
     _collisionController.checkCollisions( *_player, _enemies );
     _spawnController.checkSpawn( *_map, _enemies, *_player );
 }
 
-void GameScreen::render( sf::RenderWindow& window ) {
+void GameManager::render( sf::RenderWindow& window ) {
 
     sf::View view = window.getView();
     view.setCenter( _player->getShape().getPosition() );
@@ -48,4 +46,4 @@ void GameScreen::render( sf::RenderWindow& window ) {
     }
 }
 
-END_SCREEN_NAMESPACE
+END_MANAGER_NAMESPACE

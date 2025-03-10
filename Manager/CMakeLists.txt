@@ -1,7 +1,9 @@
 set(SOURCES
 Asset/FontManager.cpp
-GameManager.cpp
-ScreenManager.cpp
+Game/GameManager.cpp
+MainMenu/MainMenuManager.cpp
+Upgrade/UpgradeManager.cpp
+MainManager.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

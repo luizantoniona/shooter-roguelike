@@ -21,7 +21,6 @@ add_subdirectory(Factory)
 add_subdirectory(GUI)
 add_subdirectory(Helper)
 add_subdirectory(Manager)
-add_subdirectory(Screen)
 add_subdirectory(Shape)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}")

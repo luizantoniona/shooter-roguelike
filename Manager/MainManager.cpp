@@ -1,4 +1,4 @@
-#include "GameManager.h"
+#include "MainManager.h"
 
 namespace {
 constexpr const char* DISPLAY_NAME = "Roguelike";
@@ -6,9 +6,8 @@ constexpr const char* DISPLAY_NAME = "Roguelike";
 
 BEGIN_MANAGER_NAMESPACE
 
-GameManager::GameManager() :
-    _window( sf::VideoMode::getDesktopMode(), DISPLAY_NAME, sf::Style::Fullscreen ),
-    _screenManager() {
+MainManager::MainManager() :
+    _window( sf::VideoMode::getDesktopMode(), DISPLAY_NAME, sf::Style::Fullscreen ) {
 
     sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
     int windowWidth = desktopMode.width;
@@ -18,7 +17,7 @@ GameManager::GameManager() :
     _window.setView( _view );
 }
 
-void GameManager::run() {
+void MainManager::run() {
     adjustView();
 
     sf::Clock clock;
@@ -32,27 +31,27 @@ void GameManager::run() {
     }
 }
 
-void GameManager::processEvents( sf::Time& deltaTime ) {
+void MainManager::processEvents( sf::Time& deltaTime ) {
     sf::Event event;
     while ( _window.pollEvent( event ) ) {
         if ( event.type == sf::Event::Closed ) {
             _window.close();
         }
-        _screenManager.handleInput( event, deltaTime );
+        // _screenManager.handleInput( event, deltaTime );
     }
 }
 
-void GameManager::update( sf::Time& deltaTime ) {
-    _screenManager.update( _window, deltaTime );
+void MainManager::update( sf::Time& deltaTime ) {
+    // _screenManager.update( _window, deltaTime );
 }
 
-void GameManager::render() {
+void MainManager::render() {
     _window.clear();
-    _screenManager.render( _window );
+    // _screenManager.render( _window );
     _window.display();
 }
 
-void GameManager::adjustView() {
+void MainManager::adjustView() {
     _view.setCenter( float( sf::VideoMode::getDesktopMode().width ) / 2, float( sf::VideoMode::getDesktopMode().height ) / 2 );
     _window.setView( _view );
 }
