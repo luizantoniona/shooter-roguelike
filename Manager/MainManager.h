@@ -20,6 +20,7 @@ private:
     sf::RenderWindow _window;
     sf::View _view;
 
+    Manager::AbstractManager& _currentManager;
     Manager::GameManager* _gameManager;
     Manager::MainMenuManger* _mainMenuManager;
     Manager::UpgradeManager* _upgradeManager;
