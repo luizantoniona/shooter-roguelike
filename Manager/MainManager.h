@@ -4,21 +4,25 @@
 
 #include <Manager/ManagerGlobals.h>
 
+#include <Manager/Game/GameManager.h>
+#include <Manager/MainMenu/MainMenuManager.h>
+#include <Manager/Upgrade/UpgradeManager.h>
+
 BEGIN_MANAGER_NAMESPACE
 
 class MainManager {
 public:
     MainManager();
+
     void run();
 
 private:
     sf::RenderWindow _window;
     sf::View _view;
 
-    void processEvents( sf::Time& deltaTime );
-    void update( sf::Time& deltaTime );
-    void render();
-    void adjustView();
+    Manager::GameManager* _gameManager;
+    Manager::MainMenuManger* _mainMenuManager;
+    Manager::UpgradeManager* _upgradeManager;
 };
 
 END_MANAGER_NAMESPACE

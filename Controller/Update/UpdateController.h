@@ -16,7 +16,7 @@ BEGIN_CONTROLLER_NAMESPACE
 
 class UpdateController {
 public:
-    void update( sf::RenderWindow& window, sf::Time& deltaTime, Player& player, std::vector<std::unique_ptr<Enemy>>& enemies, Map& map );
+    void update( sf::RenderWindow& window, const sf::Time& deltaTime, Player& player, std::vector<std::unique_ptr<Enemy>>& enemies, Map& map );
 };
 
 END_CONTROLLER_NAMESPACE

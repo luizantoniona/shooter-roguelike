@@ -16,7 +16,7 @@ GameManager::GameManager() :
     std::srand( std::time( nullptr ) );
 }
 
-void GameManager::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
+void GameManager::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape ) {
         // _screenManager.setScreen( ScreenType::MainMenuScreen );
@@ -25,7 +25,7 @@ void GameManager::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
     _inputController.handleInput( event, *_player );
 }
 
-void GameManager::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
+void GameManager::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
     _updateController.update( window, deltaTime, *_player, _enemies, *_map );
     _collisionController.checkCollisions( *_player, _enemies );
     _spawnController.checkSpawn( *_map, _enemies, *_player );

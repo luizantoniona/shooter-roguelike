@@ -11,6 +11,7 @@
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Map/Map.h>
 #include <Entity/Player/Player.h>
+#include <Manager/AbstractManager.h>
 
 using Controller::CollisionController;
 using Controller::InputController;
@@ -22,15 +23,15 @@ using Entity::Player;
 
 BEGIN_MANAGER_NAMESPACE
 
-class GameManager {
+class GameManager : AbstractManager {
 public:
     GameManager();
 
-    void handleInput( const sf::Event& event, sf::Time& deltaTime );
-    void update( sf::RenderWindow& window, sf::Time& deltaTime );
-    void render( sf::RenderWindow& window );
-
 private:
+    void handleInput( const sf::Event& event, const sf::Time& deltaTime ) override;
+    void update( sf::RenderWindow& window, const sf::Time& deltaTime ) override;
+    void render( sf::RenderWindow& window ) override;
+
     std::unique_ptr<Map> _map;
     std::unique_ptr<Player> _player;
     std::vector<std::unique_ptr<Enemy>> _enemies;
