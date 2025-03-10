@@ -10,7 +10,7 @@ using Factory::EnemyFactory;
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>& enemies, Player* player ) {
+void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>& enemies, Player& player ) {
 
     if ( enemies.size() > 0 ) {
         return;

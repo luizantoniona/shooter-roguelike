@@ -4,7 +4,7 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Enemy::Enemy( Player* player ) :
+Enemy::Enemy( Player& player ) :
     BaseEntity(),
     _player( player ) {
 }
@@ -34,7 +34,7 @@ float Enemy::getSpeed() const {
 
 void Enemy::update( const sf::RenderWindow& window, const sf::Time& deltaTime ) {
 
-    sf::Vector2f direction = _player->getShape().getPosition() - _shape.getPosition();
+    sf::Vector2f direction = _player.getShape().getPosition() - _shape.getPosition();
     float length = std::hypot( direction.x, direction.y );
 
     if ( length > 0.0f ) {

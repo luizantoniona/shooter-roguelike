@@ -30,7 +30,7 @@ void GameScreen::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 void GameScreen::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     _updateController.update( window, deltaTime, *_player, _enemies, *_map );
     _collisionController.checkCollisions( *_player, _enemies );
-    _spawnController.checkSpawn( *_map, _enemies, _player.get() );
+    _spawnController.checkSpawn( *_map, _enemies, *_player );
 }
 
 void GameScreen::render( sf::RenderWindow& window ) {

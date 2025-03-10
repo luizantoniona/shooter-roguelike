@@ -16,7 +16,7 @@ constexpr const char* COLOR_KEY = "color";
 
 BEGIN_FACTORY_NAMESPACE
 
-std::unique_ptr<Enemy> EnemyFactory::createEnemy( Player* player, std::string enemyType ) {
+std::unique_ptr<Enemy> EnemyFactory::createEnemy( Player& player, std::string enemyType ) {
     std::string filePath = "Asset/Enemy/Enemy.json";
     Json::Value enemyJson = JsonHelper::loadJson( filePath )[ enemyType ];
 

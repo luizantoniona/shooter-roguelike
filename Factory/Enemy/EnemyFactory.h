@@ -17,7 +17,7 @@ BEGIN_FACTORY_NAMESPACE
 
 class EnemyFactory {
 public:
-    static std::unique_ptr<Enemy> createEnemy( Player* player, std::string enemyType );
+    static std::unique_ptr<Enemy> createEnemy( Player& player, std::string enemyType );
 };
 
 END_FACTORY_NAMESPACE

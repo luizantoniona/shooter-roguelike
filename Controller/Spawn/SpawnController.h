@@ -16,7 +16,7 @@ BEGIN_CONTROLLER_NAMESPACE
 
 class SpawnController {
 public:
-    void checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>& enemies, Player* player );
+    void checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>& enemies, Player& player );
 };
 
 END_CONTROLLER_NAMESPACE

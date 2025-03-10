@@ -13,7 +13,7 @@ BEGIN_ENTITY_NAMESPACE
 
 class Enemy : public BaseEntity {
 public:
-    Enemy( Player* player );
+    Enemy( Player& player );
     ~Enemy();
 
     std::unique_ptr<Enemy> clone() const;
@@ -27,7 +27,7 @@ public:
     void update( const sf::RenderWindow& window, const sf::Time& deltaTime ) override;
 
 private:
-    Player* _player;
+    Player& _player;
     float _speed;
     int _health;
 };
