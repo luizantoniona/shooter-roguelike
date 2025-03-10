@@ -16,6 +16,10 @@ void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>&
         return;
     }
 
+    if ( map.getWaves().empty() ) {
+        return;
+    }
+
     Wave currrentWave = map.getWaves().front();
 
     for ( WaveEnemyInfo& enemyInfo : currrentWave.getEnemies() ) {
