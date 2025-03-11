@@ -6,7 +6,7 @@
 
 #include <Shape/Regular/RegularShape.h>
 
-using Shape::RegularShape;
+using Shapes::RegularShape;
 
 BEGIN_ENTITY_NAMESPACE
 

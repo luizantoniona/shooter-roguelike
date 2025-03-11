@@ -4,9 +4,9 @@
 #include <Map/Wave/Wave.h>
 #include <Map/Wave/WaveEnemyInfo.h>
 
-using Entity::Wave;
-using Entity::WaveEnemyInfo;
-using Factory::EnemyFactory;
+using Entities::Wave;
+using Entities::WaveEnemyInfo;
+using Factories::EnemyFactory;
 
 BEGIN_CONTROLLER_NAMESPACE
 

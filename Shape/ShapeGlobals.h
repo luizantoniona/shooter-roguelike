@@ -1,2 +1,2 @@
-#define BEGIN_SHAPE_NAMESPACE namespace Shape {
+#define BEGIN_SHAPE_NAMESPACE namespace Shapes {
 #define END_SHAPE_NAMESPACE }

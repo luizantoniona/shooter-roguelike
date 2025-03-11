@@ -7,7 +7,7 @@
 #include <Entity/Map/Map.h>
 #include <Entity/Map/MapType.h>
 
-using Entity::Map;
+using Entities::Map;
 
 BEGIN_FACTORY_NAMESPACE
 

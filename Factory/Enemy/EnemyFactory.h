@@ -10,8 +10,8 @@
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Player/Player.h>
 
-using Entity::Enemy;
-using Entity::Player;
+using Entities::Enemy;
+using Entities::Player;
 
 BEGIN_FACTORY_NAMESPACE
 
