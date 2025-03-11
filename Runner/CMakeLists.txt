@@ -1,5 +1,8 @@
 set(SOURCES
 Runner.cpp
+Game/GameRunner.cpp
+MainMenu/MainMenuRunner.cpp
+Upgrade/UpgradeRunner.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

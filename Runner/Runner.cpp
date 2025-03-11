@@ -2,12 +2,7 @@
 
 BEGIN_RUNNER_NAMESPACE
 
-Runner::Runner( sf::RenderWindow& window, sf::View& view ) :
-    _window( window ),
-    _view( view ) {
-}
-
-Runner::~Runner() {
+Runner::Runner() {
 }
 
 END_RUNNER_NAMESPACE

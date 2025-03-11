@@ -1,9 +1,5 @@
 set(SOURCES
 Asset/FontManager.cpp
-Game/GameManager.cpp
-MainMenu/MainMenuManager.cpp
-Upgrade/UpgradeManager.cpp
-AbstractManager.cpp
 MainManager.cpp
 )
 

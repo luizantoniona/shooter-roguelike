@@ -4,10 +4,15 @@
 
 #include <Manager/ManagerGlobals.h>
 
-#include <Manager/AbstractManager.h>
-#include <Manager/Game/GameManager.h>
-#include <Manager/MainMenu/MainMenuManager.h>
-#include <Manager/Upgrade/UpgradeManager.h>
+#include <Runner/Game/GameRunner.h>
+#include <Runner/MainMenu/MainMenuRunner.h>
+#include <Runner/Runner.h>
+#include <Runner/Upgrade/UpgradeRunner.h>
+
+using Runners::GameRunner;
+using Runners::MainMenuRunner;
+using Runners::Runner;
+using Runners::UpgradeRunner;
 
 BEGIN_MANAGER_NAMESPACE
 
@@ -17,14 +22,19 @@ public:
 
     void run();
 
+    void processEvents( sf::Time& deltaTime );
+    void update( sf::Time& deltaTime );
+    void render();
+    void adjustView();
+
 private:
     sf::RenderWindow _window;
     sf::View _view;
 
-    Manager::AbstractManager* _currentManager;
-    Manager::GameManager* _gameManager;
-    Manager::MainMenuManager* _mainMenuManager;
-    Manager::UpgradeManager* _upgradeManager;
+    Runner* _currentRunner;
+    GameRunner* _gameRunner;
+    MainMenuRunner* _mainMenuRunner;
+    UpgradeRunner* _upgradeRunner;
 };
 
 END_MANAGER_NAMESPACE

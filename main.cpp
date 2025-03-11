@@ -1,6 +1,6 @@
 #include <Manager/MainManager.h>
 
-using Manager::MainManager;
+using Managers::MainManager;
 
 int main() {
     MainManager main;

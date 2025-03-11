@@ -1,39 +1,37 @@
-#include "AbstractManager.h"
-#include "GameManager.h"
+#include "GameRunner.h"
 
 #include <Factory/Map/MapFactory.h>
 #include <Factory/Player/PlayerFactory.h>
 
-using Factory::MapFactory;
-using Factory::PlayerFactory;
+BEGIN_RUNNER_NAMESPACE
 
-BEGIN_MANAGER_NAMESPACE
-
-GameManager::GameManager( sf::RenderWindow& window, sf::View& view ) :
-    AbstractManager( window, view ),
-    _map( MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
-    _player( PlayerFactory::createPlayer( *_map ) ),
+GameRunner::GameRunner() :
+    Runner(),
+    _map( Factories::MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
+    _player( Factories::PlayerFactory::createPlayer( *_map ) ),
     _enemies() {
 
     std::srand( std::time( nullptr ) );
 }
 
-void GameManager::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
+GameRunner::~GameRunner() {
+}
+
+void GameRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape ) {
-        // _screenManager.setScreen( ScreenType::MainMenuScreen );
     }
 
     _inputController.handleInput( event, *_player );
 }
 
-void GameManager::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
+void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
     _updateController.update( window, deltaTime, *_player, _enemies, *_map );
     _collisionController.checkCollisions( *_player, _enemies );
     _spawnController.checkSpawn( *_map, _enemies, *_player );
 }
 
-void GameManager::render( sf::RenderWindow& window ) {
+void GameRunner::render( sf::RenderWindow& window ) {
 
     sf::View view = window.getView();
     view.setCenter( _player->getShape().getPosition() );
@@ -48,4 +46,4 @@ void GameManager::render( sf::RenderWindow& window ) {
     }
 }
 
-END_MANAGER_NAMESPACE
+END_RUNNER_NAMESPACE

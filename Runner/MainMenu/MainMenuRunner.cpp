@@ -1,19 +1,23 @@
-#include "MainMenuManager.h"
+#include "MainMenuRunner.h"
 
 #include <Manager/Asset/FontManager.h>
 
-BEGIN_MANAGER_NAMESPACE
+BEGIN_RUNNER_NAMESPACE
 
-MainMenuManager::MainMenuManager() :
+MainMenuRunner::MainMenuRunner() :
+    Runner(),
     _selectedOption( 0 ),
     _buttons( {} ) {
 
-    _font = FontManager::instance().font( FontType::Arial );
+    _font = Managers::FontManager::instance().font( FontType::Arial );
 
     initMenu();
 }
 
-void MainMenuManager::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
+MainMenuRunner::~MainMenuRunner() {
+}
+
+void MainMenuRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::MouseMoved ) {
         sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
@@ -34,7 +38,7 @@ void MainMenuManager::handleInput( const sf::Event& event, sf::Time& deltaTime )
     }
 }
 
-void MainMenuManager::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
+void MainMenuRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
     for ( size_t i = 0; i < _buttons.size(); ++i ) {
         if ( i == static_cast<int>( _selectedOption ) ) {
             _buttons[ i ].setFillColor( sf::Color::Red );
@@ -44,7 +48,7 @@ void MainMenuManager::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     }
 }
 
-void MainMenuManager::render( sf::RenderWindow& window ) {
+void MainMenuRunner::render( sf::RenderWindow& window ) {
     window.draw( _title );
 
     for ( const auto& button : _buttons ) {
@@ -52,7 +56,7 @@ void MainMenuManager::render( sf::RenderWindow& window ) {
     }
 }
 
-void MainMenuManager::initMenu() {
+void MainMenuRunner::initMenu() {
 
     _title.setFont( _font );
     _title.setString( "Roguelike" );
@@ -69,8 +73,8 @@ void MainMenuManager::initMenu() {
     }
 }
 
-bool MainMenuManager::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
+bool MainMenuRunner::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
     return option.getGlobalBounds().contains( mousePos );
 }
 
-END_MANAGER_NAMESPACE
+END_RUNNER_NAMESPACE
