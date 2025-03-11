@@ -1,8 +1,11 @@
 #include "AbstractManager.h"
 
-#include <SFML/Graphics.hpp>
-
 BEGIN_MANAGER_NAMESPACE
+
+AbstractManager::AbstractManager( sf::RenderWindow& window, sf::View& view ) :
+    _window( window ),
+    _view( view ) {
+}
 
 int AbstractManager::run() {
 
@@ -22,6 +25,8 @@ int AbstractManager::run() {
         update( _window, deltaTime );
         render( _window );
     }
+
+    return 0;
 }
 
 END_MANAGER_NAMESPACE

@@ -2,11 +2,9 @@
 
 #include <Manager/Asset/FontManager.h>
 
-using Manager::FontManager;
-
 BEGIN_MANAGER_NAMESPACE
 
-MainMenuManger::MainMenuManger() :
+MainMenuManager::MainMenuManager() :
     _selectedOption( 0 ),
     _buttons( {} ) {
 
@@ -15,7 +13,7 @@ MainMenuManger::MainMenuManger() :
     initMenu();
 }
 
-void MainMenuManger::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
+void MainMenuManager::handleInput( const sf::Event& event, sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::MouseMoved ) {
         sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
@@ -36,7 +34,7 @@ void MainMenuManger::handleInput( const sf::Event& event, sf::Time& deltaTime ) 
     }
 }
 
-void MainMenuManger::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
+void MainMenuManager::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     for ( size_t i = 0; i < _buttons.size(); ++i ) {
         if ( i == static_cast<int>( _selectedOption ) ) {
             _buttons[ i ].setFillColor( sf::Color::Red );
@@ -46,7 +44,7 @@ void MainMenuManger::update( sf::RenderWindow& window, sf::Time& deltaTime ) {
     }
 }
 
-void MainMenuManger::render( sf::RenderWindow& window ) {
+void MainMenuManager::render( sf::RenderWindow& window ) {
     window.draw( _title );
 
     for ( const auto& button : _buttons ) {
@@ -54,7 +52,7 @@ void MainMenuManger::render( sf::RenderWindow& window ) {
     }
 }
 
-void MainMenuManger::initMenu() {
+void MainMenuManager::initMenu() {
 
     _title.setFont( _font );
     _title.setString( "Roguelike" );
@@ -71,7 +69,7 @@ void MainMenuManger::initMenu() {
     }
 }
 
-bool MainMenuManger::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
+bool MainMenuManager::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
     return option.getGlobalBounds().contains( mousePos );
 }
 

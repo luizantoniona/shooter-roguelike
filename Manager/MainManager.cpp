@@ -8,6 +8,7 @@ BEGIN_MANAGER_NAMESPACE
 
 MainManager::MainManager() :
     _window( sf::VideoMode::getDesktopMode(), DISPLAY_NAME, sf::Style::Fullscreen ),
+    _currentManager( nullptr ),
     _gameManager( nullptr ),
     _mainMenuManager( nullptr ),
     _upgradeManager( nullptr ) {
@@ -18,11 +19,15 @@ MainManager::MainManager() :
 
     _view.reset( sf::FloatRect( 0, 0, float( windowWidth ), float( windowHeight ) ) );
     _window.setView( _view );
+
+    _gameManager = new GameManager( _window, _view );
+    _currentManager = dynamic_cast<Manager::AbstractManager*>( _gameManager );
 }
 
 void MainManager::run() {
-
-    // CREATE
+    if ( _currentManager ) {
+        _currentManager->run();
+    }
 }
 
 END_MANAGER_NAMESPACE

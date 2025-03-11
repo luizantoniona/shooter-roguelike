@@ -4,6 +4,7 @@
 
 #include <Manager/ManagerGlobals.h>
 
+#include <Manager/AbstractManager.h>
 #include <Manager/Game/GameManager.h>
 #include <Manager/MainMenu/MainMenuManager.h>
 #include <Manager/Upgrade/UpgradeManager.h>
@@ -20,9 +21,9 @@ private:
     sf::RenderWindow _window;
     sf::View _view;
 
-    Manager::AbstractManager& _currentManager;
+    Manager::AbstractManager* _currentManager;
     Manager::GameManager* _gameManager;
-    Manager::MainMenuManger* _mainMenuManager;
+    Manager::MainMenuManager* _mainMenuManager;
     Manager::UpgradeManager* _upgradeManager;
 };
 

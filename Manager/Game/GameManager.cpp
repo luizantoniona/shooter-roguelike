@@ -1,3 +1,4 @@
+#include "AbstractManager.h"
 #include "GameManager.h"
 
 #include <Factory/Map/MapFactory.h>
@@ -8,7 +9,8 @@ using Factory::PlayerFactory;
 
 BEGIN_MANAGER_NAMESPACE
 
-GameManager::GameManager() :
+GameManager::GameManager( sf::RenderWindow& window, sf::View& view ) :
+    AbstractManager( window, view ),
     _map( MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
     _player( PlayerFactory::createPlayer( *_map ) ),
     _enemies() {

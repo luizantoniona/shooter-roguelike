@@ -23,9 +23,9 @@ using Entity::Player;
 
 BEGIN_MANAGER_NAMESPACE
 
-class GameManager : AbstractManager {
+class GameManager : public AbstractManager {
 public:
-    GameManager();
+    GameManager( sf::RenderWindow& window, sf::View& view );
 
 private:
     void handleInput( const sf::Event& event, const sf::Time& deltaTime ) override;

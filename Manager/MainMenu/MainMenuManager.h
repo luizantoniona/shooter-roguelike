@@ -10,9 +10,9 @@ using GUI::Button;
 
 BEGIN_MANAGER_NAMESPACE
 
-class MainMenuManger {
+class MainMenuManager {
 public:
-    MainMenuManger();
+    MainMenuManager();
 
     void handleInput( const sf::Event& event, sf::Time& deltaTime );
     void update( sf::RenderWindow& window, sf::Time& deltaTime );
