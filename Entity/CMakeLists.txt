@@ -1,4 +1,5 @@
 set(SOURCES
+BaseEntity.cpp
 Enemy/Enemy.cpp
 Map/Map.cpp
 Map/Background/Background.cpp
@@ -8,7 +9,6 @@ Player/Player.cpp
 Player/PlayerProjectileStatus.cpp
 Player/PlayerStatus.cpp
 Projectile/Projectile.cpp
-Shape.cpp
 Skill/Skill.cpp
 )
 

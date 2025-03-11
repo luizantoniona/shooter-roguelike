@@ -77,7 +77,7 @@ void Map::build() {
     _shape.setPosition( 0, 0 );
 }
 
-void Map::update( sf::Time& deltaTime ) {
+void Map::update( const sf::Time& deltaTime ) {
     // _background.update( deltaTime );
 }
 

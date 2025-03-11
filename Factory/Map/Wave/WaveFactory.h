@@ -7,7 +7,7 @@
 
 #include <Entity/Map/Wave/Wave.h>
 
-using Entity::Wave;
+using Entities::Wave;
 
 BEGIN_FACTORY_NAMESPACE
 

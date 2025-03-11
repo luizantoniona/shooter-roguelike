@@ -1,9 +1,9 @@
-#include <Manager/GameManager.h>
+#include <Manager/MainManager.h>
 
-using Manager::GameManager;
+using Managers::MainManager;
 
 int main() {
-    GameManager game;
-    game.run();
+    MainManager main;
+    main.run();
     return 0;
 }

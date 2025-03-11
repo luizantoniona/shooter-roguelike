@@ -6,31 +6,30 @@
 
 #include <Entity/EntityGlobals.h>
 
+#include <Entity/BaseEntity.h>
 #include <Entity/Player/Player.h>
-#include <Entity/Shape.h>
 
 BEGIN_ENTITY_NAMESPACE
 
-class Enemy : public Shape {
+class Enemy : public BaseEntity {
 public:
-    Enemy( Player* player );
+    Enemy( Player& player );
     ~Enemy();
 
     std::unique_ptr<Enemy> clone() const;
 
-    void setHealth( int health );
-    int getHealth() const;
-
     void setSpeed( float speed );
     float getSpeed() const;
 
-    void update( sf::Time& deltaTime );
-    void render( sf::RenderWindow& window );
+    void setHealth( int health );
+    int getHealth() const;
+
+    void update( const sf::RenderWindow& window, const sf::Time& deltaTime ) override;
 
 private:
-    Player* _player;
-    int _health;
+    Player& _player;
     float _speed;
+    int _health;
 };
 
 END_ENTITY_NAMESPACE

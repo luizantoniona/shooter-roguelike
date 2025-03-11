@@ -6,7 +6,7 @@
 
 #include <Entity/Player/Player.h>
 
-using Entity::Player;
+using Entities::Player;
 
 BEGIN_CONTROLLER_NAMESPACE
 

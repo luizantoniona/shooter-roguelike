@@ -25,10 +25,10 @@ std::unique_ptr<Player> PlayerFactory::createPlayer( const Map& map ) {
     Json::Value playerJson = JsonHelper::loadJson( filePath );
 
     auto player = std::make_unique<Player>( map );
-    player->setSides( 3 );
-    player->setRadius( 20.f );
-    player->setPosition( sf::Vector2f( map.getWidth() / 2.0, map.getHeight() / 2.0 ) );
-    player->setColor( sf::Color::Green );
+    player->getShape().setSides( 3 );
+    player->getShape().setRadius( 20.f );
+    player->getShape().setPosition( sf::Vector2f( map.getWidth() / 2.0, map.getHeight() / 2.0 ) );
+    player->getShape().setColor( sf::Color::Green );
 
     Json::Value playerStatusJson = playerJson[ PLAYER_STATUS_KEY ];
     player->getPlayerStatus().setHealth( playerStatusJson[ HEALTH_KEY ].asInt() );
@@ -41,7 +41,7 @@ std::unique_ptr<Player> PlayerFactory::createPlayer( const Map& map ) {
     player->getPlayerProjectileStatus().setProjectileSize( playerProjectileStatusJson[ PROJECTILE_SIZE_KEY ].asFloat() );
     player->getPlayerProjectileStatus().setProjectileDamage( playerProjectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
 
-    player->build();
+    player->getShape().build();
 
     return player;
 }

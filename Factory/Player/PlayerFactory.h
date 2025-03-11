@@ -7,8 +7,8 @@
 #include <Entity/Map/Map.h>
 #include <Entity/Player/Player.h>
 
-using Entity::Map;
-using Entity::Player;
+using Entities::Map;
+using Entities::Player;
 
 BEGIN_FACTORY_NAMESPACE
 

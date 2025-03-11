@@ -6,7 +6,7 @@
 
 #include <Entity/Map/Background/Background.h>
 
-using Entity::Background;
+using Entities::Background;
 
 BEGIN_FACTORY_NAMESPACE
 

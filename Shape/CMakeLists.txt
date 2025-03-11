@@ -1,8 +1,5 @@
 set(SOURCES
-Game/GameScreen.cpp
-MainMenu/MainMenuScreen.cpp
-Upgrade/UpgradeScreen.cpp
-Screen.cpp
+Regular/RegularShape.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

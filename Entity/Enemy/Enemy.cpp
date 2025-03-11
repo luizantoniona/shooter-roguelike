@@ -4,8 +4,8 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-Enemy::Enemy( Player* player ) :
-    Shape(),
+Enemy::Enemy( Player& player ) :
+    BaseEntity(),
     _player( player ) {
 }
 
@@ -32,19 +32,15 @@ float Enemy::getSpeed() const {
     return _speed;
 }
 
-void Enemy::update( sf::Time& deltaTime ) {
+void Enemy::update( const sf::RenderWindow& window, const sf::Time& deltaTime ) {
 
-    sf::Vector2f direction = _player->getPosition() - getPosition();
+    sf::Vector2f direction = _player.getShape().getPosition() - _shape.getPosition();
     float length = std::hypot( direction.x, direction.y );
 
     if ( length > 0.0f ) {
         direction /= length;
-        move( direction * _speed * deltaTime.asSeconds() );
+        _shape.move( direction * _speed * deltaTime.asSeconds() );
     }
-}
-
-void Enemy::render( sf::RenderWindow& window ) {
-    Shape::render( window );
 }
 
 END_ENTITY_NAMESPACE
