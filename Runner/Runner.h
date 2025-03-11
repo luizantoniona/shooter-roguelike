@@ -2,14 +2,14 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Manager/ManagerGlobals.h>
+#include <Runner/RunnerGlobals.h>
 
-BEGIN_MANAGER_NAMESPACE
+BEGIN_RUNNER_NAMESPACE
 
-class AbstractManager {
+class Runner {
 public:
-    AbstractManager( sf::RenderWindow& window, sf::View& view );
-    virtual int run();
+    Runner( sf::RenderWindow& window, sf::View& view );
+    ~Runner();
 
 protected:
     sf::RenderWindow& _window;
@@ -21,4 +21,4 @@ private:
     virtual void render( sf::RenderWindow& window ) = 0;
 };
 
-END_MANAGER_NAMESPACE
+END_RUNNER_NAMESPACE
