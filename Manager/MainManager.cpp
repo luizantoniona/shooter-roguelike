@@ -1,4 +1,4 @@
-#include "GameManager.h"
+#include "MainManager.h"
 
 namespace {
 constexpr const char* DISPLAY_NAME = "Roguelike";
@@ -6,9 +6,12 @@ constexpr const char* DISPLAY_NAME = "Roguelike";
 
 BEGIN_MANAGER_NAMESPACE
 
-GameManager::GameManager() :
+MainManager::MainManager() :
     _window( sf::VideoMode::getDesktopMode(), DISPLAY_NAME, sf::Style::Fullscreen ),
-    _screenManager() {
+    _currentRunner( nullptr ),
+    _gameRunner( nullptr ),
+    _mainMenuRunner( nullptr ),
+    _upgradeRunner( nullptr ) {
 
     sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
     int windowWidth = desktopMode.width;
@@ -16,9 +19,13 @@ GameManager::GameManager() :
 
     _view.reset( sf::FloatRect( 0, 0, float( windowWidth ), float( windowHeight ) ) );
     _window.setView( _view );
+
+    _gameRunner = new GameRunner();
+    _mainMenuRunner = new MainMenuRunner();
+    _currentRunner = dynamic_cast<Runner*>( _gameRunner );
 }
 
-void GameManager::run() {
+void MainManager::run() {
     adjustView();
 
     sf::Clock clock;
@@ -32,27 +39,27 @@ void GameManager::run() {
     }
 }
 
-void GameManager::processEvents( sf::Time& deltaTime ) {
+void MainManager::processEvents( sf::Time& deltaTime ) {
     sf::Event event;
     while ( _window.pollEvent( event ) ) {
         if ( event.type == sf::Event::Closed ) {
             _window.close();
         }
-        _screenManager.handleInput( event, deltaTime );
+        _currentRunner->handleInput( event, deltaTime );
     }
 }
 
-void GameManager::update( sf::Time& deltaTime ) {
-    _screenManager.update( _window, deltaTime );
+void MainManager::update( sf::Time& deltaTime ) {
+    _currentRunner->update( _window, deltaTime );
 }
 
-void GameManager::render() {
+void MainManager::render() {
     _window.clear();
-    _screenManager.render( _window );
+    _currentRunner->render( _window );
     _window.display();
 }
 
-void GameManager::adjustView() {
+void MainManager::adjustView() {
     _view.setCenter( float( sf::VideoMode::getDesktopMode().width ) / 2, float( sf::VideoMode::getDesktopMode().height ) / 2 );
     _window.setView( _view );
 }

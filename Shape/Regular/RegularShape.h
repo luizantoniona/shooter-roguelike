@@ -2,9 +2,13 @@
 
 #include <SFML/Graphics.hpp>
 
-class Shape {
+#include <Shape/ShapeGlobals.h>
+
+BEGIN_SHAPE_NAMESPACE
+
+class RegularShape {
 public:
-    Shape();
+    RegularShape();
 
     void setSides( int sides );
     int getSides() const;
@@ -18,20 +22,20 @@ public:
     void setColor( const sf::Color& color );
     sf::Color getColor() const;
 
-    void build();
+    void setOutlineColor( const sf::Color& color );
+    void setOutlineThickness( float thickness );
 
     sf::FloatRect getGlobalBounds() const;
 
     void render( sf::RenderWindow& window );
     void move( const sf::Vector2f& offset );
 
-protected:
-    void updateShape();
+    void build();
 
 private:
     int _sides;
     float _radius;
-    sf::Vector2f _position;
-    sf::Color _color;
-    sf::VertexArray _shape;
+    sf::ConvexShape _shape;
 };
+
+END_SHAPE_NAMESPACE

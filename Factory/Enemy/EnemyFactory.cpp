@@ -16,17 +16,17 @@ constexpr const char* COLOR_KEY = "color";
 
 BEGIN_FACTORY_NAMESPACE
 
-std::unique_ptr<Enemy> EnemyFactory::createEnemy( Player* player, std::string enemyType ) {
+std::unique_ptr<Enemy> EnemyFactory::createEnemy( Player& player, std::string enemyType ) {
     std::string filePath = "Asset/Enemy/Enemy.json";
     Json::Value enemyJson = JsonHelper::loadJson( filePath )[ enemyType ];
 
     auto enemy = std::make_unique<Enemy>( player );
     enemy->setHealth( enemyJson[ HEALTH_KEY ].asInt() );
     enemy->setSpeed( enemyJson[ SPEED_KEY ].asFloat() );
-    enemy->setSides( enemyJson[ SIDES_KEY ].asInt() );
-    enemy->setRadius( enemyJson[ SIZE_KEY ].asFloat() );
-    enemy->setColor( ColorHelper::colorFromString( enemyJson[ COLOR_KEY ].asString() ) );
-    enemy->build();
+    enemy->getShape().setSides( enemyJson[ SIDES_KEY ].asInt() );
+    enemy->getShape().setRadius( enemyJson[ SIZE_KEY ].asFloat() );
+    enemy->getShape().setColor( ColorHelper::colorFromString( enemyJson[ COLOR_KEY ].asString() ) );
+    enemy->getShape().build();
 
     return enemy;
 }

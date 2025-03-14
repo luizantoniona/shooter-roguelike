@@ -2,7 +2,7 @@
 
 #include <Entity/Map/Wave/WaveEnemyInfo.h>
 
-using Entity::WaveEnemyInfo;
+using Entities::WaveEnemyInfo;
 
 namespace {
 constexpr const char* ENEMIES_KEY = "enemies";

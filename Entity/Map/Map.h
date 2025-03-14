@@ -39,7 +39,7 @@ public:
 
     void build();
 
-    void update( sf::Time& deltaTime );
+    void update( const sf::Time& deltaTime );
     void render( sf::RenderWindow& window );
 
     bool isInsideBounds( const sf::Vector2f& position ) const;

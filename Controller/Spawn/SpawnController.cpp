@@ -4,15 +4,19 @@
 #include <Map/Wave/Wave.h>
 #include <Map/Wave/WaveEnemyInfo.h>
 
-using Entity::Wave;
-using Entity::WaveEnemyInfo;
-using Factory::EnemyFactory;
+using Entities::Wave;
+using Entities::WaveEnemyInfo;
+using Factories::EnemyFactory;
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>& enemies, Player* player ) {
+void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>& enemies, Player& player ) {
 
     if ( enemies.size() > 0 ) {
+        return;
+    }
+
+    if ( map.getWaves().empty() ) {
         return;
     }
 
@@ -27,7 +31,7 @@ void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>&
             sf::Vector2f position( std::rand() % map.getWidth(), std::rand() % map.getHeight() );
             if ( map.isInsideBounds( position ) ) {
                 std::unique_ptr<Enemy> enemy = enemyOriginal->clone();
-                enemy->setPosition( position );
+                enemy->getShape().setPosition( position );
                 enemies.emplace_back( std::move( enemy ) );
             }
         }

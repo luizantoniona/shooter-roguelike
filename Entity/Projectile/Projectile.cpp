@@ -5,7 +5,6 @@ BEGIN_ENTITY_NAMESPACE
 Projectile::Projectile() :
     _damage( 0.0 ),
     _speed( 0.0 ),
-    _size( 0.0 ),
     _direction() {
 }
 
@@ -25,14 +24,6 @@ float Projectile::getSpeed() const {
     return _speed;
 }
 
-void Projectile::setSize( float size ) {
-    _size = size;
-}
-
-float Projectile::getSize() const {
-    return _size;
-}
-
 void Projectile::setDirection( sf::Vector2f direction ) {
     _direction = direction;
 }
@@ -41,26 +32,9 @@ sf::Vector2f Projectile::getDirection() const {
     return _direction;
 }
 
-void Projectile::setPosition( sf::Vector2f position ) {
-    _shape.setPosition( position );
-}
-
-sf::Vector2f Projectile::getPosition() const {
-    return _shape.getPosition();
-}
-
-void Projectile::build() {
-    _shape.setRadius( _size );
-    _shape.setFillColor( sf::Color::Yellow );
-}
-
-void Projectile::update( const sf::Time& deltaTime ) {
+void Projectile::update( const sf::RenderWindow& window, const sf::Time& deltaTime ) {
     sf::Vector2f movement = _direction * _speed * deltaTime.asSeconds();
     _shape.move( movement );
-}
-
-void Projectile::render( sf::RenderWindow& window ) {
-    window.draw( _shape );
 }
 
 sf::FloatRect Projectile::getGlobalBounds() const {
