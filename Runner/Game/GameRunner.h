@@ -11,6 +11,7 @@
 #include <Entity/Enemy/Enemy.h>
 #include <Entity/Map/Map.h>
 #include <Entity/Player/Player.h>
+#include <GUI/Component.h>
 #include <Runner/Runner.h>
 
 BEGIN_RUNNER_NAMESPACE
@@ -25,9 +26,13 @@ public:
     void render( sf::RenderWindow& window ) override;
 
 private:
+    void createComponents();
+
+private:
     std::unique_ptr<Entities::Map> _map;
     std::unique_ptr<Entities::Player> _player;
     std::vector<std::unique_ptr<Entities::Enemy>> _enemies;
+    std::vector<std::unique_ptr<GUI::Component>> _components;
 
     Controllers::CollisionController _collisionController;
     Controllers::InputController _inputController;

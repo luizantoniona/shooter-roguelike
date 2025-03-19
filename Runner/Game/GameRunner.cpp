@@ -46,4 +46,8 @@ void GameRunner::render( sf::RenderWindow& window ) {
     }
 }
 
+void GameRunner::createComponents() {
+    // TODO Criar componentes da tela
+}
+
 END_RUNNER_NAMESPACE
