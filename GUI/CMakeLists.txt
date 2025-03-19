@@ -1,4 +1,5 @@
 set(SOURCES
+Bar/Bar.cpp
 Button/Button.cpp
 Component.cpp
 )
