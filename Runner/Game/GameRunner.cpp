@@ -2,6 +2,7 @@
 
 #include <Factory/Map/MapFactory.h>
 #include <Factory/Player/PlayerFactory.h>
+#include <GUI/Bar/HealthBar.h>
 
 BEGIN_RUNNER_NAMESPACE
 
@@ -10,6 +11,8 @@ GameRunner::GameRunner() :
     _map( Factories::MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
     _player( Factories::PlayerFactory::createPlayer( *_map ) ),
     _enemies() {
+
+    createComponents();
 
     std::srand( std::time( nullptr ) );
 }
@@ -44,10 +47,15 @@ void GameRunner::render( sf::RenderWindow& window ) {
     for ( auto& enemy : _enemies ) {
         enemy->render( window );
     }
+
+    window.setView( window.getDefaultView() );
+    for ( auto& component : _components ) {
+        component->render( window );
+    }
 }
 
 void GameRunner::createComponents() {
-    // TODO Criar componentes da tela
+    _components.emplace_back( std::make_unique<GUI::HealthBar>( 100.0f ) );
 }
 
 END_RUNNER_NAMESPACE
