@@ -36,10 +36,6 @@ void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
 
 void GameRunner::render( sf::RenderWindow& window ) {
 
-    sf::View view = window.getView();
-    view.setCenter( _player->getShape().getPosition() );
-    window.setView( view );
-
     _map->render( window );
 
     _player->render( window );
@@ -52,6 +48,10 @@ void GameRunner::render( sf::RenderWindow& window ) {
     for ( auto& component : _components ) {
         component->render( window );
     }
+
+    sf::View view = window.getView();
+    view.setCenter( _player->getShape().getPosition() );
+    window.setView( view );
 }
 
 void GameRunner::createComponents() {

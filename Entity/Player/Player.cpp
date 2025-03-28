@@ -31,7 +31,9 @@ void Player::update( const sf::RenderWindow& window, const sf::Time& deltaTime )
     updatePosition( window, deltaTime );
     updateProjectiles( window, deltaTime );
 
-    sf::Vector2f mousePosition = window.mapPixelToCoords( sf::Mouse::getPosition( window ) );
+    sf::View currentView = window.getView();
+    sf::Vector2f mousePosition = window.mapPixelToCoords( sf::Mouse::getPosition( window ), currentView );
+
     fireProjectile( mousePosition );
 }
 
