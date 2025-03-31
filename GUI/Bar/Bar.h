@@ -10,7 +10,7 @@ BEGIN_GUI_NAMESPACE
 
 class Bar : public Component {
 public:
-    Bar( float width, float height, sf::Color backgroundColor, sf::Color fillColor );
+    Bar( std::string componentName, float width, float height, sf::Color backgroundColor, sf::Color fillColor );
 
     void update( sf::Time& deltaTime ) override;
     void render( sf::RenderWindow& window ) override;

@@ -2,7 +2,8 @@
 
 BEGIN_GUI_NAMESPACE
 
-Bar::Bar( float width, float height, sf::Color backgroundColor, sf::Color fillColor ) :
+Bar::Bar( std::string componentName, float width, float height, sf::Color backgroundColor, sf::Color fillColor ) :
+    Component( componentName ),
     _value( 1.0f ) {
     _background.setSize( { width, height } );
     _background.setFillColor( backgroundColor );
