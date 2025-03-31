@@ -9,6 +9,7 @@ using Helper::JsonHelper;
 namespace {
 constexpr const char* HEALTH_KEY = "health";
 constexpr const char* SPEED_KEY = "speed";
+constexpr const char* ATTACK_KEY = "attack";
 constexpr const char* SIDES_KEY = "sides";
 constexpr const char* SIZE_KEY = "size";
 constexpr const char* COLOR_KEY = "color";
@@ -22,6 +23,7 @@ std::unique_ptr<Enemy> EnemyFactory::createEnemy( Player& player, std::string en
 
     auto enemy = std::make_unique<Enemy>( player );
     enemy->setHealth( enemyJson[ HEALTH_KEY ].asInt() );
+    enemy->setAttack( enemyJson[ ATTACK_KEY ].asInt() );
     enemy->setSpeed( enemyJson[ SPEED_KEY ].asFloat() );
     enemy->getShape().setSides( enemyJson[ SIDES_KEY ].asInt() );
     enemy->getShape().setRadius( enemyJson[ SIZE_KEY ].asFloat() );

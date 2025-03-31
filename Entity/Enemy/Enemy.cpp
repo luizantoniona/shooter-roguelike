@@ -16,7 +16,7 @@ std::unique_ptr<Enemy> Enemy::clone() const {
     return std::make_unique<Enemy>( *this );
 }
 
-void Enemy::setHealth( int health ) {
+void Enemy::setHealth( const int health ) {
     _health = health;
 }
 
@@ -24,7 +24,15 @@ int Enemy::getHealth() const {
     return _health;
 }
 
-void Enemy::setSpeed( float speed ) {
+void Enemy::setAttack( const int attack ) {
+    _attack = attack;
+}
+
+int Enemy::getAttack() const {
+    return _attack;
+}
+
+void Enemy::setSpeed( const float speed ) {
     _speed = speed;
 }
 

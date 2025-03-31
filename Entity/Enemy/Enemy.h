@@ -18,10 +18,13 @@ public:
 
     std::unique_ptr<Enemy> clone() const;
 
-    void setSpeed( float speed );
+    void setSpeed( const float speed );
     float getSpeed() const;
 
-    void setHealth( int health );
+    void setAttack( const int attack );
+    int getAttack() const;
+
+    void setHealth( const int health );
     int getHealth() const;
 
     void update( const sf::RenderWindow& window, const sf::Time& deltaTime ) override;
@@ -29,6 +32,7 @@ public:
 private:
     Player& _player;
     float _speed;
+    int _attack;
     int _health;
 };
 
