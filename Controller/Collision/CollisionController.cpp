@@ -44,6 +44,8 @@ void CollisionController::handlePlayerCollisions( Player& player, std::vector<st
 
             playerStatus.setHealth( currentHealth - enemyIt->get()->getAttack() );
 
+            enemyIt = enemies.erase( enemyIt );
+
         } else {
             ++enemyIt;
         }
