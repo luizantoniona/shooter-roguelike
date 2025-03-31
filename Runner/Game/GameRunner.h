@@ -5,6 +5,7 @@
 #include <Runner/RunnerGlobals.h>
 
 #include <Controller/Collision/CollisionController.h>
+#include <Controller/GUI/GUIController.h>
 #include <Controller/Input/InputController.h>
 #include <Controller/Spawn/SpawnController.h>
 #include <Controller/Update/UpdateController.h>
@@ -38,6 +39,7 @@ private:
     Controllers::InputController _inputController;
     Controllers::SpawnController _spawnController;
     Controllers::UpdateController _updateController;
+    Controllers::GUIController _guiController;
 };
 
 END_RUNNER_NAMESPACE
