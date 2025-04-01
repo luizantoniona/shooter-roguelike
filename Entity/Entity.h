@@ -10,15 +10,12 @@ using Shapes::RegularShape;
 
 BEGIN_ENTITY_NAMESPACE
 
-class BaseEntity {
+class Entity {
 public:
-    BaseEntity() = default;
-    virtual ~BaseEntity() = default;
+    Entity() = default;
+    virtual ~Entity() = default;
 
     RegularShape& getShape();
-
-    virtual void update( const sf::RenderWindow& window, const sf::Time& deltaTime ) = 0;
-    virtual void render( sf::RenderWindow& window );
 
 protected:
     RegularShape _shape;
