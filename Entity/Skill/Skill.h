@@ -4,16 +4,13 @@
 
 #include <Entity/EntityGlobals.h>
 
-#include <Entity/BaseEntity.h>
+#include <Entity/Entity.h>
 
 BEGIN_ENTITY_NAMESPACE
 
-class Skill : public BaseEntity {
+class Skill : public Entity {
 public:
     Skill();
-
-    void update( const sf::RenderWindow& window, const sf::Time& deltaTime ) override;
-    void render( sf::RenderWindow& window ) override;
 };
 
 END_ENTITY_NAMESPACE

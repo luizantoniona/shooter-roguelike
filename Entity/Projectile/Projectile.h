@@ -4,11 +4,11 @@
 
 #include <Entity/EntityGlobals.h>
 
-#include <Entity/BaseEntity.h>
+#include <Entity/Entity.h>
 
 BEGIN_ENTITY_NAMESPACE
 
-class Projectile : public BaseEntity {
+class Projectile : public Entity {
 public:
     Projectile();
 
@@ -20,8 +20,6 @@ public:
 
     void setDirection( sf::Vector2f direction );
     sf::Vector2f getDirection() const;
-
-    void update( const sf::RenderWindow& window, const sf::Time& deltaTime ) override;
 
     sf::FloatRect getGlobalBounds() const;
 
