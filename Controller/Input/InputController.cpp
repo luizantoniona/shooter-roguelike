@@ -8,7 +8,7 @@ void InputController::handleInput( const sf::Event& event, Player& player ) {
         }
     }
 
-    player.handleInput( event );
+    // player.handleInput( event );
 }
 
 END_CONTROLLER_NAMESPACE

@@ -37,13 +37,13 @@ void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
 
 void GameRunner::render( sf::RenderWindow& window ) {
 
-    _map->render( window );
+    // _map->render( window );
 
-    _player->render( window );
+    // _player->render( window );
 
-    for ( auto& enemy : _enemies ) {
-        enemy->render( window );
-    }
+    // for ( auto& enemy : _enemies ) {
+    //     enemy->render( window );
+    // }
 
     window.setView( window.getDefaultView() );
     for ( auto& component : _components ) {

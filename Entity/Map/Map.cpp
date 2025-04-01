@@ -77,13 +77,13 @@ void Map::build() {
     _shape.setPosition( 0, 0 );
 }
 
-void Map::update( const sf::Time& deltaTime ) {
-    // _background.update( deltaTime );
-}
+// void Map::update( const sf::Time& deltaTime ) {
+//     // _background.update( deltaTime );
+// }
 
-void Map::render( sf::RenderWindow& window ) {
-    window.draw( _shape );
-}
+// void Map::render( sf::RenderWindow& window ) {
+//     window.draw( _shape );
+// }
 
 bool Map::isInsideBounds( const sf::Vector2f& position ) const {
     return position.x >= 0 && position.x <= _width && position.y >= 0 && position.y <= _height;

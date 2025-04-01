@@ -6,12 +6,11 @@
 
 #include <Controller/Collision/CollisionController.h>
 #include <Controller/GUI/GUIController.h>
+#include <Controller/Game/GameController.h>
 #include <Controller/Input/InputController.h>
 #include <Controller/Spawn/SpawnController.h>
-#include <Controller/Update/UpdateController.h>
-#include <Entity/Enemy/Enemy.h>
+#include <Entity/Character/Character.h>
 #include <Entity/Map/Map.h>
-#include <Entity/Player/Player.h>
 #include <GUI/Component.h>
 #include <Runner/Runner.h>
 
@@ -31,14 +30,15 @@ private:
 
 private:
     std::unique_ptr<Entities::Map> _map;
-    std::unique_ptr<Entities::Player> _player;
-    std::vector<std::unique_ptr<Entities::Enemy>> _enemies;
+    std::unique_ptr<Entities::Character> _player;
+    std::vector<std::unique_ptr<Entities::Character>> _enemies;
     std::vector<std::unique_ptr<GUI::Component>> _components;
+
+    Controllers::GameController _gameController;
 
     Controllers::CollisionController _collisionController;
     Controllers::InputController _inputController;
     Controllers::SpawnController _spawnController;
-    Controllers::UpdateController _updateController;
     Controllers::GUIController _guiController;
 };
 

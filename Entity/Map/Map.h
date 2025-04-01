@@ -39,9 +39,6 @@ public:
 
     void build();
 
-    void update( const sf::Time& deltaTime );
-    void render( sf::RenderWindow& window );
-
     bool isInsideBounds( const sf::Vector2f& position ) const;
 
 private:
@@ -49,9 +46,9 @@ private:
     int _height;
     std::string _worldName;
     std::string _stageName;
+    std::queue<Wave> _waves;
     sf::RectangleShape _shape;
     Background _background;
-    std::queue<Wave> _waves;
 };
 
 END_ENTITY_NAMESPACE
