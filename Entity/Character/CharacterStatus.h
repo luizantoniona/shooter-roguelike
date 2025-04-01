@@ -4,9 +4,9 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-class PlayerStatus {
+class CharacterStatus {
 public:
-    PlayerStatus();
+    CharacterStatus();
 
     void setHealth( const int health );
     int getHealth() const;
@@ -18,9 +18,9 @@ public:
     float getSpeed() const;
 
 private:
+    float _speed;
     int _health;
     int _gold;
-    float _speed;
 };
 
 END_ENTITY_NAMESPACE
