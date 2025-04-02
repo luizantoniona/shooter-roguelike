@@ -1,5 +1,6 @@
 #include "GameRunner.h"
 
+#include <Controller/Game/GameController.h>
 #include <Controller/Render/RenderController.h>
 #include <Factory/Map/MapFactory.h>
 #include <Factory/Player/PlayerFactory.h>
@@ -30,7 +31,7 @@ void GameRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime 
 }
 
 void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
-    _gameController.update( window, deltaTime, *_player, _enemies, *_map );
+    Controllers::GameController::update( window, deltaTime, *_player, _enemies, *_map );
     _guiController.updateComponents( *_player, _components );
 }
 

@@ -5,7 +5,6 @@
 #include <Runner/RunnerGlobals.h>
 
 #include <Controller/GUI/GUIController.h>
-#include <Controller/Game/GameController.h>
 #include <Controller/Input/InputController.h>
 #include <Entity/Character/Character.h>
 #include <Entity/Map/Map.h>
@@ -32,7 +31,6 @@ private:
     std::vector<std::unique_ptr<Entities::Character>> _enemies;
     std::vector<std::unique_ptr<GUI::Component>> _components;
 
-    Controllers::GameController _gameController;
     Controllers::GUIController _guiController;
     Controllers::InputController _inputController;
 };
