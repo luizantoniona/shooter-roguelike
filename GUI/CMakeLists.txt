@@ -1,8 +1,9 @@
 set(SOURCES
+Component.cpp
 Bar/Bar.cpp
 Bar/HealthBar.cpp
 Button/Button.cpp
-Component.cpp
+Text/Text.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

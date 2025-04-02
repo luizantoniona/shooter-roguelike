@@ -1,0 +1,5 @@
+#include "Text.h"
+
+BEGIN_GUI_NAMESPACE
+
+END_GUI_NAMESPACE
