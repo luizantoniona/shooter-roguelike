@@ -25,6 +25,10 @@ CharacterProjectileStatus& Character::getProjectileStatus() {
     return _projectileStatus;
 }
 
+sf::Clock& Character::getFireClock() {
+    return _fireClock;
+}
+
 std::vector<Projectile>& Character::getProjectiles() {
     return _projectiles;
 }

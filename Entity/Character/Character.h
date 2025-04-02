@@ -21,6 +21,8 @@ public:
     CharacterStatus& getStatus();
     CharacterProjectileStatus& getProjectileStatus();
 
+    sf::Clock& getFireClock();
+
     std::vector<Projectile>& getProjectiles();
 
 private:
