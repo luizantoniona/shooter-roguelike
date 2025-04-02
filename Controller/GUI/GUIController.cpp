@@ -6,7 +6,7 @@ constexpr const char* HEALTH_BAR_COMPONENT = "healthBar";
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void GUIController::updateComponents( Entities::Player& player, std::vector<std::unique_ptr<GUI::Component>>& components ) {
+void GUIController::updateComponents( Entities::Character& player, std::vector<std::unique_ptr<GUI::Component>>& components ) {
 
     for ( auto& component : components ) {
 
@@ -22,11 +22,11 @@ void GUIController::updateComponents( Entities::Player& player, std::vector<std:
     }
 }
 
-void GUIController::updateHealthBar( GUI::HealthBar& healthBar, Entities::Player& player ) {
-    const int playerHealth = player.getPlayerStatus().getHealth();
+void GUIController::updateHealthBar( GUI::HealthBar& healthBar, Entities::Character& player ) {
+    const int playerHealth = player.getStatus().getHealth();
 
     if ( playerHealth > 0 ) {
-        healthBar.setHealth( player.getPlayerStatus().getHealth() );
+        healthBar.setHealth( player.getStatus().getHealth() );
     }
 }
 

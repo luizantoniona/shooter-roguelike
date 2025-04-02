@@ -1,5 +1,9 @@
 #include "Bar.h"
 
+float clip( float n, float lower, float upper ) {
+    return std::max( lower, std::min( n, upper ) );
+}
+
 BEGIN_GUI_NAMESPACE
 
 Bar::Bar( std::string componentName, float width, float height, sf::Color backgroundColor, sf::Color fillColor ) :
@@ -21,7 +25,7 @@ void Bar::render( sf::RenderWindow& window ) {
 }
 
 void Bar::setValue( float value ) {
-    _value = std::clamp( value, 0.0f, 1.0f );
+    _value = clip( value, 0.0f, 1.0f );
     _fill.setSize( { _background.getSize().x * _value, _background.getSize().y } );
 }
 

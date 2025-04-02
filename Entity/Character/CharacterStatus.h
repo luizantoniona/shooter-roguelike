@@ -17,10 +17,14 @@ public:
     void setSpeed( const float speed );
     float getSpeed() const;
 
+    void setAttack( const int attack );
+    int getAttack() const;
+
 private:
     float _speed;
     int _health;
     int _gold;
+    int _attack;
 };
 
 END_ENTITY_NAMESPACE

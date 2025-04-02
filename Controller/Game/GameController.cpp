@@ -1,5 +1,6 @@
 #include "GameController.h"
 
+#include <cmath>
 
 #include <Controller/Game/Collision/Collisioner.h>
 #include <Controller/Game/Spawn/Spawner.h>
@@ -9,9 +10,7 @@ BEGIN_CONTROLLER_NAMESPACE
 void GameController::update( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Map& map ) {
     // player.update( window, deltaTime );
 
-    // for ( auto& enemy : enemies ) {
-    //     enemy->update( window, deltaTime );
-    // }
+    updateEnemies( window, deltaTime, player, enemies );
 
     // map.update( deltaTime );
 
@@ -19,16 +18,17 @@ void GameController::update( sf::RenderWindow& window, const sf::Time& deltaTime
     Spawner::spawn( map, enemies, player );
 }
 
-    // void Enemy::update( const sf::RenderWindow& window, const sf::Time& deltaTime ) {
+void GameController::updateEnemies( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
 
-    //     sf::Vector2f direction = _player.getShape().getPosition() - _shape.getPosition();
-    //     float length = std::hypot( direction.x, direction.y );
+    for ( auto& enemy : enemies ) {
+        sf::Vector2f direction = player.getShape().getPosition() - enemy->getShape().getPosition();
+        float length = std::hypot( direction.x, direction.y );
 
-    //     if ( length > 0.0f ) {
-    //         direction /= length;
-    //         _shape.move( direction * _speed * deltaTime.asSeconds() );
-    //     }
-    // }
+        if ( length > 0.0f ) {
+            direction /= length;
+            enemy->getShape().move( direction * enemy->getStatus().getSpeed() * deltaTime.asSeconds() );
+        }
+    }
 }
 
 // void Player::update( const sf::RenderWindow& window, const sf::Time& deltaTime ) {

@@ -3,7 +3,11 @@
 BEGIN_ENTITY_NAMESPACE
 
 Character::Character() :
-    Entity() {
+    Entity(),
+    _status(),
+    _projectileStatus(),
+    _fireClock(),
+    _projectiles() {
 }
 
 Character::~Character() {

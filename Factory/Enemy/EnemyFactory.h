@@ -7,17 +7,13 @@
 
 #include <Factory/FactoryGlobals.h>
 
-#include <Entity/Enemy/Enemy.h>
-#include <Entity/Player/Player.h>
-
-using Entities::Enemy;
-using Entities::Player;
+#include <Entity/Character/Character.h>
 
 BEGIN_FACTORY_NAMESPACE
 
 class EnemyFactory {
 public:
-    static std::unique_ptr<Enemy> createEnemy( Player& player, std::string enemyType );
+    static std::unique_ptr<Entities::Character> createEnemy( std::string enemyType );
 };
 
 END_FACTORY_NAMESPACE

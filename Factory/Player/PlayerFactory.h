@@ -4,17 +4,14 @@
 
 #include <Factory/FactoryGlobals.h>
 
+#include <Entity/Character/Character.h>
 #include <Entity/Map/Map.h>
-#include <Entity/Player/Player.h>
-
-using Entities::Map;
-using Entities::Player;
 
 BEGIN_FACTORY_NAMESPACE
 
 class PlayerFactory {
 public:
-    static std::unique_ptr<Player> createPlayer( const Map& map );
+    static std::unique_ptr<Entities::Character> createPlayer( const Entities::Map& map );
 };
 
 END_FACTORY_NAMESPACE

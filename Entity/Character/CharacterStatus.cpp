@@ -3,9 +3,18 @@
 BEGIN_ENTITY_NAMESPACE
 
 CharacterStatus::CharacterStatus() :
+    _speed( 0.0 ),
     _health( 0 ),
     _gold( 0 ),
-    _speed( 0.0 ) {
+    _attack( 0 ) {
+}
+
+void CharacterStatus::setSpeed( const float speed ) {
+    _speed = speed;
+}
+
+float CharacterStatus::getSpeed() const {
+    return _speed;
 }
 
 void CharacterStatus::setHealth( const int health ) {
@@ -24,12 +33,12 @@ int CharacterStatus::getGold() const {
     return _gold;
 }
 
-void CharacterStatus::setSpeed( const float speed ) {
-    _speed = speed;
+void CharacterStatus::setAttack( const int attack ) {
+    _attack = attack;
 }
 
-float CharacterStatus::getSpeed() const {
-    return _speed;
+int CharacterStatus::getAttack() const {
+    return _attack;
 }
 
 END_ENTITY_NAMESPACE

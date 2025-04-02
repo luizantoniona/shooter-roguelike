@@ -20,11 +20,11 @@ constexpr const char* WAVES_KEY = "waves";
 
 BEGIN_FACTORY_NAMESPACE
 
-std::unique_ptr<Map> MapFactory::generateMap( const MapType& mapType ) {
+std::unique_ptr<Entities::Map> MapFactory::generateMap( const MapType& mapType ) {
     std::string filePath = "Asset/Maps/" + mapFileNameByType( mapType );
     Json::Value mapJson = JsonHelper::loadJson( filePath );
 
-    auto map = std::make_unique<Map>();
+    auto map = std::make_unique<Entities::Map>();
     map->setWidth( mapJson[ WIDTH_KEY ].asInt() * sf::VideoMode::getDesktopMode().width );
     map->setHeight( mapJson[ HEIGHT_KEY ].asInt() * sf::VideoMode::getDesktopMode().height );
     map->setWorldName( mapJson[ WORLD_KEY ].asString() );

@@ -4,15 +4,13 @@
 
 #include <Controller/ControllerGlobals.h>
 
-#include <Entity/Player/Player.h>
-
-using Entities::Player;
+#include <Entity/Character/Character.h>
 
 BEGIN_CONTROLLER_NAMESPACE
 
 class InputController {
 public:
-    void handleInput( const sf::Event& event, Player& player );
+    void handleInput( const sf::Event& event, Entities::Character& player );
 };
 
 END_CONTROLLER_NAMESPACE

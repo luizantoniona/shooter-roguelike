@@ -7,13 +7,11 @@
 #include <Entity/Map/Map.h>
 #include <Entity/Map/MapType.h>
 
-using Entities::Map;
-
 BEGIN_FACTORY_NAMESPACE
 
 class MapFactory {
 public:
-    static std::unique_ptr<Map> generateMap( const MapType& mapType );
+    static std::unique_ptr<Entities::Map> generateMap( const MapType& mapType );
 
 private:
     static std::string mapFileNameByType( const MapType& mapType );
