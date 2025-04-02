@@ -1,13 +1,13 @@
-#include "Collisioner.h"
+#include "CollisionController.h"
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void Collisioner::checkCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
+void CollisionController::checkCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
     handleProjectileCollisions( player, enemies );
     handlePlayerCollisions( player, enemies );
 }
 
-void Collisioner::handleProjectileCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
+void CollisionController::handleProjectileCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
     auto& projectiles = player.getProjectiles();
 
     for ( auto projectileIt = projectiles.begin(); projectileIt != projectiles.end(); ) {
@@ -35,7 +35,7 @@ void Collisioner::handleProjectileCollisions( Entities::Character& player, std::
     }
 }
 
-void Collisioner::handlePlayerCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
+void CollisionController::handlePlayerCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
     for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
         if ( enemyIt->get()->getShape().getGlobalBounds().intersects( player.getShape().getGlobalBounds() ) ) {
 

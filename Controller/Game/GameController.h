@@ -11,13 +11,11 @@ BEGIN_CONTROLLER_NAMESPACE
 
 class GameController {
 public:
-    void update( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Map& map );
+    static void update( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Map& map );
 
 private:
-    void updatePlayer();
-    void updateProjectiles();
-    void updateEnemies( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies );
-    void updateMap();
+    static void updatePlayer( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player );
+    static void updateMap();
 };
 
 END_CONTROLLER_NAMESPACE

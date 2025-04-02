@@ -9,7 +9,7 @@
 
 BEGIN_CONTROLLER_NAMESPACE
 
-class Spawner {
+class SpawnController {
 public:
     static void spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Character& player );
 };

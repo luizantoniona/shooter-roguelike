@@ -8,7 +8,7 @@
 
 BEGIN_CONTROLLER_NAMESPACE
 
-class Collisioner {
+class CollisionController {
 public:
     static void checkCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies );
 

@@ -1,16 +1,12 @@
-#include "Spawner.h"
+#include "SpawnController.h"
 
 #include <Factory/Enemy/EnemyFactory.h>
 #include <Map/Wave/Wave.h>
 #include <Map/Wave/WaveEnemyInfo.h>
 
-using Entities::Wave;
-using Entities::WaveEnemyInfo;
-using Factories::EnemyFactory;
-
 BEGIN_CONTROLLER_NAMESPACE
 
-void Spawner::spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Character& player ) {
+void SpawnController::spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Character& player ) {
 
     if ( enemies.size() > 0 ) {
         return;
@@ -20,11 +16,11 @@ void Spawner::spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::C
         return;
     }
 
-    Wave currrentWave = map.getWaves().front();
+    Entities::Wave currrentWave = map.getWaves().front();
 
-    for ( WaveEnemyInfo& enemyInfo : currrentWave.getEnemies() ) {
+    for ( Entities::WaveEnemyInfo& enemyInfo : currrentWave.getEnemies() ) {
 
-        std::unique_ptr<Entities::Character> enemyOriginal = EnemyFactory::createEnemy( enemyInfo.getEnemyType() );
+        std::unique_ptr<Entities::Character> enemyOriginal = Factories::EnemyFactory::createEnemy( enemyInfo.getEnemyType() );
 
         for ( int i = 0; i < enemyInfo.getAmount(); ++i ) {
 
