@@ -45,12 +45,16 @@ void Map::setStageName( const std::string& stageName ) {
     _stageName = stageName;
 }
 
-Background Map::getBackground() {
+Background& Map::getBackground() {
     return _background;
 }
 
 void Map::setBackground( const Background& background ) {
     _background = background;
+}
+
+sf::RectangleShape& Map::getShape() {
+    return _shape;
 }
 
 std::queue<Wave> Map::getWaves() {
@@ -79,10 +83,6 @@ void Map::build() {
 
 // void Map::update( const sf::Time& deltaTime ) {
 //     // _background.update( deltaTime );
-// }
-
-// void Map::render( sf::RenderWindow& window ) {
-//     window.draw( _shape );
 // }
 
 bool Map::isInsideBounds( const sf::Vector2f& position ) const {

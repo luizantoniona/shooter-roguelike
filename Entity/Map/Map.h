@@ -29,8 +29,10 @@ public:
     std::string getStageName() const;
     void setStageName( const std::string& stageName );
 
-    Background getBackground();
+    Background& getBackground();
     void setBackground( const Background& background );
+
+    sf::RectangleShape& getShape();
 
     std::queue<Wave> getWaves();
     void setWaves( const std::queue<Wave>& wave );
