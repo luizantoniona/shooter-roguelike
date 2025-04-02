@@ -20,7 +20,7 @@ constexpr const char* PROJECTILE_DAMAGE_KEY = "projectile_damage";
 
 BEGIN_FACTORY_NAMESPACE
 
-static std::unique_ptr<Entities::Character> createPlayer( const Entities::Map& map ) {
+std::unique_ptr<Entities::Character> PlayerFactory::createPlayer( const Entities::Map& map ) {
     std::string filePath = "Asset/Player/Player.json";
     Json::Value playerJson = JsonHelper::loadJson( filePath );
 
