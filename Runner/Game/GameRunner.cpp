@@ -1,5 +1,6 @@
 #include "GameRunner.h"
 
+#include <Controller/Render/RenderController.h>
 #include <Factory/Map/MapFactory.h>
 #include <Factory/Player/PlayerFactory.h>
 #include <GUI/Bar/HealthBar.h>
@@ -35,13 +36,7 @@ void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
 
 void GameRunner::render( sf::RenderWindow& window ) {
 
-    // _map->render( window );
-
-    // _player->render( window );
-
-    // for ( auto& enemy : _enemies ) {
-    //     enemy->render( window );
-    // }
+    Controllers::RenderController::render( window, *_player, _enemies, *_map );
 
     window.setView( window.getDefaultView() );
     for ( auto& component : _components ) {
