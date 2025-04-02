@@ -16,7 +16,7 @@ public:
 private:
     void updatePlayer();
     void updateProjectiles();
-    void updateEnemy();
+    void updateEnemies( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies );
     void updateMap();
 };
 

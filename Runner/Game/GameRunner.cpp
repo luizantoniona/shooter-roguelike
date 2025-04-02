@@ -29,10 +29,8 @@ void GameRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime 
 }
 
 void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
-    _updateController.update( window, deltaTime, *_player, _enemies, *_map );
-    _collisionController.checkCollisions( *_player, _enemies );
+    _gameController.update( window, deltaTime, *_player, _enemies, *_map );
     _guiController.updateComponents( *_player, _components );
-    _spawnController.checkSpawn( *_map, _enemies, *_player );
 }
 
 void GameRunner::render( sf::RenderWindow& window ) {

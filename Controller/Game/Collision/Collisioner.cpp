@@ -1,13 +1,13 @@
-#include "CollisionController.h"
+#include "Collisioner.h"
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void CollisionController::checkCollisions( Player& player, std::vector<std::unique_ptr<Enemy>>& enemies ) {
+void Collisioner::checkCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
     handleProjectileCollisions( player, enemies );
     handlePlayerCollisions( player, enemies );
 }
 
-void CollisionController::handleProjectileCollisions( Player& player, std::vector<std::unique_ptr<Enemy>>& enemies ) {
+void Collisioner::handleProjectileCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
     auto& projectiles = player.getProjectiles();
 
     for ( auto projectileIt = projectiles.begin(); projectileIt != projectiles.end(); ) {
@@ -35,14 +35,14 @@ void CollisionController::handleProjectileCollisions( Player& player, std::vecto
     }
 }
 
-void CollisionController::handlePlayerCollisions( Player& player, std::vector<std::unique_ptr<Enemy>>& enemies ) {
+void Collisioner::handlePlayerCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
     for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
         if ( enemyIt->get()->getShape().getGlobalBounds().intersects( player.getShape().getGlobalBounds() ) ) {
 
-            auto& playerStatus = player.getPlayerStatus();
+            auto& playerStatus = player.getStatus();
             int currentHealth = playerStatus.getHealth();
 
-            playerStatus.setHealth( currentHealth - enemyIt->get()->getAttack() );
+            playerStatus.setHealth( currentHealth - enemyIt->get()->getStatus().getAttack() );
 
             enemyIt = enemies.erase( enemyIt );
 

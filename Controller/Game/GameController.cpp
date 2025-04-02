@@ -1,5 +1,9 @@
 #include "GameController.h"
 
+
+#include <Controller/Game/Collision/Collisioner.h>
+#include <Controller/Game/Spawn/Spawner.h>
+
 BEGIN_CONTROLLER_NAMESPACE
 
 void GameController::update( sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Map& map ) {
@@ -10,9 +14,10 @@ void GameController::update( sf::RenderWindow& window, const sf::Time& deltaTime
     // }
 
     // map.update( deltaTime );
-}
 
-void GameController::updateEnemy() {
+    Collisioner::checkCollisions( player, enemies );
+    Spawner::spawn( map, enemies, player );
+}
 
     // void Enemy::update( const sf::RenderWindow& window, const sf::Time& deltaTime ) {
 

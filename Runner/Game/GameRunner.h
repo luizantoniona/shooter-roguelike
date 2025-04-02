@@ -4,11 +4,9 @@
 
 #include <Runner/RunnerGlobals.h>
 
-#include <Controller/Collision/CollisionController.h>
 #include <Controller/GUI/GUIController.h>
 #include <Controller/Game/GameController.h>
 #include <Controller/Input/InputController.h>
-#include <Controller/Spawn/SpawnController.h>
 #include <Entity/Character/Character.h>
 #include <Entity/Map/Map.h>
 #include <GUI/Component.h>
@@ -35,11 +33,8 @@ private:
     std::vector<std::unique_ptr<GUI::Component>> _components;
 
     Controllers::GameController _gameController;
-
-    Controllers::CollisionController _collisionController;
-    Controllers::InputController _inputController;
-    Controllers::SpawnController _spawnController;
     Controllers::GUIController _guiController;
+    Controllers::InputController _inputController;
 };
 
 END_RUNNER_NAMESPACE
