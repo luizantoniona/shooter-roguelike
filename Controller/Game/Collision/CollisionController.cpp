@@ -14,9 +14,18 @@ void CollisionController::handleProjectileCollisions( Entities::Character& playe
         bool hit = false;
 
         for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
+
             if ( enemyIt->get()->getShape().getGlobalBounds().intersects( projectileIt->getGlobalBounds() ) ) {
 
-                enemyIt = enemies.erase( enemyIt );
+                auto& enemyStatus = enemyIt->get()->getStatus();
+                enemyStatus.setHealth( enemyStatus.getHealth() - player.getProjectileStatus().getProjectileDamage() );
+
+                if ( enemyStatus.getHealth() <= 0 ) {
+                    enemyIt = enemies.erase( enemyIt );
+
+                } else {
+                    ++enemyIt;
+                }
 
                 hit = true;
                 break;
