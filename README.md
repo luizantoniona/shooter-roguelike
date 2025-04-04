@@ -5,6 +5,9 @@
 - CMake
 - SFML
 
+## Preview:
+![image](https://github.com/user-attachments/assets/b4bda629-0ff7-441f-89a9-acddbcd76f21)
+
 ## How to Install:
 
 ## How to Run:
