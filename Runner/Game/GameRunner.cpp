@@ -25,6 +25,7 @@ GameRunner::~GameRunner() {
 void GameRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape ) {
+        _runnerCallback( RunnerType::MENU );
     }
 
     _inputController.handleInput( event, *_player );

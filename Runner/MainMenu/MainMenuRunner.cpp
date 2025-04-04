@@ -6,7 +6,7 @@ BEGIN_RUNNER_NAMESPACE
 
 MainMenuRunner::MainMenuRunner() :
     Runner(),
-    _selectedOption( 0 ),
+    _selectedOption( Runners::RunnerType::NONE ),
     _buttons( {} ) {
 
     _font = Managers::FontManager::instance().font( FontType::Arial );
@@ -21,27 +21,37 @@ void MainMenuRunner::handleInput( const sf::Event& event, const sf::Time& deltaT
 
     if ( event.type == sf::Event::MouseMoved ) {
         sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
-        // _selectedOption = ScreenType::UNKNOW;
 
         for ( size_t i = 0; i < _buttons.size(); ++i ) {
             if ( _buttons[ i ].isMouseOver( mousePos ) ) {
-                // _selectedOption = static_cast<ScreenType>( i );
-                break;
+                switch ( i ) {
+                case 0:
+                    _selectedOption = Runners::RunnerType::GAME;
+                    break;
+                case 1:
+                    _selectedOption = Runners::RunnerType::UPGRADE;
+                    break;
+                default:
+                    _selectedOption = Runners::RunnerType::NONE;
+                    break;
+                }
             }
         }
     }
 
-    if ( event.type == sf::Event::MouseButtonPressed ) {
-        // if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != ScreenType::UNKNOW ) {
-        //     // _screenManager.setScreen( _selectedOption );
-        // }
+    if ( event.type == sf::Event::MouseButtonPressed && _runnerCallback ) {
+        if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != Runners::RunnerType::NONE ) {
+            _runnerCallback( _selectedOption );
+        }
     }
 }
 
 void MainMenuRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
     for ( size_t i = 0; i < _buttons.size(); ++i ) {
+
         if ( i == static_cast<int>( _selectedOption ) ) {
             _buttons[ i ].setFillColor( sf::Color::Red );
+
         } else {
             _buttons[ i ].setFillColor( sf::Color::White );
         }
@@ -49,6 +59,7 @@ void MainMenuRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime
 }
 
 void MainMenuRunner::render( sf::RenderWindow& window ) {
+    window.setView( window.getDefaultView() );
     window.draw( _title );
 
     for ( const auto& button : _buttons ) {

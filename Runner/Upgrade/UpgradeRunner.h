@@ -13,9 +13,9 @@ public:
     UpgradeRunner();
     ~UpgradeRunner();
 
-    void handleInput( const sf::Event& event, const sf::Time& deltaTime ) override = 0;
-    void update( sf::RenderWindow& window, const sf::Time& deltaTime ) override = 0;
-    void render( sf::RenderWindow& window ) override = 0;
+    void handleInput( const sf::Event& event, const sf::Time& deltaTime ) override;
+    void update( sf::RenderWindow& window, const sf::Time& deltaTime ) override;
+    void render( sf::RenderWindow& window ) override;
 };
 
 END_RUNNER_NAMESPACE
