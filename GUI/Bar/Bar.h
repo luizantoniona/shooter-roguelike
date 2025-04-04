@@ -12,7 +12,7 @@ class Bar : public Component {
 public:
     Bar( std::string componentName, float width, float height, sf::Color backgroundColor, sf::Color fillColor );
 
-    void update( sf::Time& deltaTime ) override;
+    void update( const sf::Time& deltaTime ) override;
     void render( sf::RenderWindow& window ) override;
 
     void setValue( float value );

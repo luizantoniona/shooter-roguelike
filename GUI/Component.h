@@ -13,7 +13,7 @@ public:
     Component( std::string componentName );
     virtual ~Component() = default;
 
-    virtual void update( sf::Time& deltaTime ) = 0;
+    virtual void update( const sf::Time& deltaTime ) = 0;
     virtual void render( sf::RenderWindow& window ) = 0;
 
     std::string getComponentName() const;
