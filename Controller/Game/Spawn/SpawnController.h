@@ -5,12 +5,13 @@
 #include <Controller/ControllerGlobals.h>
 
 #include <Entity/Character/Character.h>
+#include <Entity/Map/Map.h>
 
 BEGIN_CONTROLLER_NAMESPACE
 
-class InputController {
+class SpawnController {
 public:
-    void handleInput( const sf::Event& event, Entities::Character& player );
+    static void spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Character& player );
 };
 
 END_CONTROLLER_NAMESPACE

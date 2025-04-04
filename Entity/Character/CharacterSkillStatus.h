@@ -1,16 +1,12 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-
 #include <Entity/EntityGlobals.h>
-
-#include <Entity/Entity.h>
 
 BEGIN_ENTITY_NAMESPACE
 
-class Skill : public Entity {
+class CharacterSkillStatus {
 public:
-    Skill();
+    CharacterSkillStatus();
 };
 
 END_ENTITY_NAMESPACE

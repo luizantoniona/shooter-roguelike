@@ -32,11 +32,6 @@ sf::Vector2f Projectile::getDirection() const {
     return _direction;
 }
 
-void Projectile::update( const sf::RenderWindow& window, const sf::Time& deltaTime ) {
-    sf::Vector2f movement = _direction * _speed * deltaTime.asSeconds();
-    _shape.move( movement );
-}
-
 sf::FloatRect Projectile::getGlobalBounds() const {
     return _shape.getGlobalBounds();
 }

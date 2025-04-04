@@ -20,28 +20,27 @@ constexpr const char* PROJECTILE_DAMAGE_KEY = "projectile_damage";
 
 BEGIN_FACTORY_NAMESPACE
 
-std::unique_ptr<Player> PlayerFactory::createPlayer( const Map& map ) {
+std::unique_ptr<Entities::Character> PlayerFactory::createPlayer( const Entities::Map& map ) {
     std::string filePath = "Asset/Player/Player.json";
     Json::Value playerJson = JsonHelper::loadJson( filePath );
 
-    auto player = std::make_unique<Player>( map );
+    auto player = std::make_unique<Entities::Character>();
     player->getShape().setSides( 3 );
     player->getShape().setRadius( 20.f );
     player->getShape().setPosition( sf::Vector2f( map.getWidth() / 2.0, map.getHeight() / 2.0 ) );
     player->getShape().setColor( sf::Color::Green );
+    player->getShape().build();
 
     Json::Value playerStatusJson = playerJson[ PLAYER_STATUS_KEY ];
-    player->getPlayerStatus().setHealth( playerStatusJson[ HEALTH_KEY ].asInt() );
-    player->getPlayerStatus().setSpeed( playerStatusJson[ SPEED_KEY ].asInt() );
-    player->getPlayerStatus().setGold( playerStatusJson[ GOLD_KEY ].asInt() );
+    player->getStatus().setHealth( playerStatusJson[ HEALTH_KEY ].asInt() );
+    player->getStatus().setSpeed( playerStatusJson[ SPEED_KEY ].asInt() );
+    player->getStatus().setGold( playerStatusJson[ GOLD_KEY ].asInt() );
 
     Json::Value playerProjectileStatusJson = playerStatusJson[ PROJECTILE_STATUS_KEY ];
-    player->getPlayerProjectileStatus().setProjectileFireRate( playerProjectileStatusJson[ PROJECTILE_FIRE_RATE_KEY ].asFloat() );
-    player->getPlayerProjectileStatus().setProjectileSpeed( playerProjectileStatusJson[ PROJECTILE_SPEED_KEY ].asFloat() );
-    player->getPlayerProjectileStatus().setProjectileSize( playerProjectileStatusJson[ PROJECTILE_SIZE_KEY ].asFloat() );
-    player->getPlayerProjectileStatus().setProjectileDamage( playerProjectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
-
-    player->getShape().build();
+    player->getProjectileStatus().setProjectileFireRate( playerProjectileStatusJson[ PROJECTILE_FIRE_RATE_KEY ].asFloat() );
+    player->getProjectileStatus().setProjectileSpeed( playerProjectileStatusJson[ PROJECTILE_SPEED_KEY ].asFloat() );
+    player->getProjectileStatus().setProjectileSize( playerProjectileStatusJson[ PROJECTILE_SIZE_KEY ].asFloat() );
+    player->getProjectileStatus().setProjectileDamage( playerProjectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
 
     return player;
 }

@@ -1,8 +1,13 @@
 set(SOURCES
-Collision/CollisionController.cpp
+Game/GameController.cpp
+Game/Collision/CollisionController.cpp
+Game/Enemy/EnemyController.cpp
+Game/Player/PlayerController.cpp
+Game/Player/Projectile/PlayerProjectileController.cpp
+Game/Spawn/SpawnController.cpp
+GUI/GUIController.cpp
 Input/InputController.cpp
-Spawn/SpawnController.cpp
-Update/UpdateController.cpp
+Render/RenderController.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})

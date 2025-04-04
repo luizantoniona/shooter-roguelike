@@ -2,18 +2,18 @@
     "world": 1,
     "stage": 1,
     "height": 1,
-    "width": 1,
+    "width": 2,
     "background": "stars",
     "waves": [
         {
             "wave": 1,
             "enemies": [
                 {
-                    "amount": 25,
+                    "amount": 5,
                     "type": "triangle"
                 },
                 {
-                    "amount": 25,
+                    "amount": 5,
                     "type": "square"
                 }
             ]
@@ -22,11 +22,11 @@
             "wave": 2,
             "enemies": [
                 {
-                    "amount": 25,
+                    "amount": 5,
                     "type": "triangle"
                 },
                 {
-                    "amount": 25,
+                    "amount": 5,
                     "type": "square"
                 },
                 {

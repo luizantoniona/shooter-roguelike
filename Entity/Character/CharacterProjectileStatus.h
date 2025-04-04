@@ -4,9 +4,9 @@
 
 BEGIN_ENTITY_NAMESPACE
 
-class PlayerProjectileStatus {
+class CharacterProjectileStatus {
 public:
-    PlayerProjectileStatus();
+    CharacterProjectileStatus();
 
     void setProjectileDamage( const int projectileDamage );
     int getProjectileDamage() const;

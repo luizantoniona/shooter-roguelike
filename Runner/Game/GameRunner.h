@@ -4,13 +4,11 @@
 
 #include <Runner/RunnerGlobals.h>
 
-#include <Controller/Collision/CollisionController.h>
+#include <Controller/GUI/GUIController.h>
 #include <Controller/Input/InputController.h>
-#include <Controller/Spawn/SpawnController.h>
-#include <Controller/Update/UpdateController.h>
-#include <Entity/Enemy/Enemy.h>
+#include <Entity/Character/Character.h>
 #include <Entity/Map/Map.h>
-#include <Entity/Player/Player.h>
+#include <GUI/Component.h>
 #include <Runner/Runner.h>
 
 BEGIN_RUNNER_NAMESPACE
@@ -25,14 +23,16 @@ public:
     void render( sf::RenderWindow& window ) override;
 
 private:
-    std::unique_ptr<Entities::Map> _map;
-    std::unique_ptr<Entities::Player> _player;
-    std::vector<std::unique_ptr<Entities::Enemy>> _enemies;
+    void createComponents();
 
-    Controllers::CollisionController _collisionController;
+private:
+    std::unique_ptr<Entities::Map> _map;
+    std::unique_ptr<Entities::Character> _player;
+    std::vector<std::unique_ptr<Entities::Character>> _enemies;
+    std::vector<std::unique_ptr<GUI::Component>> _components;
+
+    Controllers::GUIController _guiController;
     Controllers::InputController _inputController;
-    Controllers::SpawnController _spawnController;
-    Controllers::UpdateController _updateController;
 };
 
 END_RUNNER_NAMESPACE

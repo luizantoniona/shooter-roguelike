@@ -4,13 +4,9 @@
 #include <Map/Wave/Wave.h>
 #include <Map/Wave/WaveEnemyInfo.h>
 
-using Entities::Wave;
-using Entities::WaveEnemyInfo;
-using Factories::EnemyFactory;
-
 BEGIN_CONTROLLER_NAMESPACE
 
-void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>& enemies, Player& player ) {
+void SpawnController::spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Character& player ) {
 
     if ( enemies.size() > 0 ) {
         return;
@@ -20,17 +16,17 @@ void SpawnController::checkSpawn( Map& map, std::vector<std::unique_ptr<Enemy>>&
         return;
     }
 
-    Wave currrentWave = map.getWaves().front();
+    Entities::Wave currrentWave = map.getWaves().front();
 
-    for ( WaveEnemyInfo& enemyInfo : currrentWave.getEnemies() ) {
+    for ( Entities::WaveEnemyInfo& enemyInfo : currrentWave.getEnemies() ) {
 
-        std::unique_ptr<Enemy> enemyOriginal = EnemyFactory::createEnemy( player, enemyInfo.getEnemyType() );
+        std::unique_ptr<Entities::Character> enemyOriginal = Factories::EnemyFactory::createEnemy( enemyInfo.getEnemyType() );
 
         for ( int i = 0; i < enemyInfo.getAmount(); ++i ) {
 
             sf::Vector2f position( std::rand() % map.getWidth(), std::rand() % map.getHeight() );
             if ( map.isInsideBounds( position ) ) {
-                std::unique_ptr<Enemy> enemy = enemyOriginal->clone();
+                std::unique_ptr<Entities::Character> enemy = enemyOriginal->clone();
                 enemy->getShape().setPosition( position );
                 enemies.emplace_back( std::move( enemy ) );
             }

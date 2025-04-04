@@ -1,13 +1,12 @@
 set(SOURCES
-BaseEntity.cpp
-Enemy/Enemy.cpp
+Entity.cpp
+Character/Character.cpp
+Character/CharacterStatus.cpp
+Character/CharacterProjectileStatus.cpp
 Map/Map.cpp
 Map/Background/Background.cpp
 Map/Wave/Wave.cpp
 Map/Wave/WaveEnemyInfo.cpp
-Player/Player.cpp
-Player/PlayerProjectileStatus.cpp
-Player/PlayerStatus.cpp
 Projectile/Projectile.cpp
 Skill/Skill.cpp
 )
