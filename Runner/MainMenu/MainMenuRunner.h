@@ -5,9 +5,8 @@
 #include <Runner/RunnerGlobals.h>
 
 #include <GUI/Button/Button.h>
+#include <GUI/Label/Label.h>
 #include <Runner/Runner.h>
-
-using GUI::Button;
 
 BEGIN_RUNNER_NAMESPACE
 
@@ -24,10 +23,11 @@ private:
     void initMenu();
     bool isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos );
 
-    Runners::RunnerType _selectedOption;
     sf::Font _font;
-    sf::Text _title;
-    std::vector<Button> _buttons;
+    GUI::Label _labelTitle;
+    std::vector<GUI::Button> _buttons;
+
+    Runners::RunnerType _selectedOption;
 };
 
 END_RUNNER_NAMESPACE

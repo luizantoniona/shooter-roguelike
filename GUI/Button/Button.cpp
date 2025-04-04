@@ -2,38 +2,76 @@
 
 BEGIN_GUI_NAMESPACE
 
-Button::Button( const sf::String& text, const sf::Font& font, unsigned int characterSize, sf::Color color, sf::Color fillColor ) {
-    _text.setFont( font );
-    _text.setString( text );
-    _text.setCharacterSize( characterSize );
-    _text.setFillColor( color );
+Button::Button() :
+    Component( "Button" ), _hovered( false ) {
+    _background.setSize( { 150.f, 50.f } );
+    _defaultColor = sf::Color::Blue;
+    _hoverColor = sf::Color( 100, 100, 255 );
+    _background.setFillColor( _defaultColor );
 
-    _shape.setSize( sf::Vector2f( _text.getLocalBounds().width, _text.getLocalBounds().height ) );
-    _shape.setFillColor( fillColor );
+    _text.setCharacterSize( 20 );
+    _text.setFillColor( sf::Color::White );
+}
+
+void Button::setText( const std::string& text ) {
+    _text.setString( text );
+    sf::FloatRect bounds = _text.getLocalBounds();
+    _text.setOrigin( bounds.left + bounds.width / 2, bounds.top + bounds.height / 2 );
+    _text.setPosition( _background.getPosition() + _background.getSize() / 2.f );
+}
+
+void Button::setFont( const sf::Font& font ) {
+    _text.setFont( font );
+}
+
+void Button::setCharacterSize( unsigned int size ) {
+    _text.setCharacterSize( size );
+}
+
+void Button::setSize( float width, float height ) {
+    _background.setSize( { width, height } );
+    _text.setPosition( _background.getPosition() + _background.getSize() / 2.f );
 }
 
 void Button::setPosition( float x, float y ) {
-    _text.setPosition( x, y );
-    _shape.setPosition( x, y );
+    _background.setPosition( x, y );
+    _text.setPosition( _background.getPosition() + _background.getSize() / 2.f );
 }
 
-void Button::setFillColor( const sf::Color& textColor, const sf::Color& rectangleColor ) {
+void Button::setColors( sf::Color textColor, sf::Color backgroundColor, sf::Color hoverColor ) {
     _text.setFillColor( textColor );
-    _shape.setFillColor( rectangleColor );
+    _defaultColor = backgroundColor;
+    _hoverColor = hoverColor;
+    _background.setFillColor( _defaultColor );
 }
 
-void Button::setText( const sf::String& text ) {
-    _text.setString( text );
-    _shape.setSize( sf::Vector2f( _text.getLocalBounds().width, _text.getLocalBounds().height ) );
+void Button::setCallback( std::function<void()> callback ) {
+    _callback = std::move( callback );
 }
 
-bool Button::isMouseOver( const sf::Vector2f& mousePos ) const {
-    return _text.getGlobalBounds().contains( mousePos );
+void Button::update( const sf::Time& /*deltaTime*/ ) {
 }
 
-void Button::render( sf::RenderWindow& window ) const {
-    window.draw( _shape );
+void Button::render( sf::RenderWindow& window ) {
+    window.draw( _background );
     window.draw( _text );
+}
+
+void Button::handleEvent( const sf::Event& event, const sf::Vector2f& mousePosition ) {
+    bool contains = _background.getGlobalBounds().contains( mousePosition );
+    if ( contains && !_hovered ) {
+        _hovered = true;
+        _background.setFillColor( _hoverColor );
+
+    } else if ( !contains && _hovered ) {
+        _hovered = false;
+        _background.setFillColor( _defaultColor );
+    }
+
+    if ( contains && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left ) {
+        if ( _callback )
+            _callback();
+    }
 }
 
 END_GUI_NAMESPACE

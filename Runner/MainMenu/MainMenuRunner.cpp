@@ -6,8 +6,8 @@ BEGIN_RUNNER_NAMESPACE
 
 MainMenuRunner::MainMenuRunner() :
     Runner(),
-    _selectedOption( Runners::RunnerType::NONE ),
-    _buttons( {} ) {
+    _buttons( {} ),
+    _selectedOption( Runners::RunnerType::NONE ) {
 
     _font = Managers::FontManager::instance().font( FontType::Arial );
 
@@ -20,23 +20,7 @@ MainMenuRunner::~MainMenuRunner() {
 void MainMenuRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::MouseMoved ) {
-        sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
-
-        for ( size_t i = 0; i < _buttons.size(); ++i ) {
-            if ( _buttons[ i ].isMouseOver( mousePos ) ) {
-                switch ( i ) {
-                case 0:
-                    _selectedOption = Runners::RunnerType::GAME;
-                    break;
-                case 1:
-                    _selectedOption = Runners::RunnerType::UPGRADE;
-                    break;
-                default:
-                    _selectedOption = Runners::RunnerType::NONE;
-                    break;
-                }
-            }
-        }
+        
     }
 
     if ( event.type == sf::Event::MouseButtonPressed && _runnerCallback ) {
@@ -47,38 +31,35 @@ void MainMenuRunner::handleInput( const sf::Event& event, const sf::Time& deltaT
 }
 
 void MainMenuRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
-    for ( size_t i = 0; i < _buttons.size(); ++i ) {
-
-        if ( i == static_cast<int>( _selectedOption ) ) {
-            _buttons[ i ].setFillColor( sf::Color::Red );
-
-        } else {
-            _buttons[ i ].setFillColor( sf::Color::White );
-        }
-    }
 }
 
 void MainMenuRunner::render( sf::RenderWindow& window ) {
     window.setView( window.getDefaultView() );
-    window.draw( _title );
+    _labelTitle.render( window );
 
     for ( const auto& button : _buttons ) {
-        button.render( window );
+        // button.render( window );
     }
 }
 
 void MainMenuRunner::initMenu() {
 
-    _title.setFont( _font );
-    _title.setString( "Roguelike" );
-    _title.setCharacterSize( 50 );
-    _title.setFillColor( sf::Color::White );
-    _title.setPosition( 200, 100 );
+    _labelTitle.setFont( _font );
+    _labelTitle.setText( "Roguelike" );
+    _labelTitle.setCharacterSize( 50 );
+    _labelTitle.setColor( sf::Color::White );
+    _labelTitle.setOutline( sf::Color::Green, 2 );
+    _labelTitle.setPosition( 200, 100 );
+    _labelTitle.setAlignment( GUI::Label::Alignment::Center, 800 );
+    _labelTitle.setStyle( sf::Text::Bold );
+    _labelTitle.setFade( 1.0f );
 
     std::vector<std::string> options = { "Start Game", "Upgrades", "Settings", "Exit" };
 
     for ( size_t i = 0; i < options.size(); ++i ) {
-        Button button( options[ i ], _font, 30 );
+        GUI::Button button;
+        button.setFont( _font );
+        button.setCharacterSize( 24 );
         button.setPosition( 250, 200 + i * 50 );
         _buttons.push_back( button );
     }

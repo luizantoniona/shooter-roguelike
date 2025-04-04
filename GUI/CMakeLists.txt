@@ -4,6 +4,7 @@ Bar/Bar.cpp
 Bar/HealthBar.cpp
 Button/Button.cpp
 Label/Label.cpp
+Layout/Panel.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})
