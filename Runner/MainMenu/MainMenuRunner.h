@@ -22,9 +22,9 @@ public:
 
 private:
     void initMenu();
-    bool isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos );
 
     sf::Font _font;
+    GUI::Background _background;
     GUI::Label _labelTitle;
     std::vector<GUI::Button> _buttons;
 

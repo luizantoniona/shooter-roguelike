@@ -27,10 +27,14 @@ void MainMenuRunner::handleInput( sf::RenderWindow& window, const sf::Event& eve
 }
 
 void MainMenuRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
+    _background.update( deltaTime );
 }
 
 void MainMenuRunner::render( sf::RenderWindow& window ) {
     window.setView( window.getDefaultView() );
+
+    _background.render( window );
+
     _labelTitle.render( window );
 
     for ( const auto& button : _buttons ) {

@@ -46,7 +46,7 @@ void MainManager::processEvents( sf::Time& deltaTime ) {
         if ( event.type == sf::Event::Closed ) {
             _window.close();
         }
-        _currentRunner->handleInput( event, deltaTime );
+        _currentRunner->handleInput( _window, event, deltaTime );
     }
 }
 
