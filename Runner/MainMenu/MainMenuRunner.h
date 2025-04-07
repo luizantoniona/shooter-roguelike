@@ -4,6 +4,7 @@
 
 #include <Runner/RunnerGlobals.h>
 
+#include <GUI/Background/Background.h>
 #include <GUI/Button/Button.h>
 #include <GUI/Label/Label.h>
 #include <Runner/Runner.h>
@@ -15,7 +16,7 @@ public:
     MainMenuRunner();
     ~MainMenuRunner();
 
-    void handleInput( const sf::Event& event, const sf::Time& deltaTime ) override;
+    void handleInput( sf::RenderWindow& window, const sf::Event& event, const sf::Time& deltaTime ) override;
     void update( sf::RenderWindow& window, const sf::Time& deltaTime ) override;
     void render( sf::RenderWindow& window ) override;
 

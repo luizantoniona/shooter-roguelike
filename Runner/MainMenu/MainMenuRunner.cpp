@@ -17,16 +17,12 @@ MainMenuRunner::MainMenuRunner() :
 MainMenuRunner::~MainMenuRunner() {
 }
 
-void MainMenuRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
+void MainMenuRunner::handleInput( sf::RenderWindow& window, const sf::Event& event, const sf::Time& deltaTime ) {
 
-    if ( event.type == sf::Event::MouseMoved ) {
-        
-    }
+    sf::Vector2f mousePos = window.mapPixelToCoords( sf::Mouse::getPosition( window ) );
 
-    if ( event.type == sf::Event::MouseButtonPressed && _runnerCallback ) {
-        if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != Runners::RunnerType::NONE ) {
-            _runnerCallback( _selectedOption );
-        }
+    for ( auto& button : _buttons ) {
+        button.handleEvent( event, mousePos );
     }
 }
 
