@@ -5,8 +5,8 @@ BEGIN_GUI_NAMESPACE
 Button::Button() :
     Component( "Button" ), _hovered( false ) {
     _background.setSize( { 150.f, 50.f } );
-    _defaultColor = sf::Color::Blue;
-    _hoverColor = sf::Color( 100, 100, 255 );
+    _defaultColor = sf::Color::Transparent;
+    _hoverColor = sf::Color::Red;
     _background.setFillColor( _defaultColor );
 
     _text.setCharacterSize( 20 );

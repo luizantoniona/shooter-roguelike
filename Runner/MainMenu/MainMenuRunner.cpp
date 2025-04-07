@@ -37,8 +37,8 @@ void MainMenuRunner::render( sf::RenderWindow& window ) {
 
     _labelTitle.render( window );
 
-    for ( const auto& button : _buttons ) {
-        // button.render( window );
+    for ( auto& button : _buttons ) {
+        button.render( window );
     }
 }
 
@@ -54,19 +54,15 @@ void MainMenuRunner::initMenu() {
     _labelTitle.setStyle( sf::Text::Bold );
     _labelTitle.setFade( 1.0f );
 
-    std::vector<std::string> options = { "Start Game", "Upgrades", "Settings", "Exit" };
+    GUI::Button buttonStartGame;
+    buttonStartGame.setFont( _font );
+    buttonStartGame.setCharacterSize( 24 );
+    buttonStartGame.setText( "Start Game" );
+    buttonStartGame.setPosition( 250, 200 );
+    buttonStartGame.setCallback( [ this ]() { _runnerCallback( RunnerType::GAME ); } );
+    _buttons.push_back( buttonStartGame );
 
-    for ( size_t i = 0; i < options.size(); ++i ) {
-        GUI::Button button;
-        button.setFont( _font );
-        button.setCharacterSize( 24 );
-        button.setPosition( 250, 200 + i * 50 );
-        _buttons.push_back( button );
-    }
-}
-
-bool MainMenuRunner::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
-    return option.getGlobalBounds().contains( mousePos );
+    // std::vector<std::string> options = { "Start Game", "Upgrades", "Settings", "Exit" };
 }
 
 END_RUNNER_NAMESPACE
