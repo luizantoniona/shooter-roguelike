@@ -1,5 +1,7 @@
 #include "MainMenuRunner.h"
 
+#include <SFML/Graphics.hpp>
+
 #include <Manager/Asset/FontManager.h>
 
 BEGIN_RUNNER_NAMESPACE
@@ -44,25 +46,45 @@ void MainMenuRunner::render( sf::RenderWindow& window ) {
 
 void MainMenuRunner::initMenu() {
 
+    sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
+
+    sf::Vector2f windowSize( static_cast<float>( desktopMode.width ), static_cast<float>( desktopMode.height ) );
+
+    float centerX = windowSize.x / 2.f;
+
     _labelTitle.setFont( _font );
     _labelTitle.setText( "Roguelike" );
-    _labelTitle.setCharacterSize( 50 );
+    _labelTitle.setCharacterSize( windowSize.y * 0.05f );
     _labelTitle.setColor( sf::Color::White );
     _labelTitle.setOutline( sf::Color::Green, 2 );
-    _labelTitle.setPosition( 200, 100 );
-    _labelTitle.setAlignment( GUI::Label::Alignment::Center, 800 );
+    _labelTitle.setPosition( centerX, windowSize.y * 0.15f );
+    _labelTitle.setAlignment( GUI::Label::Alignment::Center, windowSize.x );
     _labelTitle.setStyle( sf::Text::Bold );
     _labelTitle.setFade( 1.0f );
 
-    GUI::Button buttonStartGame;
-    buttonStartGame.setFont( _font );
-    buttonStartGame.setCharacterSize( 24 );
-    buttonStartGame.setText( "Start Game" );
-    buttonStartGame.setPosition( 250, 200 );
-    buttonStartGame.setCallback( [ this ]() { _runnerCallback( RunnerType::GAME ); } );
-    _buttons.push_back( buttonStartGame );
+    float buttonWidth = windowSize.x * 0.25f;
+    float buttonHeight = windowSize.y * 0.05f;
+    float startY = windowSize.y * 0.35f;
+    float spacing = windowSize.y * 0.08f;
 
-    // std::vector<std::string> options = { "Start Game", "Upgrades", "Settings", "Exit" };
+    std::vector<std::pair<std::string, RunnerType>> options = {
+        { "Start Game", RunnerType::GAME },
+        { "Upgrades", RunnerType::UPGRADE },
+        { "Settings", RunnerType::SETTINGS },
+        { "Exit", RunnerType::EXIT },
+    };
+
+    for ( std::size_t i = 0; i < options.size(); ++i ) {
+        GUI::Button button;
+        button.setFont( _font );
+        button.setCharacterSize( windowSize.y * 0.03f );
+        button.setText( options[ i ].first );
+        button.setPosition( centerX - ( buttonWidth / 2.0f ), startY + i * spacing );
+        button.setSize( buttonWidth, buttonHeight );
+        // button.setAlignment( GUI::Button::Alignment::Center );
+        button.setCallback( [ this, type = options[ i ].second ]() { _runnerCallback( type ); } );
+        _buttons.push_back( button );
+    }
 }
 
 END_RUNNER_NAMESPACE
