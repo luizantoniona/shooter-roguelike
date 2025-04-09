@@ -20,9 +20,10 @@ MainManager::MainManager() :
     _view.reset( sf::FloatRect( 0, 0, float( windowWidth ), float( windowHeight ) ) );
     _window.setView( _view );
 
-    _gameRunner = new GameRunner();
-    _mainMenuRunner = new MainMenuRunner();
-    _currentRunner = dynamic_cast<Runner*>( _gameRunner );
+    _mainMenuRunner = std::make_unique<Runners::MainMenuRunner>();
+    _mainMenuRunner->setRunnerCallback( this->runnersCallback() );
+
+    _currentRunner = std::move( _mainMenuRunner );
 }
 
 void MainManager::run() {
@@ -45,7 +46,7 @@ void MainManager::processEvents( sf::Time& deltaTime ) {
         if ( event.type == sf::Event::Closed ) {
             _window.close();
         }
-        _currentRunner->handleInput( event, deltaTime );
+        _currentRunner->handleInput( _window, event, deltaTime );
     }
 }
 
@@ -62,6 +63,31 @@ void MainManager::render() {
 void MainManager::adjustView() {
     _view.setCenter( float( sf::VideoMode::getDesktopMode().width ) / 2, float( sf::VideoMode::getDesktopMode().height ) / 2 );
     _window.setView( _view );
+}
+
+std::function<void( Runners::RunnerType )> MainManager::runnersCallback() {
+    return [ this ]( Runners::RunnerType runnerType ) {
+        std::unique_ptr<Runners::Runner> oldRunner = std::move( _currentRunner );
+
+        switch ( runnerType ) {
+        case Runners::RunnerType::GAME:
+            _gameRunner = std::make_unique<Runners::GameRunner>();
+            _gameRunner->setRunnerCallback( this->runnersCallback() );
+            _currentRunner = std::move( _gameRunner );
+            break;
+        case Runners::RunnerType::UPGRADE:
+            _upgradeRunner = std::make_unique<Runners::UpgradeRunner>();
+            _upgradeRunner->setRunnerCallback( this->runnersCallback() );
+            _currentRunner = std::move( _upgradeRunner );
+            break;
+        case Runners::RunnerType::MENU:
+        default:
+            _mainMenuRunner = std::make_unique<Runners::MainMenuRunner>();
+            _mainMenuRunner->setRunnerCallback( this->runnersCallback() );
+            _currentRunner = std::move( _mainMenuRunner );
+            break;
+        }
+    };
 }
 
 END_MANAGER_NAMESPACE

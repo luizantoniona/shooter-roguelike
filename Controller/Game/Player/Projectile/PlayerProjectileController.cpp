@@ -23,7 +23,9 @@ void PlayerProjectileController::updatePlayerProjectile( const sf::Time& deltaTi
 
 void PlayerProjectileController::firePlayerProjectile( const sf::Vector2f& target, const sf::Time& deltaTime, Entities::Character& player ) {
 
-    if ( player.getFireClock().getElapsedTime().asSeconds() >= player.getProjectileStatus().getProjectileFireRate() ) {
+    auto& projectileStatus = player.getProjectileStatus();
+
+    if ( player.getFireClock().getElapsedTime().asSeconds() >= ( 1.0f / projectileStatus.getProjectileFireRate() ) ) {
         sf::Vector2f direction = target - player.getShape().getPosition();
         float length = std::hypot( direction.x, direction.y );
 
@@ -32,11 +34,11 @@ void PlayerProjectileController::firePlayerProjectile( const sf::Vector2f& targe
 
             Entities::Projectile projectile;
             projectile.setDirection( direction );
-            projectile.setSpeed( player.getProjectileStatus().getProjectileSpeed() );
-            projectile.setDamage( player.getProjectileStatus().getProjectileDamage() );
+            projectile.setSpeed( projectileStatus.getProjectileSpeed() );
+            projectile.setDamage( projectileStatus.getProjectileDamage() );
             projectile.getShape().setSides( 3 );
             projectile.getShape().setPosition( player.getShape().getPosition() );
-            projectile.getShape().setRadius( player.getProjectileStatus().getProjectileSize() );
+            projectile.getShape().setRadius( projectileStatus.getProjectileSize() );
             projectile.getShape().build();
 
             player.getProjectiles().emplace_back( projectile );

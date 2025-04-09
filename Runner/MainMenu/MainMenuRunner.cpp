@@ -1,13 +1,15 @@
 #include "MainMenuRunner.h"
 
+#include <SFML/Graphics.hpp>
+
 #include <Manager/Asset/FontManager.h>
 
 BEGIN_RUNNER_NAMESPACE
 
 MainMenuRunner::MainMenuRunner() :
     Runner(),
-    _selectedOption( 0 ),
-    _buttons( {} ) {
+    _buttons( {} ),
+    _selectedOption( Runners::RunnerType::NONE ) {
 
     _font = Managers::FontManager::instance().font( FontType::Arial );
 
@@ -17,64 +19,72 @@ MainMenuRunner::MainMenuRunner() :
 MainMenuRunner::~MainMenuRunner() {
 }
 
-void MainMenuRunner::handleInput( const sf::Event& event, const sf::Time& deltaTime ) {
+void MainMenuRunner::handleInput( sf::RenderWindow& window, const sf::Event& event, const sf::Time& deltaTime ) {
 
-    if ( event.type == sf::Event::MouseMoved ) {
-        sf::Vector2f mousePos( event.mouseMove.x, event.mouseMove.y );
-        // _selectedOption = ScreenType::UNKNOW;
+    sf::Vector2f mousePos = window.mapPixelToCoords( sf::Mouse::getPosition( window ) );
 
-        for ( size_t i = 0; i < _buttons.size(); ++i ) {
-            if ( _buttons[ i ].isMouseOver( mousePos ) ) {
-                // _selectedOption = static_cast<ScreenType>( i );
-                break;
-            }
-        }
-    }
-
-    if ( event.type == sf::Event::MouseButtonPressed ) {
-        // if ( event.mouseButton.button == sf::Mouse::Left && _selectedOption != ScreenType::UNKNOW ) {
-        //     // _screenManager.setScreen( _selectedOption );
-        // }
+    for ( auto& button : _buttons ) {
+        button.handleEvent( event, mousePos );
     }
 }
 
 void MainMenuRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
-    for ( size_t i = 0; i < _buttons.size(); ++i ) {
-        if ( i == static_cast<int>( _selectedOption ) ) {
-            _buttons[ i ].setFillColor( sf::Color::Red );
-        } else {
-            _buttons[ i ].setFillColor( sf::Color::White );
-        }
-    }
+    _background.update( deltaTime );
 }
 
 void MainMenuRunner::render( sf::RenderWindow& window ) {
-    window.draw( _title );
+    window.setView( window.getDefaultView() );
 
-    for ( const auto& button : _buttons ) {
+    _background.render( window );
+
+    _labelTitle.render( window );
+
+    for ( auto& button : _buttons ) {
         button.render( window );
     }
 }
 
 void MainMenuRunner::initMenu() {
 
-    _title.setFont( _font );
-    _title.setString( "Roguelike" );
-    _title.setCharacterSize( 50 );
-    _title.setFillColor( sf::Color::White );
-    _title.setPosition( 200, 100 );
+    sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 
-    std::vector<std::string> options = { "Start Game", "Upgrades", "Settings", "Exit" };
+    sf::Vector2f windowSize( static_cast<float>( desktopMode.width ), static_cast<float>( desktopMode.height ) );
 
-    for ( size_t i = 0; i < options.size(); ++i ) {
-        Button button( options[ i ], _font, 30 );
-        button.setPosition( 250, 200 + i * 50 );
+    float centerX = windowSize.x / 2.f;
+
+    _labelTitle.setFont( _font );
+    _labelTitle.setText( "Roguelike" );
+    _labelTitle.setCharacterSize( windowSize.y * 0.05f );
+    _labelTitle.setColor( sf::Color::White );
+    _labelTitle.setOutline( sf::Color::Green, 2 );
+    _labelTitle.setPosition( centerX, windowSize.y * 0.15f );
+    _labelTitle.setAlignment( GUI::Label::Alignment::Center, windowSize.x );
+    _labelTitle.setStyle( sf::Text::Bold );
+    _labelTitle.setFade( 1.0f );
+
+    float buttonWidth = windowSize.x * 0.25f;
+    float buttonHeight = windowSize.y * 0.05f;
+    float startY = windowSize.y * 0.35f;
+    float spacing = windowSize.y * 0.08f;
+
+    std::vector<std::pair<std::string, RunnerType>> options = {
+        { "Start Game", RunnerType::GAME },
+        { "Upgrades", RunnerType::UPGRADE },
+        { "Settings", RunnerType::SETTINGS },
+        { "Exit", RunnerType::EXIT },
+    };
+
+    for ( std::size_t i = 0; i < options.size(); ++i ) {
+        GUI::Button button;
+        button.setFont( _font );
+        button.setCharacterSize( windowSize.y * 0.03f );
+        button.setText( options[ i ].first );
+        button.setPosition( centerX - ( buttonWidth / 2.0f ), startY + i * spacing );
+        button.setSize( buttonWidth, buttonHeight );
+        // button.setAlignment( GUI::Button::Alignment::Center );
+        button.setCallback( [ this, type = options[ i ].second ]() { _runnerCallback( type ); } );
         _buttons.push_back( button );
     }
-}
-
-bool MainMenuRunner::isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos ) {
-    return option.getGlobalBounds().contains( mousePos );
 }
 
 END_RUNNER_NAMESPACE

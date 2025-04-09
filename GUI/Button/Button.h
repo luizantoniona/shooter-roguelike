@@ -4,22 +4,33 @@
 
 #include <GUI/GUIGlobals.h>
 
+#include <GUI/Component.h>
+
 BEGIN_GUI_NAMESPACE
 
-class Button {
+class Button : public Component {
 public:
-    Button( const sf::String& text, const sf::Font& font, unsigned int characterSize, sf::Color color = sf::Color::White, sf::Color fillColor = sf::Color::Transparent );
+    Button();
 
+    void setText( const std::string& text );
+    void setFont( const sf::Font& font );
+    void setCharacterSize( unsigned int size );
+    void setSize( float width, float height );
     void setPosition( float x, float y );
-    void setFillColor( const sf::Color& textColor, const sf::Color& rectangleColor = sf::Color::Transparent );
-    void setText( const sf::String& text );
+    void setColors( sf::Color textColor, sf::Color backgroundColor, sf::Color hoverColor );
+    void setCallback( std::function<void()> callback );
 
-    bool isMouseOver( const sf::Vector2f& mousePos ) const;
-    void render( sf::RenderWindow& window ) const;
+    void update( const sf::Time& deltaTime ) override;
+    void render( sf::RenderWindow& window ) override;
+    void handleEvent( const sf::Event& event, const sf::Vector2f& mousePosition );
 
 private:
+    sf::RectangleShape _background;
     sf::Text _text;
-    sf::RectangleShape _shape;
+    sf::Color _defaultColor;
+    sf::Color _hoverColor;
+    std::function<void()> _callback;
+    bool _hovered;
 };
 
 END_GUI_NAMESPACE

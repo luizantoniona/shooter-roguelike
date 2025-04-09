@@ -10,11 +10,11 @@
             "enemies": [
                 {
                     "amount": 5,
-                    "type": "triangle"
+                    "type": "triangle-1"
                 },
                 {
                     "amount": 5,
-                    "type": "square"
+                    "type": "square-1"
                 }
             ]
         },
@@ -23,15 +23,15 @@
             "enemies": [
                 {
                     "amount": 5,
-                    "type": "triangle"
+                    "type": "triangle-1"
                 },
                 {
                     "amount": 5,
-                    "type": "square"
+                    "type": "square-1"
                 },
                 {
                     "amount": 1,
-                    "type": "icosagon"
+                    "type": "icosagon-1"
                 }
             ]
         }

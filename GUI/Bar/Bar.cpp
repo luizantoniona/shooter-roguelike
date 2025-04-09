@@ -16,7 +16,7 @@ Bar::Bar( std::string componentName, float width, float height, sf::Color backgr
     _fill.setFillColor( fillColor );
 }
 
-void Bar::update( sf::Time& deltaTime ) {
+void Bar::update( const sf::Time& deltaTime ) {
 }
 
 void Bar::render( sf::RenderWindow& window ) {

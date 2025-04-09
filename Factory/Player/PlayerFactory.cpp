@@ -7,7 +7,7 @@
 using Helper::JsonHelper;
 
 namespace {
-constexpr const char* PLAYER_STATUS_KEY = "player_status";
+constexpr const char* ATTACK_KEY = "attack";
 constexpr const char* HEALTH_KEY = "health";
 constexpr const char* SPEED_KEY = "speed";
 constexpr const char* GOLD_KEY = "gold";
@@ -25,22 +25,26 @@ std::unique_ptr<Entities::Character> PlayerFactory::createPlayer( const Entities
     Json::Value playerJson = JsonHelper::loadJson( filePath );
 
     auto player = std::make_unique<Entities::Character>();
-    player->getShape().setSides( 3 );
-    player->getShape().setRadius( 20.f );
-    player->getShape().setPosition( sf::Vector2f( map.getWidth() / 2.0, map.getHeight() / 2.0 ) );
-    player->getShape().setColor( sf::Color::Green );
-    player->getShape().build();
 
-    Json::Value playerStatusJson = playerJson[ PLAYER_STATUS_KEY ];
-    player->getStatus().setHealth( playerStatusJson[ HEALTH_KEY ].asInt() );
-    player->getStatus().setSpeed( playerStatusJson[ SPEED_KEY ].asInt() );
-    player->getStatus().setGold( playerStatusJson[ GOLD_KEY ].asInt() );
+    auto& playerShape = player->getShape();
+    playerShape.setSides( 3 );
+    playerShape.setRadius( 20.f );
+    playerShape.setPosition( sf::Vector2f( map.getWidth() / 2.0, map.getHeight() / 2.0 ) );
+    playerShape.setColor( sf::Color::Green );
+    playerShape.build();
 
-    Json::Value playerProjectileStatusJson = playerStatusJson[ PROJECTILE_STATUS_KEY ];
-    player->getProjectileStatus().setProjectileFireRate( playerProjectileStatusJson[ PROJECTILE_FIRE_RATE_KEY ].asFloat() );
-    player->getProjectileStatus().setProjectileSpeed( playerProjectileStatusJson[ PROJECTILE_SPEED_KEY ].asFloat() );
-    player->getProjectileStatus().setProjectileSize( playerProjectileStatusJson[ PROJECTILE_SIZE_KEY ].asFloat() );
-    player->getProjectileStatus().setProjectileDamage( playerProjectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
+    auto& playerStatus = player->getStatus();
+    playerStatus.setAttack( playerJson[ ATTACK_KEY ].asInt() );
+    playerStatus.setHealth( playerJson[ HEALTH_KEY ].asInt() );
+    playerStatus.setSpeed( playerJson[ SPEED_KEY ].asInt() );
+    playerStatus.setGold( playerJson[ GOLD_KEY ].asInt() );
+
+    Json::Value playerProjectileStatusJson = playerJson[ PROJECTILE_STATUS_KEY ];
+    auto& playerProjectileStatus = player->getProjectileStatus();
+    playerProjectileStatus.setProjectileFireRate( playerProjectileStatusJson[ PROJECTILE_FIRE_RATE_KEY ].asFloat() );
+    playerProjectileStatus.setProjectileSpeed( playerProjectileStatusJson[ PROJECTILE_SPEED_KEY ].asFloat() );
+    playerProjectileStatus.setProjectileSize( playerProjectileStatusJson[ PROJECTILE_SIZE_KEY ].asFloat() );
+    playerProjectileStatus.setProjectileDamage( playerProjectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
 
     return player;
 }

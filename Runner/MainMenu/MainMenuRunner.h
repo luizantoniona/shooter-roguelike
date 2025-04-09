@@ -4,10 +4,10 @@
 
 #include <Runner/RunnerGlobals.h>
 
+#include <GUI/Background/Background.h>
 #include <GUI/Button/Button.h>
+#include <GUI/Label/Label.h>
 #include <Runner/Runner.h>
-
-using GUI::Button;
 
 BEGIN_RUNNER_NAMESPACE
 
@@ -16,18 +16,19 @@ public:
     MainMenuRunner();
     ~MainMenuRunner();
 
-    void handleInput( const sf::Event& event, const sf::Time& deltaTime ) override;
+    void handleInput( sf::RenderWindow& window, const sf::Event& event, const sf::Time& deltaTime ) override;
     void update( sf::RenderWindow& window, const sf::Time& deltaTime ) override;
     void render( sf::RenderWindow& window ) override;
 
 private:
     void initMenu();
-    bool isMouseOverOption( const sf::Text& option, const sf::Vector2f& mousePos );
 
-    int _selectedOption;
     sf::Font _font;
-    sf::Text _title;
-    std::vector<Button> _buttons;
+    GUI::Background _background;
+    GUI::Label _labelTitle;
+    std::vector<GUI::Button> _buttons;
+
+    Runners::RunnerType _selectedOption;
 };
 
 END_RUNNER_NAMESPACE

@@ -7,12 +7,8 @@
 #include <Runner/Game/GameRunner.h>
 #include <Runner/MainMenu/MainMenuRunner.h>
 #include <Runner/Runner.h>
+#include <Runner/RunnerType.h>
 #include <Runner/Upgrade/UpgradeRunner.h>
-
-using Runners::GameRunner;
-using Runners::MainMenuRunner;
-using Runners::Runner;
-using Runners::UpgradeRunner;
 
 BEGIN_MANAGER_NAMESPACE
 
@@ -27,14 +23,16 @@ public:
     void render();
     void adjustView();
 
+    std::function<void( Runners::RunnerType )> runnersCallback();
+
 private:
     sf::RenderWindow _window;
     sf::View _view;
 
-    Runner* _currentRunner;
-    GameRunner* _gameRunner;
-    MainMenuRunner* _mainMenuRunner;
-    UpgradeRunner* _upgradeRunner;
+    std::unique_ptr<Runners::Runner> _currentRunner;
+    std::unique_ptr<Runners::GameRunner> _gameRunner;
+    std::unique_ptr<Runners::UpgradeRunner> _upgradeRunner;
+    std::unique_ptr<Runners::MainMenuRunner> _mainMenuRunner;
 };
 
 END_MANAGER_NAMESPACE
