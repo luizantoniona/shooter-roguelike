@@ -15,7 +15,7 @@ public:
     Entity() = default;
     virtual ~Entity() = default;
 
-    void render( sf::RenderWindow& window );
+    virtual void render( sf::RenderWindow& window );
 
     RegularShape& getShape();
 
