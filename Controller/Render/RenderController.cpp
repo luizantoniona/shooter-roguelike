@@ -6,14 +6,20 @@ void RenderController::render( sf::RenderWindow& window, Entities::Character& pl
 
     window.draw( map.getShape() );
 
-    player.getShape().render( window );
+    player.render( window );
 
     for ( auto& playerProjectile : player.getProjectiles() ) {
-        playerProjectile.getShape().render( window );
+        playerProjectile.render( window );
     }
 
     for ( auto& enemy : enemies ) {
-        enemy->getShape().render( window );
+        enemy->render( window );
+
+        // TODO: Uncomment when projectiles are implemented
+
+        // for ( auto& enemyProjectile : enemy->getProjectiles() ) {
+        //     enemyProjectile.render( window );
+        // }
     }
 }
 
