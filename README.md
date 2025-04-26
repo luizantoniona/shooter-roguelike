@@ -1,18 +1,30 @@
-## Shoot 'Em Up Roguelike Game
+# Shoot 'Em Up Roguelike Game
 
-## Stack 
-- C++
-- CMake
-- SFML
+## 🛠 Stack
+- **C++**
+- **CMake**
+- **SFML**
 
-## Preview:
-![image](https://github.com/user-attachments/assets/b4bda629-0ff7-441f-89a9-acddbcd76f21)
+## 🎮 Preview
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b4bda629-0ff7-441f-89a9-acddbcd76f21" alt="Game preview" />
+</p>
 
-## How to Install:
+## 🚀 How to Install
+```bash
+git clone https://github.com/luizantoniona/roguelike.git
+cd roguelike
+mkdir build
+cd build
+cmake --build .
+```
 
-## How to Run:
+## ▶️ How to Run:
+```bash
+./roguelike
+```
 
----
+## 📊 Status
 
 <p align="center">
   <img alt="GitHub count language" src="https://img.shields.io/github/languages/count/luizantoniona/roguelike" />
