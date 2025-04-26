@@ -20,18 +20,20 @@ void PlayerController::updatePlayerPosition( const sf::RenderWindow& window, con
 
     auto& playerShape = player.getShape();
 
+    const float playerSpeed = player.getStatus().getSpeed();
+
     sf::Vector2f movement( 0, 0 );
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) ) {
-        movement.y -= 100 * deltaTime.asSeconds();
+        movement.y -= playerSpeed * deltaTime.asSeconds();
     }
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::S ) ) {
-        movement.y += 100 * deltaTime.asSeconds();
+        movement.y += playerSpeed * deltaTime.asSeconds();
     }
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A ) ) {
-        movement.x -= 100 * deltaTime.asSeconds();
+        movement.x -= playerSpeed * deltaTime.asSeconds();
     }
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D ) ) {
-        movement.x += 100 * deltaTime.asSeconds();
+        movement.x += playerSpeed * deltaTime.asSeconds();
     }
     playerShape.move( movement );
 

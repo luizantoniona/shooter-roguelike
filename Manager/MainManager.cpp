@@ -13,6 +13,8 @@ MainManager::MainManager() :
     _mainMenuRunner( nullptr ),
     _upgradeRunner( nullptr ) {
 
+    _window.setFramerateLimit( 60 );
+
     sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
     int windowWidth = desktopMode.width;
     int windowHeight = desktopMode.height;
@@ -75,11 +77,17 @@ std::function<void( Runners::RunnerType )> MainManager::runnersCallback() {
             _gameRunner->setRunnerCallback( this->runnersCallback() );
             _currentRunner = std::move( _gameRunner );
             break;
+
         case Runners::RunnerType::UPGRADE:
             _upgradeRunner = std::make_unique<Runners::UpgradeRunner>();
             _upgradeRunner->setRunnerCallback( this->runnersCallback() );
             _currentRunner = std::move( _upgradeRunner );
             break;
+
+        case Runners::RunnerType::EXIT:
+            _window.close();
+            break;
+
         case Runners::RunnerType::MENU:
         default:
             _mainMenuRunner = std::make_unique<Runners::MainMenuRunner>();

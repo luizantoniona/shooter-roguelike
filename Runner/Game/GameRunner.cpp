@@ -15,8 +15,6 @@ GameRunner::GameRunner() :
     _enemies() {
 
     createComponents();
-
-    std::srand( std::time( nullptr ) );
 }
 
 GameRunner::~GameRunner() {
