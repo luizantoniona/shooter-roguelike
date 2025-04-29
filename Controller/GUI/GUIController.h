@@ -2,18 +2,18 @@
 
 #include <Controller/ControllerGlobals.h>
 
-#include <Entity/Character/Character.h>
-#include <GUI/Bar/HealthBar.h>
-#include <GUI/Component.h>
+#include <Renderables/Components/Bar/HealthBar.h>
+#include <Renderables/Components/Component.h>
+#include <Renderables/Entities/Character/Character.h>
 
 BEGIN_CONTROLLER_NAMESPACE
 
 class GUIController {
 public:
-    void updateComponents( Entities::Character& player, std::vector<std::unique_ptr<GUI::Component>>& components );
+    void updateComponents( Entities::Character& player, std::vector<std::unique_ptr<Components::Component>>& components );
 
 private:
-    void updateHealthBar( GUI::HealthBar& healthBar, Entities::Character& player );
+    void updateHealthBar( Components::HealthBar& healthBar, Entities::Character& player );
 };
 
 END_CONTROLLER_NAMESPACE

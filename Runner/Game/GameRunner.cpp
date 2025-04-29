@@ -4,7 +4,7 @@
 #include <Controller/Render/RenderController.h>
 #include <Factory/Map/MapFactory.h>
 #include <Factory/Player/PlayerFactory.h>
-#include <GUI/Bar/HealthBar.h>
+#include <Renderables/Components/Bar/HealthBar.h>
 
 BEGIN_RUNNER_NAMESPACE
 
@@ -49,7 +49,7 @@ void GameRunner::render( sf::RenderWindow& window ) {
 }
 
 void GameRunner::createComponents() {
-    _components.emplace_back( std::make_unique<GUI::HealthBar>( 100.0f ) );
+    _components.emplace_back( std::make_unique<Components::HealthBar>( 100.0f ) );
 }
 
 END_RUNNER_NAMESPACE

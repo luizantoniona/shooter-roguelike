@@ -7,7 +7,7 @@
 
 #include <Factory/FactoryGlobals.h>
 
-#include <Entity/Character/Character.h>
+#include <Renderables/Entities/Character/Character.h>
 
 BEGIN_FACTORY_NAMESPACE
 

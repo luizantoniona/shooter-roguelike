@@ -4,9 +4,9 @@
 
 #include <Runner/RunnerGlobals.h>
 
-#include <GUI/Background/Background.h>
-#include <GUI/Button/Button.h>
-#include <GUI/Label/Label.h>
+#include <Renderables/Components/Background/Background.h>
+#include <Renderables/Components/Button/Button.h>
+#include <Renderables/Components/Label/Label.h>
 #include <Runner/Runner.h>
 
 BEGIN_RUNNER_NAMESPACE
@@ -24,9 +24,9 @@ private:
     void initMenu();
 
     sf::Font _font;
-    GUI::Background _background;
-    GUI::Label _labelTitle;
-    std::vector<GUI::Button> _buttons;
+    Components::Background _background;
+    Components::Label _labelTitle;
+    std::vector<Components::Button> _buttons;
 
     Runners::RunnerType _selectedOption;
 };

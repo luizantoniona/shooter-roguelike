@@ -1,0 +1,2 @@
+#define BEGIN_RENDERABLES_NAMESPACE namespace Renderables {
+#define END_RENDERABLES_NAMESPACE }

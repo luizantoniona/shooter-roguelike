@@ -3,7 +3,6 @@
 #include <map>
 #include <string>
 
-#include <Factory/Map/Background/BackgroundFactory.h>
 #include <Factory/Map/Wave/WaveFactory.h>
 #include <Helper/Json/JsonHelper.h>
 
@@ -29,7 +28,6 @@ std::unique_ptr<Entities::Map> MapFactory::generateMap( const MapType& mapType )
     map->setHeight( mapJson[ HEIGHT_KEY ].asInt() * sf::VideoMode::getDesktopMode().height );
     map->setWorldName( mapJson[ WORLD_KEY ].asString() );
     map->setStageName( mapJson[ STAGE_KEY ].asString() );
-    map->setBackground( BackgroundFactory::generateBackground( mapJson[ BACKGROUND_KEY ] ) );
     map->setWaves( WaveFactory::generateWaves( mapJson[ WAVES_KEY ] ) );
     map->build();
 

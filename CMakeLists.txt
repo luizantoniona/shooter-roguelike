@@ -19,7 +19,7 @@ add_subdirectory(Controller)
 add_subdirectory(Factory)
 add_subdirectory(Helper)
 add_subdirectory(Manager)
-add_subdirectory(Renderable)
+add_subdirectory(Renderables)
 add_subdirectory(Runner)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}")

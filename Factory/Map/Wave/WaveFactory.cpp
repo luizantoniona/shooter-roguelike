@@ -1,6 +1,6 @@
 #include "WaveFactory.h"
 
-#include <Entity/Map/Wave/WaveEnemyInfo.h>
+#include <Renderables/Entities/Map/Wave/WaveEnemyInfo.h>
 
 using Entities::WaveEnemyInfo;
 

@@ -4,8 +4,8 @@
 
 #include <Factory/FactoryGlobals.h>
 
-#include <Entity/Map/Map.h>
-#include <Entity/Map/MapType.h>
+#include <Renderables/Entities/Map/Map.h>
+#include <Renderables/Entities/Map/MapType.h>
 
 BEGIN_FACTORY_NAMESPACE
 
