@@ -8,6 +8,7 @@ ColumnLimit: 0
 DerivePointerAlignment: false
 EmptyLineBeforeAccessModifier: Always
 IndentWidth: 4
+InsertNewlineAtEOF: true
 PointerAlignment: Left
 SpacesInParentheses: true
 SpacesInSquareBrackets: true
