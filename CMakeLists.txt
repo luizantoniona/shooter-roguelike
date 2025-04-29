@@ -16,13 +16,11 @@ sfml-window
 target_link_libraries(${PROJECT_NAME} ${EXTERNAL_LIBRARIES})
 
 add_subdirectory(Controller)
-add_subdirectory(Entity)
 add_subdirectory(Factory)
-add_subdirectory(GUI)
 add_subdirectory(Helper)
 add_subdirectory(Manager)
+add_subdirectory(Renderable)
 add_subdirectory(Runner)
-add_subdirectory(Shape)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 
