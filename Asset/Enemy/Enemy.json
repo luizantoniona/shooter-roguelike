@@ -1,26 +1,41 @@
 {
     "triangle-1": {
-        "health": 10,
-        "speed": 80.0,
-        "attack": 10,
-        "sides": 3,
-        "size": 10.0,
-        "color": "red"
+        "status": {
+            "health": 1,
+            "speed": 80.0,
+            "attack": 10,
+            "gold": 1
+        },
+        "shape": {
+            "color": "red",
+            "sides": 3,
+            "size": 10.0
+        }
     },
     "square-1": {
-        "health": 20,
-        "speed": 50.0,
-        "attack": 10,
-        "sides": 4,
-        "size": 10.0,
-        "color": "blue"
+        "status": {
+            "health": 2,
+            "speed": 50.0,
+            "attack": 10,
+            "gold": 2
+        },
+        "shape": {
+            "color": "blue",
+            "sides": 4,
+            "size": 10.0
+        }
     },
     "icosagon-1": {
-        "health": 150,
-        "speed": 35.0,
-        "attack": 100,
-        "sides": 20,
-        "size": 50.0,
-        "color": "white"
+        "status": {
+            "health": 15,
+            "speed": 35.0,
+            "attack": 100,
+            "gold": 15
+        },
+        "shape": {
+            "color": "white",
+            "sides": 20,
+            "size": 50.0
+        }
     }
 }

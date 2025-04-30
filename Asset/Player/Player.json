@@ -1,12 +1,19 @@
 {
-    "attack": 1,
-    "health": 100,
-    "speed": 100.0,
-    "gold": 0,
+    "status": {
+        "health": 100,
+        "speed": 100.0,
+        "attack": 1,
+        "gold": 0
+    },
     "projectile_status": {
         "projectile_fire_rate": 1.0,
         "projectile_speed": 100.0,
         "projectile_size": 5.0,
         "projectile_damage": 1
+    },
+    "shape": {
+        "color": "blue",
+        "sides": 4,
+        "size": 10.0
     }
 }
