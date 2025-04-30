@@ -5,8 +5,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Renderables/Entities/EntitiesGlobals.h>
-#include <Renderables/Entities/Map/Wave/Wave.h>
+#include <Entities/EntitiesGlobals.h>
+
+#include <Entities/Map/Wave/Wave.h>
 
 BEGIN_ENTITIES_NAMESPACE
 

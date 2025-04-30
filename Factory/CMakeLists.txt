@@ -1,8 +1,8 @@
 set(SOURCES
-Enemy/EnemyFactory.cpp
+Character/CharacterFactory.cpp
 Map/Wave/WaveFactory.cpp
 Map/MapFactory.cpp
-Player/PlayerFactory.cpp
+Shape/ShapeFactory.cpp
 )
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})
