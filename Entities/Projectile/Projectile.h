@@ -21,8 +21,6 @@ public:
     void setDirection( sf::Vector2f direction );
     sf::Vector2f getDirection() const;
 
-    sf::FloatRect getGlobalBounds() const;
-
     bool isOutOfBounds( int width, int height ) const;
 
 private:

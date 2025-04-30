@@ -4,8 +4,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Renderables/Entities/Shapes/Regular/RegularShape.h>
 #include <Renderables/Renderable.h>
+#include <Renderables/Shapes/Shape.h>
 
 BEGIN_ENTITIES_NAMESPACE
 
@@ -14,12 +14,13 @@ public:
     Entity() = default;
     virtual ~Entity() = default;
 
+    void setShape( std::unique_ptr<Shapes::Shape> shape );
+    Shapes::Shape* getShape();
+
     void render( sf::RenderWindow& window ) override;
 
-    Shapes::RegularShape& getShape();
-
 protected:
-    Shapes::RegularShape _shape;
+    std::unique_ptr<Shapes::Shape> _shape;
 };
 
 END_ENTITIES_NAMESPACE

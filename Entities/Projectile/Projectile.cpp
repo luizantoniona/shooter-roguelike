@@ -32,12 +32,8 @@ sf::Vector2f Projectile::getDirection() const {
     return _direction;
 }
 
-sf::FloatRect Projectile::getGlobalBounds() const {
-    return _shape.getGlobalBounds();
-}
-
 bool Projectile::isOutOfBounds( int width, int height ) const {
-    sf::Vector2f position = _shape.getPosition();
+    sf::Vector2f position = _shape->getPosition();
     return position.x < 0 || position.x > width || position.y < 0 || position.y > height;
 }
 

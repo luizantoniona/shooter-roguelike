@@ -29,7 +29,7 @@ sf::Clock& Character::getFireClock() {
     return _fireClock;
 }
 
-std::vector<Projectile>& Character::getProjectiles() {
+std::vector<std::unique_ptr<Projectile>>& Character::getProjectiles() {
     return _projectiles;
 }
 

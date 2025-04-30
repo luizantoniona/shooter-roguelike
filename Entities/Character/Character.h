@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Renderables/Entities/EntitiesGlobals.h>
+#include <Entities/EntitiesGlobals.h>
 
-#include <Renderables/Entities/Entity.h>
-#include <Renderables/Entities/Map/Map.h>
-#include <Renderables/Entities/Projectile/Projectile.h>
+#include <Entities/Entity.h>
+#include <Entities/Map/Map.h>
+#include <Entities/Projectile/Projectile.h>
 
 #include "CharacterProjectileStatus.h"
 #include "CharacterStatus.h"
@@ -23,7 +23,7 @@ public:
 
     sf::Clock& getFireClock();
 
-    std::vector<Projectile>& getProjectiles();
+    std::vector<std::unique_ptr<Projectile>>& getProjectiles();
 
 private:
     // Status
@@ -32,7 +32,7 @@ private:
 
     // Projectiles
     sf::Clock _fireClock;
-    std::vector<Projectile> _projectiles;
+    std::vector<std::unique_ptr<Projectile>> _projectiles;
 
     // Skills
 };
