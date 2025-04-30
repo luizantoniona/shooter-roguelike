@@ -3,7 +3,7 @@ Renderable.cpp
 )
 
 add_subdirectory(Components)
-add_subdirectory(Entities)
+add_subdirectory(Shapes)
 
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})
 
