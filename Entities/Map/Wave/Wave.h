@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include <Renderables/Entities/EntitiesGlobals.h>
+#include <Entities/EntitiesGlobals.h>
 
-#include <Renderables/Entities/Map/Wave/WaveEnemyInfo.h>
+#include <Entities/Map/Wave/WaveEnemyInfo.h>
 
 BEGIN_ENTITIES_NAMESPACE
 

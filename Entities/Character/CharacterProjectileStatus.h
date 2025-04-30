@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Renderables/Entities/EntitiesGlobals.h>
+#include <Entities/EntitiesGlobals.h>
 
 BEGIN_ENTITIES_NAMESPACE
 

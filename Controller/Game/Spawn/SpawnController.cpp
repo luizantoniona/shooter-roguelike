@@ -1,8 +1,8 @@
 #include "SpawnController.h"
 
+#include <Entities/Map/Wave/Wave.h>
+#include <Entities/Map/Wave/WaveEnemyInfo.h>
 #include <Factory/Enemy/EnemyFactory.h>
-#include <Renderables/Entities/Map/Wave/Wave.h>
-#include <Renderables/Entities/Map/Wave/WaveEnemyInfo.h>
 
 BEGIN_CONTROLLER_NAMESPACE
 

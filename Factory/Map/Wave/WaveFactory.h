@@ -5,7 +5,7 @@
 
 #include <Factory/FactoryGlobals.h>
 
-#include <Renderables/Entities/Map/Wave/Wave.h>
+#include <Entities/Map/Wave/Wave.h>
 
 using Entities::Wave;
 

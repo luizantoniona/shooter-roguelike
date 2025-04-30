@@ -6,9 +6,9 @@
 
 #include <Controller/GUI/GUIController.h>
 #include <Controller/Input/InputController.h>
+#include <Entities/Character/Character.h>
+#include <Entities/Map/Map.h>
 #include <Renderables/Components/Component.h>
-#include <Renderables/Entities/Character/Character.h>
-#include <Renderables/Entities/Map/Map.h>
 #include <Runner/Runner.h>
 
 BEGIN_RUNNER_NAMESPACE

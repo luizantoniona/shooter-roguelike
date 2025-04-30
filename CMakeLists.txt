@@ -16,6 +16,7 @@ sfml-window
 target_link_libraries(${PROJECT_NAME} ${EXTERNAL_LIBRARIES})
 
 add_subdirectory(Controller)
+add_subdirectory(Entities)
 add_subdirectory(Factory)
 add_subdirectory(Helper)
 add_subdirectory(Manager)

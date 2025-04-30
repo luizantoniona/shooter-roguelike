@@ -2,9 +2,9 @@
 
 #include <Controller/ControllerGlobals.h>
 
+#include <Entities/Character/Character.h>
 #include <Renderables/Components/Bar/HealthBar.h>
 #include <Renderables/Components/Component.h>
-#include <Renderables/Entities/Character/Character.h>
 
 BEGIN_CONTROLLER_NAMESPACE
 
