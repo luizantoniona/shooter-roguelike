@@ -6,7 +6,7 @@ BEGIN_SHAPES_NAMESPACE
 
 RegularShape::RegularShape() :
     _sides( 0 ),
-    _radius( 0 ),
+    _size( 0 ),
     _shape() {
 }
 
@@ -18,12 +18,12 @@ int RegularShape::getSides() const {
     return _sides;
 }
 
-void RegularShape::setRadius( float radius ) {
-    _radius = radius;
+void RegularShape::setSize( float size ) {
+    _size = size;
 }
 
-float RegularShape::getRadius() const {
-    return _radius;
+float RegularShape::getSize() const {
+    return _size;
 }
 
 void RegularShape::setPosition( const sf::Vector2f& position ) {
@@ -68,7 +68,7 @@ void RegularShape::build() {
     float angleStep = 2 * 3.14159f / _sides;
     for ( int i = 0; i < _sides; ++i ) {
         float angle = i * angleStep - 3.14159f / 2;
-        sf::Vector2f point( _radius * cos( angle ), _radius * sin( angle ) );
+        sf::Vector2f point( _size * cos( angle ), _size * sin( angle ) );
         _shape.setPoint( i, point );
     }
 }
