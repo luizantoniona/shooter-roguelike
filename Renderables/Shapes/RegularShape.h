@@ -12,27 +12,50 @@ class RegularShape : public Shape {
 public:
     RegularShape();
 
+    void setFillColor( const sf::Color& color ) override;
+    sf::Color getFillColor() const override;
+
+    void setOutlineColor( const sf::Color& color ) override;
+    sf::Color getOutlineColor() const override;
+
+    void setOutlineThickness( float thickness ) override;
+    float getOutlineThickness() const override;
+
     void setPosition( const sf::Vector2f& position ) override;
     sf::Vector2f getPosition() const override;
 
-    void setColor( const sf::Color& color ) override;
-    sf::Color getColor() const override;
+    void setRotation( float angle ) override;
+    float getRotation() const override;
 
-    void setSize( const float size ) override;
-    float getSize() const override;
+    void setScale( const sf::Vector2f& factors ) override;
+    sf::Vector2f getScale() const override;
 
-    void setSides( int sides ) override;
-    int getSides() const override;
+    void setOrigin( const sf::Vector2f& origin ) override;
+    sf::Vector2f getOrigin() const override;
 
-    void setOutlineColor( const sf::Color& color );
-    void setOutlineThickness( float thickness );
+    std::size_t getPointCount() const override;
+
+    sf::Vector2f getGeometricCenter() const override;
+
+    sf::FloatRect getLocalBounds() const override;
 
     sf::FloatRect getGlobalBounds() const override;
 
-    void build() override;
+    void move( const sf::Vector2f& offset ) override;
+
+    void rotate( float angle ) override;
+
+    void scale( const sf::Vector2f& factor ) override;
 
     void render( sf::RenderWindow& window ) override;
-    void move( const sf::Vector2f& offset ) override;
+
+    void build() override;
+
+    void setSides( int sides );
+    int getSides() const;
+
+    void setSize( float size );
+    float getSize() const;
 
 private:
     int _sides;
