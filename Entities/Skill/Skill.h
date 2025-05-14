@@ -2,9 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Renderables/Entities/EntitiesGlobals.h>
+#include <Entities/EntitiesGlobals.h>
 
-#include <Renderables/Entities/Entity.h>
+#include <Entities/Entity.h>
 
 BEGIN_ENTITIES_NAMESPACE
 

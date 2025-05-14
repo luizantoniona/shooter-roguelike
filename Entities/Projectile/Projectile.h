@@ -12,6 +12,8 @@ class Projectile : public Entity {
 public:
     Projectile();
 
+    std::unique_ptr<Projectile> clone() const;
+
     void setDamage( float damage );
     float getDamage() const;
 

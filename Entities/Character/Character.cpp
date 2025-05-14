@@ -10,6 +10,18 @@ Character::Character() :
     _projectiles() {
 }
 
+Character::Character( const Character& other ) :
+    Entity( other ),
+    _status( other._status ),
+    _projectileStatus( other._projectileStatus ),
+    _fireClock() // resetar o clock, ou copiar se necessário
+{
+    _projectiles.reserve( other._projectiles.size() );
+    for ( const auto& projectile : other._projectiles ) {
+        _projectiles.push_back( projectile->clone() );
+    }
+}
+
 Character::~Character() {
 }
 

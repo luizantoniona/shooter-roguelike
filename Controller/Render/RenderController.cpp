@@ -9,7 +9,7 @@ void RenderController::render( sf::RenderWindow& window, Entities::Character& pl
     player.render( window );
 
     for ( auto& playerProjectile : player.getProjectiles() ) {
-        playerProjectile.render( window );
+        playerProjectile->render( window );
     }
 
     for ( auto& enemy : enemies ) {

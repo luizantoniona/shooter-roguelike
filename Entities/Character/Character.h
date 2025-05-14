@@ -14,6 +14,7 @@ BEGIN_ENTITIES_NAMESPACE
 class Character : public Entity {
 public:
     Character();
+    Character( const Character& other );
     ~Character();
 
     std::unique_ptr<Character> clone() const;

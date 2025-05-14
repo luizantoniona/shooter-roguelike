@@ -2,6 +2,12 @@
 
 BEGIN_ENTITIES_NAMESPACE
 
+Entity::Entity( const Entity& other ) {
+    if ( other._shape ) {
+        _shape = other._shape->clone();
+    }
+}
+
 void Entity::setShape( std::unique_ptr<Shapes::Shape> shape ) {
     _shape = std::move( shape );
 }

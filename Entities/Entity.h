@@ -12,6 +12,7 @@ BEGIN_ENTITIES_NAMESPACE
 class Entity : public Renderables::Renderable {
 public:
     Entity() = default;
+    Entity( const Entity& other );
     virtual ~Entity() = default;
 
     void setShape( std::unique_ptr<Shapes::Shape> shape );

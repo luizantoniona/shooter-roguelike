@@ -48,8 +48,8 @@ std::unique_ptr<Entities::Character> CharacterFactory::createCharacter( const bo
     characterProjectileStatus.setProjectileDamage( projectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
 
     Json::Value shapeJson = characterJson[ SHAPE_KEY ];
-    auto characterShape = character->getShape();
-    // Factories::ShapeFactory::createShape();
+    auto shape = Factories::ShapeFactory::createCharacterShape( shapeJson );
+    character->setShape( std::move( shape ) );
 
     return character;
 }

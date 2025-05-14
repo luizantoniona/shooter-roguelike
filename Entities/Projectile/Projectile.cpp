@@ -8,6 +8,10 @@ Projectile::Projectile() :
     _direction() {
 }
 
+std::unique_ptr<Projectile> Projectile::clone() const {
+    return std::make_unique<Projectile>( *this );
+}
+
 void Projectile::setDamage( float damage ) {
     _damage = damage;
 }

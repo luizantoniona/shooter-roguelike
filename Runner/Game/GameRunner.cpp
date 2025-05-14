@@ -2,8 +2,8 @@
 
 #include <Controller/Game/GameController.h>
 #include <Controller/Render/RenderController.h>
+#include <Factory/Character/CharacterFactory.h>
 #include <Factory/Map/MapFactory.h>
-#include <Factory/Player/PlayerFactory.h>
 #include <Renderables/Components/Bar/HealthBar.h>
 
 BEGIN_RUNNER_NAMESPACE
@@ -11,8 +11,10 @@ BEGIN_RUNNER_NAMESPACE
 GameRunner::GameRunner() :
     Runner(),
     _map( Factories::MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
-    _player( Factories::PlayerFactory::createPlayer( *_map ) ),
+    _player( Factories::CharacterFactory::createCharacter( true ) ),
     _enemies() {
+
+    _player->getShape()->setPosition( sf::Vector2f( _map->getHeight() / 2, _map->getWidth() / 2 ) );
 
     createComponents();
 }
@@ -44,7 +46,7 @@ void GameRunner::render( sf::RenderWindow& window ) {
     }
 
     sf::View view = window.getView();
-    view.setCenter( _player->getShape().getPosition() );
+    view.setCenter( _player->getShape()->getPosition() );
     window.setView( view );
 }
 
