@@ -10,6 +10,10 @@ RegularShape::RegularShape() :
     _shape() {
 }
 
+std::unique_ptr<Shape> RegularShape::clone() const {
+    return std::make_unique<RegularShape>( *this );
+}
+
 void RegularShape::setFillColor( const sf::Color& color ) {
     _shape.setFillColor( color );
 }

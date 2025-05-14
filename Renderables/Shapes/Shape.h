@@ -9,6 +9,7 @@ BEGIN_SHAPES_NAMESPACE
 class Shape {
 public:
     virtual ~Shape() = default;
+    virtual std::unique_ptr<Shape> clone() const = 0;
 
     virtual void setFillColor( const sf::Color& color ) = 0;
     virtual sf::Color getFillColor() const = 0;

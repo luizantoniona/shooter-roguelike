@@ -6,6 +6,10 @@ CircleShape::CircleShape() :
     _shape() {
 }
 
+std::unique_ptr<Shape> CircleShape::clone() const {
+    return std::make_unique<CircleShape>( *this );
+}
+
 void CircleShape::setFillColor( const sf::Color& color ) {
     _shape.setFillColor( color );
 }

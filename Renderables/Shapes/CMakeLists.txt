@@ -1,5 +1,7 @@
 set(SOURCES
 Shape.cpp
+CircleShape.cpp
+RectangleShape.cpp
 RegularShape.cpp
 )
 

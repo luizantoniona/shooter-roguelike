@@ -11,6 +11,7 @@ BEGIN_SHAPES_NAMESPACE
 class CircleShape : public Shape {
 public:
     CircleShape();
+    std::unique_ptr<Shape> clone() const override;
 
     void setFillColor( const sf::Color& color ) override;
     sf::Color getFillColor() const override;

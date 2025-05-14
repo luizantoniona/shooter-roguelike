@@ -6,6 +6,10 @@ RectangleShape::RectangleShape() :
     _shape() {
 }
 
+std::unique_ptr<Shape> RectangleShape::clone() const {
+    return std::make_unique<RectangleShape>( *this );
+}
+
 void RectangleShape::setFillColor( const sf::Color& color ) {
     _shape.setFillColor( color );
 }
