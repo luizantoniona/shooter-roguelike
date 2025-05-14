@@ -18,7 +18,7 @@ void PlayerController::updatePlayer( sf::RenderWindow& window, const sf::Time& d
 
 void PlayerController::updatePlayerPosition( const sf::RenderWindow& window, const sf::Time& deltaTime, Entities::Character& player, Entities::Map& map ) {
 
-    auto& playerShape = player.getShape();
+    auto playerShape = player.getShape();
 
     const float playerSpeed = player.getStatus().getSpeed();
 
@@ -35,9 +35,9 @@ void PlayerController::updatePlayerPosition( const sf::RenderWindow& window, con
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D ) ) {
         movement.x += playerSpeed * deltaTime.asSeconds();
     }
-    playerShape.move( movement );
+    playerShape->move( movement );
 
-    sf::Vector2f position = playerShape.getPosition();
+    sf::Vector2f position = playerShape->getPosition();
     if ( !map.isInsideBounds( position ) ) {
         if ( position.x < 0 ) {
             position.x = 0;
@@ -52,7 +52,7 @@ void PlayerController::updatePlayerPosition( const sf::RenderWindow& window, con
             position.y = map.getHeight();
         }
 
-        playerShape.setPosition( position );
+        playerShape->setPosition( position );
     }
 }
 

@@ -4,7 +4,7 @@
 
 #include <Controller/ControllerGlobals.h>
 
-#include <Entity/Character/Character.h>
+#include <Entities/Character/Character.h>
 
 BEGIN_CONTROLLER_NAMESPACE
 

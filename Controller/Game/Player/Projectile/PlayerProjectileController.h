@@ -2,8 +2,8 @@
 
 #include <Controller/ControllerGlobals.h>
 
-#include <Entity/Character/Character.h>
-#include <Entity/Map/Map.h>
+#include <Entities/Character/Character.h>
+#include <Entities/Map/Map.h>
 
 BEGIN_CONTROLLER_NAMESPACE
 

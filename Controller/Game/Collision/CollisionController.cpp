@@ -15,7 +15,7 @@ void CollisionController::handleProjectileCollisions( Entities::Character& playe
 
         for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
 
-            if ( enemyIt->get()->getShape().getGlobalBounds().intersects( projectileIt->getGlobalBounds() ) ) {
+            if ( enemyIt->get()->getShape()->getGlobalBounds().intersects( projectileIt->get()->getShape()->getGlobalBounds() ) ) {
 
                 auto& enemyStatus = enemyIt->get()->getStatus();
                 enemyStatus.setHealth( enemyStatus.getHealth() - player.getProjectileStatus().getProjectileDamage() );
@@ -46,7 +46,7 @@ void CollisionController::handleProjectileCollisions( Entities::Character& playe
 
 void CollisionController::handlePlayerCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
     for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
-        if ( enemyIt->get()->getShape().getGlobalBounds().intersects( player.getShape().getGlobalBounds() ) ) {
+        if ( enemyIt->get()->getShape()->getGlobalBounds().intersects( player.getShape()->getGlobalBounds() ) ) {
 
             auto& playerStatus = player.getStatus();
             int currentHealth = playerStatus.getHealth();

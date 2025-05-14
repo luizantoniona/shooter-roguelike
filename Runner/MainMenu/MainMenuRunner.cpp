@@ -58,7 +58,7 @@ void MainMenuRunner::initMenu() {
     _labelTitle.setColor( sf::Color::White );
     _labelTitle.setOutline( sf::Color::Green, 2 );
     _labelTitle.setPosition( centerX, windowSize.y * 0.15f );
-    _labelTitle.setAlignment( GUI::Label::Alignment::Center, windowSize.x );
+    _labelTitle.setAlignment( Components::Label::Alignment::Center, windowSize.x );
     _labelTitle.setStyle( sf::Text::Bold );
     _labelTitle.setFade( 1.0f );
 
@@ -75,13 +75,13 @@ void MainMenuRunner::initMenu() {
     };
 
     for ( std::size_t i = 0; i < options.size(); ++i ) {
-        GUI::Button button;
+        Components::Button button;
         button.setFont( _font );
         button.setCharacterSize( windowSize.y * 0.03f );
         button.setText( options[ i ].first );
         button.setPosition( centerX - ( buttonWidth / 2.0f ), startY + i * spacing );
         button.setSize( buttonWidth, buttonHeight );
-        // button.setAlignment( GUI::Button::Alignment::Center );
+        // button.setAlignment( Components::Button::Alignment::Center );
         button.setCallback( [ this, type = options[ i ].second ]() { _runnerCallback( type ); } );
         _buttons.push_back( button );
     }

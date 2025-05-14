@@ -6,9 +6,9 @@
 
 #include <Controller/GUI/GUIController.h>
 #include <Controller/Input/InputController.h>
-#include <Entity/Character/Character.h>
-#include <Entity/Map/Map.h>
-#include <GUI/Component.h>
+#include <Entities/Character/Character.h>
+#include <Entities/Map/Map.h>
+#include <Renderables/Components/Component.h>
 #include <Runner/Runner.h>
 
 BEGIN_RUNNER_NAMESPACE
@@ -29,7 +29,7 @@ private:
     std::unique_ptr<Entities::Map> _map;
     std::unique_ptr<Entities::Character> _player;
     std::vector<std::unique_ptr<Entities::Character>> _enemies;
-    std::vector<std::unique_ptr<GUI::Component>> _components;
+    std::vector<std::unique_ptr<Components::Component>> _components;
 
     Controllers::GUIController _guiController;
     Controllers::InputController _inputController;

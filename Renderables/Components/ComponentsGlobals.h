@@ -1,0 +1,2 @@
+#define BEGIN_COMPONENTS_NAMESPACE namespace Components {
+#define END_COMPONENTS_NAMESPACE }
