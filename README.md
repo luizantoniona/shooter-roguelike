@@ -1,4 +1,4 @@
-# Shoot 'Em Up Roguelike Game
+# Shooter Roguelike
 
 ## 🛠 Stack
 - **C++**
