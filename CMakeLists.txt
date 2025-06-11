@@ -15,13 +15,27 @@ sfml-window
 
 target_link_libraries(${PROJECT_NAME} ${EXTERNAL_LIBRARIES})
 
-add_subdirectory(Controller)
-add_subdirectory(Entities)
-add_subdirectory(Factory)
-add_subdirectory(Helper)
-add_subdirectory(Manager)
-add_subdirectory(Renderables)
-add_subdirectory(Runner)
+file(GLOB_RECURSE SOURCES
+    Controller/*.cpp
+    Entities/*.cpp
+    Factory/*.cpp
+    Helper/*.cpp
+    Manager/*.cpp
+    Renderables/*.cpp
+    Runner/*.cpp
+)
+
+file(GLOB_RECURSE HEADERS
+    Controller/*.h
+    Entities/*.h
+    Factory/*.h
+    Helper/*.h
+    Manager/*.h
+    Renderables/*.h
+    Runner/*.h
+)
+
+target_sources(${PROJECT_NAME} PUBLIC ${SOURCES} ${HEADERS})
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 
