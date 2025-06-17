@@ -12,15 +12,18 @@ GameRunner::GameRunner() :
     Runner(),
     _map( Factories::MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
     _player( Factories::CharacterFactory::createCharacter( true ) ),
-    _enemies() {
+    _enemies( {} ),
+    _components( {} ),
+    _guiController(),
+    _inputController(),
+    _gameState( GameState::PLAYING ) {
 
     _player->getShape()->setPosition( sf::Vector2f( _map->getHeight() / 2, _map->getWidth() / 2 ) );
 
     createComponents();
 }
 
-GameRunner::~GameRunner() {
-}
+GameRunner::~GameRunner() {}
 
 void GameRunner::handleInput( sf::RenderWindow& window, const sf::Event& event, const sf::Time& deltaTime ) {
 

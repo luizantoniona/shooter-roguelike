@@ -4,6 +4,7 @@
 
 #include <Runner/RunnerGlobals.h>
 
+#include <Controller/Game/GameState.h>
 #include <Controller/GUI/GUIController.h>
 #include <Controller/Input/InputController.h>
 #include <Entities/Character/Character.h>
@@ -28,11 +29,13 @@ private:
 private:
     std::unique_ptr<Entities::Map> _map;
     std::unique_ptr<Entities::Character> _player;
-    std::vector<std::unique_ptr<Entities::Character>> _enemies;
-    std::vector<std::unique_ptr<Components::Component>> _components;
+    std::vector<std::unique_ptr<Entities::Character> > _enemies;
+    std::vector<std::unique_ptr<Components::Component> > _components;
 
     Controllers::GUIController _guiController;
     Controllers::InputController _inputController;
+
+    GameState _gameState;
 };
 
 END_RUNNER_NAMESPACE
