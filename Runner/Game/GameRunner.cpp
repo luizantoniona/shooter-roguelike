@@ -35,7 +35,7 @@ void GameRunner::handleInput( sf::RenderWindow& window, const sf::Event& event, 
 }
 
 void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
-    Controllers::GameController::update( window, deltaTime, *_player, _enemies, *_map );
+    Controllers::GameController::update( window, deltaTime, *_player, _enemies, *_map, _gameState );
     _guiController.updateComponents( *_player, _components );
 }
 
