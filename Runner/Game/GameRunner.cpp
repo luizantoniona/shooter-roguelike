@@ -12,8 +12,8 @@ GameRunner::GameRunner() :
     Runner(),
     _map( Factories::MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
     _player( Factories::CharacterFactory::createCharacter( true ) ),
-    _enemies( {} ),
-    _components( {} ),
+    _enemies(),
+    _components(),
     _guiController(),
     _inputController(),
     _gameState( GameState::PLAYING ) {
