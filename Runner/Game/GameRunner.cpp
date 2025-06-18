@@ -28,6 +28,9 @@ GameRunner::~GameRunner() {}
 void GameRunner::handleInput( sf::RenderWindow& window, const sf::Event& event, const sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape ) {
+
+        _gameState = GameState::PAUSED;
+
         _runnerCallback( RunnerType::MENU );
     }
 
@@ -38,6 +41,9 @@ void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
     Controllers::GameController::update( window, deltaTime, *_player, _enemies, *_map, _gameState );
     Controllers::GUIController::updateComponents( *_player, _components );
 
+    if ( _gameState != GameState::PLAYING ) {
+        _runnerCallback( RunnerType::MENU );
+    }
 }
 
 void GameRunner::render( sf::RenderWindow& window ) {
