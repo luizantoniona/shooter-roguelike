@@ -1,6 +1,8 @@
 #include "GameRunner.h"
 
+#include <Controller/GUI/GUIController.h>
 #include <Controller/Game/GameController.h>
+#include <Controller/Input/InputController.h>
 #include <Controller/Render/RenderController.h>
 #include <Factory/Character/CharacterFactory.h>
 #include <Factory/Map/MapFactory.h>
@@ -12,28 +14,36 @@ GameRunner::GameRunner() :
     Runner(),
     _map( Factories::MapFactory::generateMap( MapType::WORLD1_STAGE1 ) ),
     _player( Factories::CharacterFactory::createCharacter( true ) ),
-    _enemies() {
+    _enemies(),
+    _components(),
+    _gameState( GameState::PLAYING ) {
 
     _player->getShape()->setPosition( sf::Vector2f( _map->getHeight() / 2, _map->getWidth() / 2 ) );
 
     createComponents();
 }
 
-GameRunner::~GameRunner() {
-}
+GameRunner::~GameRunner() {}
 
 void GameRunner::handleInput( sf::RenderWindow& window, const sf::Event& event, const sf::Time& deltaTime ) {
 
     if ( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape ) {
+
+        _gameState = GameState::PAUSED;
+
         _runnerCallback( RunnerType::MENU );
     }
 
-    _inputController.handleInput( event, *_player );
+    Controllers::InputController::handleInput( event, *_player );
 }
 
 void GameRunner::update( sf::RenderWindow& window, const sf::Time& deltaTime ) {
-    Controllers::GameController::update( window, deltaTime, *_player, _enemies, *_map );
-    _guiController.updateComponents( *_player, _components );
+    Controllers::GameController::update( window, deltaTime, *_player, _enemies, *_map, _gameState );
+    Controllers::GUIController::updateComponents( *_player, _components );
+
+    if ( _gameState != GameState::PLAYING ) {
+        _runnerCallback( RunnerType::MENU );
+    }
 }
 
 void GameRunner::render( sf::RenderWindow& window ) {

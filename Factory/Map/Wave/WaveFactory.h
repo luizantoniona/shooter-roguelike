@@ -1,7 +1,8 @@
 #pragma once
 
-#include <jsoncpp/json/json.h>
 #include <queue>
+
+#include <jsoncpp/json/json.h>
 
 #include <Factory/FactoryGlobals.h>
 

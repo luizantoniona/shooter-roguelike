@@ -11,6 +11,7 @@ MainManager::MainManager() :
     _currentRunner( nullptr ),
     _gameRunner( nullptr ),
     _mainMenuRunner( nullptr ),
+    _settingsRunner( nullptr ),
     _upgradeRunner( nullptr ) {
 
     _window.setFramerateLimit( 60 );
@@ -69,32 +70,39 @@ void MainManager::adjustView() {
 
 std::function<void( Runners::RunnerType )> MainManager::runnersCallback() {
     return [ this ]( Runners::RunnerType runnerType ) {
-        std::unique_ptr<Runners::Runner> oldRunner = std::move( _currentRunner );
 
-        switch ( runnerType ) {
-        case Runners::RunnerType::GAME:
-            _gameRunner = std::make_unique<Runners::GameRunner>();
-            _gameRunner->setRunnerCallback( this->runnersCallback() );
-            _currentRunner = std::move( _gameRunner );
-            break;
+               std::unique_ptr<Runners::Runner> oldRunner = std::move( _currentRunner );
 
-        case Runners::RunnerType::UPGRADE:
-            _upgradeRunner = std::make_unique<Runners::UpgradeRunner>();
-            _upgradeRunner->setRunnerCallback( this->runnersCallback() );
-            _currentRunner = std::move( _upgradeRunner );
-            break;
+               switch ( runnerType ) {
+                   case Runners::RunnerType::GAME:
+                       _gameRunner = std::make_unique<Runners::GameRunner>();
+                       _gameRunner->setRunnerCallback( this->runnersCallback() );
+                       _currentRunner = std::move( _gameRunner );
+                       break;
 
-        case Runners::RunnerType::EXIT:
-            _window.close();
-            break;
+                   case Runners::RunnerType::UPGRADE:
+                       _upgradeRunner = std::make_unique<Runners::UpgradeRunner>();
+                       _upgradeRunner->setRunnerCallback( this->runnersCallback() );
+                       _currentRunner = std::move( _upgradeRunner );
+                       break;
 
-        case Runners::RunnerType::MENU:
-        default:
-            _mainMenuRunner = std::make_unique<Runners::MainMenuRunner>();
-            _mainMenuRunner->setRunnerCallback( this->runnersCallback() );
-            _currentRunner = std::move( _mainMenuRunner );
-            break;
-        }
+                   case Runners::RunnerType::SETTINGS:
+                       _settingsRunner = std::make_unique<Runners::SettingsRunner>();
+                       _settingsRunner->setRunnerCallback( this->runnersCallback() );
+                       _currentRunner = std::move( _settingsRunner );
+                       break;
+
+                   case Runners::RunnerType::EXIT:
+                       _window.close();
+                       break;
+
+                   case Runners::RunnerType::MENU:
+                   default:
+                       _mainMenuRunner = std::make_unique<Runners::MainMenuRunner>();
+                       _mainMenuRunner->setRunnerCallback( this->runnersCallback() );
+                       _currentRunner = std::move( _mainMenuRunner );
+                       break;
+               }
     };
 }
 

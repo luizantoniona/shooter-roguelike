@@ -8,6 +8,7 @@
 #include <Runner/MainMenu/MainMenuRunner.h>
 #include <Runner/Runner.h>
 #include <Runner/RunnerType.h>
+#include <Runner/Settings/SettingsRunner.h>
 #include <Runner/Upgrade/UpgradeRunner.h>
 
 BEGIN_MANAGER_NAMESPACE
@@ -32,6 +33,7 @@ private:
     std::unique_ptr<Runners::Runner> _currentRunner;
     std::unique_ptr<Runners::GameRunner> _gameRunner;
     std::unique_ptr<Runners::UpgradeRunner> _upgradeRunner;
+    std::unique_ptr<Runners::SettingsRunner> _settingsRunner;
     std::unique_ptr<Runners::MainMenuRunner> _mainMenuRunner;
 };
 

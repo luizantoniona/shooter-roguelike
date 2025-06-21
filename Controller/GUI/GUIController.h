@@ -10,10 +10,10 @@ BEGIN_CONTROLLER_NAMESPACE
 
 class GUIController {
 public:
-    void updateComponents( Entities::Character& player, std::vector<std::unique_ptr<Components::Component>>& components );
+    static void updateComponents( Entities::Character& player, std::vector<std::unique_ptr<Components::Component> >& components );
 
 private:
-    void updateHealthBar( Components::HealthBar& healthBar, Entities::Character& player );
+    static void updateHealthBar( Components::HealthBar& healthBar, Entities::Character& player );
 };
 
 END_CONTROLLER_NAMESPACE

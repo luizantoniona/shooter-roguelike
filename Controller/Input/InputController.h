@@ -10,7 +10,7 @@ BEGIN_CONTROLLER_NAMESPACE
 
 class InputController {
 public:
-    void handleInput( const sf::Event& event, Entities::Character& player );
+    static void handleInput( const sf::Event& event, Entities::Character& player );
 };
 
 END_CONTROLLER_NAMESPACE
