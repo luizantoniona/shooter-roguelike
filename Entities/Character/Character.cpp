@@ -7,23 +7,21 @@ Character::Character() :
     _status(),
     _projectileStatus(),
     _fireClock(),
-    _projectiles() {
-}
+    _projectiles() {}
 
 Character::Character( const Character& other ) :
     Entity( other ),
     _status( other._status ),
     _projectileStatus( other._projectileStatus ),
-    _fireClock() // resetar o clock, ou copiar se necessário
-{
+    _fireClock() {
+
     _projectiles.reserve( other._projectiles.size() );
     for ( const auto& projectile : other._projectiles ) {
         _projectiles.push_back( projectile->clone() );
     }
 }
 
-Character::~Character() {
-}
+Character::~Character() {}
 
 std::unique_ptr<Character> Character::clone() const {
     return std::make_unique<Character>( *this );
@@ -41,7 +39,7 @@ sf::Clock& Character::getFireClock() {
     return _fireClock;
 }
 
-std::vector<std::unique_ptr<Projectile>>& Character::getProjectiles() {
+std::vector<std::unique_ptr<Projectile> >& Character::getProjectiles() {
     return _projectiles;
 }
 
