@@ -6,7 +6,7 @@
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void SpawnController::spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::Character>>& enemies, Entities::Character& player ) {
+void SpawnController::spawn( Entities::Map& map, std::vector<std::unique_ptr<Entities::Character> >& enemies, Entities::Character& player ) {
 
     if ( enemies.size() > 0 ) {
         return;
@@ -27,7 +27,7 @@ void SpawnController::spawn( Entities::Map& map, std::vector<std::unique_ptr<Ent
             sf::Vector2f position( std::rand() % map.getWidth(), std::rand() % map.getHeight() );
             if ( map.isInsideBounds( position ) ) {
                 std::unique_ptr<Entities::Character> enemy = enemyOriginal->clone();
-                enemy->getShape()->setPosition( position );
+                enemy->getShape().setPosition( position );
                 enemies.emplace_back( std::move( enemy ) );
             }
         }

@@ -2,12 +2,12 @@
 
 BEGIN_CONTROLLER_NAMESPACE
 
-void CollisionController::checkCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
+void CollisionController::checkCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character> >& enemies ) {
     handleProjectileCollisions( player, enemies );
     handlePlayerCollisions( player, enemies );
 }
 
-void CollisionController::handleProjectileCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
+void CollisionController::handleProjectileCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character> >& enemies ) {
     auto& projectiles = player.getProjectiles();
 
     for ( auto projectileIt = projectiles.begin(); projectileIt != projectiles.end(); ) {
@@ -15,7 +15,7 @@ void CollisionController::handleProjectileCollisions( Entities::Character& playe
 
         for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
 
-            if ( enemyIt->get()->getShape()->getGlobalBounds().intersects( projectileIt->get()->getShape()->getGlobalBounds() ) ) {
+            if ( enemyIt->get()->getShape().getGlobalBounds().intersects( projectileIt->get()->getShape().getGlobalBounds() ) ) {
 
                 auto& enemyStatus = enemyIt->get()->getStatus();
                 enemyStatus.setHealth( enemyStatus.getHealth() - player.getProjectileStatus().getProjectileDamage() );
@@ -44,9 +44,9 @@ void CollisionController::handleProjectileCollisions( Entities::Character& playe
     }
 }
 
-void CollisionController::handlePlayerCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character>>& enemies ) {
+void CollisionController::handlePlayerCollisions( Entities::Character& player, std::vector<std::unique_ptr<Entities::Character> >& enemies ) {
     for ( auto enemyIt = enemies.begin(); enemyIt != enemies.end(); ) {
-        if ( enemyIt->get()->getShape()->getGlobalBounds().intersects( player.getShape()->getGlobalBounds() ) ) {
+        if ( enemyIt->get()->getShape().getGlobalBounds().intersects( player.getShape().getGlobalBounds() ) ) {
 
             auto& playerStatus = player.getStatus();
             int currentHealth = playerStatus.getHealth();

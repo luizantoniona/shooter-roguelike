@@ -18,7 +18,7 @@ GameRunner::GameRunner() :
     _components(),
     _gameState( GameState::PLAYING ) {
 
-    _player->getShape()->setPosition( sf::Vector2f( _map->getHeight() / 2, _map->getWidth() / 2 ) );
+    _player->getShape().setPosition( sf::Vector2f( _map->getHeight() / 2, _map->getWidth() / 2 ) );
 
     createComponents();
 }
@@ -56,7 +56,7 @@ void GameRunner::render( sf::RenderWindow& window ) {
     }
 
     sf::View view = window.getView();
-    view.setCenter( _player->getShape()->getPosition() );
+    view.setCenter( _player->getShape().getPosition() );
     window.setView( view );
 }
 

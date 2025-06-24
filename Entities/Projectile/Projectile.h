@@ -23,7 +23,7 @@ public:
     void setDirection( sf::Vector2f direction );
     sf::Vector2f getDirection() const;
 
-    bool isOutOfBounds( int width, int height ) const;
+    bool isOutOfBounds( int width, int height );
 
 private:
     float _damage;

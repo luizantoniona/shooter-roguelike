@@ -11,15 +11,15 @@ void PlayerProjectileController::updatePlayerProjectile( const sf::Time& deltaTi
 
     for ( auto& projectile : projectiles ) {
         sf::Vector2f movement = projectile->getDirection() * projectile->getSpeed() * deltaTime.asSeconds();
-        projectile->getShape()->move( movement );
+        projectile->getShape().move( movement );
     }
 
     projectiles.erase(
         std::remove_if(
             projectiles.begin(), projectiles.end(),
             [ &map ]( std::unique_ptr<Entities::Projectile>& projectile ) -> bool {
-                return projectile->isOutOfBounds( map.getWidth(), map.getHeight() );
-            } ),
+        return projectile->isOutOfBounds( map.getWidth(), map.getHeight() );
+    } ),
         projectiles.end() );
 }
 
@@ -28,7 +28,7 @@ void PlayerProjectileController::firePlayerProjectile( const sf::Vector2f& targe
     auto& projectileStatus = player.getProjectileStatus();
 
     if ( player.getFireClock().getElapsedTime().asSeconds() >= ( 1.0f / projectileStatus.getProjectileFireRate() ) ) {
-        sf::Vector2f origin = player.getShape()->getPosition();
+        sf::Vector2f origin = player.getShape().getPosition();
         sf::Vector2f direction = target - origin;
         float length = std::hypot( direction.x, direction.y );
 
@@ -42,7 +42,7 @@ void PlayerProjectileController::firePlayerProjectile( const sf::Vector2f& targe
 
             auto shape = Factories::ShapeFactory::createBulletShape( projectileStatus.getProjectileSize() );
             shape->setPosition( origin );
-            projectile->setShape( std::move( shape ) );
+            projectile->addShape( std::move( shape ) );
 
             player.getProjectiles().emplace_back( std::move( projectile ) );
             player.getFireClock().restart();

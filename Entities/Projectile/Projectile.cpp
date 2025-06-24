@@ -5,8 +5,7 @@ BEGIN_ENTITIES_NAMESPACE
 Projectile::Projectile() :
     _damage( 0.0 ),
     _speed( 0.0 ),
-    _direction() {
-}
+    _direction() {}
 
 std::unique_ptr<Projectile> Projectile::clone() const {
     return std::make_unique<Projectile>( *this );
@@ -36,8 +35,8 @@ sf::Vector2f Projectile::getDirection() const {
     return _direction;
 }
 
-bool Projectile::isOutOfBounds( int width, int height ) const {
-    sf::Vector2f position = _shape->getPosition();
+bool Projectile::isOutOfBounds( int width, int height ) {
+    sf::Vector2f position = getShape().getPosition();
     return position.x < 0 || position.x > width || position.y < 0 || position.y > height;
 }
 
