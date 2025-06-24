@@ -1,7 +1,8 @@
 #include "MainManager.h"
 
 namespace {
-constexpr const char* DISPLAY_NAME = "Roguelike";
+constexpr const char* DISPLAY_NAME = "shooter-roguelike";
+constexpr const int ALIASING_LEVEL = 8;
 } // namespace
 
 BEGIN_MANAGER_NAMESPACE
@@ -15,6 +16,9 @@ MainManager::MainManager() :
     _upgradeRunner( nullptr ) {
 
     _window.setFramerateLimit( 60 );
+
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = ALIASING_LEVEL;
 
     sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
     int windowWidth = desktopMode.width;
