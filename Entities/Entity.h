@@ -15,13 +15,18 @@ public:
     Entity( const Entity& other );
     virtual ~Entity() = default;
 
-    void setShape( std::unique_ptr<Shapes::Shape> shape );
-    Shapes::Shape* getShape();
-
     void render( sf::RenderWindow& window ) override;
 
+    std::vector<std::unique_ptr<Shapes::Shape> >& getShapes();
+    void setShapes( std::vector<std::unique_ptr<Shapes::Shape> > shapes );
+    void clearShapes();
+
+    Shapes::Shape& getShape( std::size_t index = 0 );
+    void addShape( std::unique_ptr<Shapes::Shape> shape );
+    void removeShape( std::size_t index = 0 );
+
 protected:
-    std::unique_ptr<Shapes::Shape> _shape;
+    std::vector<std::unique_ptr<Shapes::Shape> > _shapes;
 };
 
 END_ENTITIES_NAMESPACE

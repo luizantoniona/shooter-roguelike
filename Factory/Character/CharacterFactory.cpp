@@ -47,9 +47,11 @@ std::unique_ptr<Entities::Character> CharacterFactory::createCharacter( const bo
     characterProjectileStatus.setProjectileSize( projectileStatusJson[ PROJECTILE_SIZE_KEY ].asFloat() );
     characterProjectileStatus.setProjectileDamage( projectileStatusJson[ PROJECTILE_DAMAGE_KEY ].asInt() );
 
-    Json::Value shapeJson = characterJson[ SHAPE_KEY ];
-    auto shape = Factories::ShapeFactory::createCharacterShape( shapeJson );
-    character->setShape( std::move( shape ) );
+    Json::Value allShapesJson = characterJson[ SHAPE_KEY ];
+    for ( auto& shapeJson : allShapesJson ) {
+        auto shape = Factories::ShapeFactory::createCharacterShape( shapeJson );
+        character->addShape( std::move( shape ) );
+    }
 
     return character;
 }

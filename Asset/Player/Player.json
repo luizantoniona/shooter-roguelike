@@ -11,9 +11,16 @@
         "projectile_size": 5.0,
         "projectile_damage": 1
     },
-    "shape": {
-        "color": "blue",
-        "sides": 4,
-        "size": 20.0
-    }
+    "shape": [
+        {
+            "color": "blue",
+            "sides": 4,
+            "size": 20.0
+        },
+        {
+            "color": "red",
+            "sides": 3,
+            "size": 10.0
+        }
+    ]
 }

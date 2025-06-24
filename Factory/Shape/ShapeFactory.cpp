@@ -19,7 +19,7 @@ std::unique_ptr<Shapes::Shape> ShapeFactory::createCharacterShape( Json::Value& 
     shape->setFillColor( Helper::ColorHelper::colorFromString( colorStr ) );
     shape->build();
 
-    return std::unique_ptr<Shapes::Shape>( std::move( shape ) );
+    return shape;
 }
 
 std::unique_ptr<Shapes::Shape> ShapeFactory::createBulletShape( const float bulletSize ) {
@@ -30,7 +30,7 @@ std::unique_ptr<Shapes::Shape> ShapeFactory::createBulletShape( const float bull
     shape->setFillColor( sf::Color::White );
     shape->build();
 
-    return std::unique_ptr<Shapes::Shape>( std::move( shape ) );
+    return shape;
 }
 
 END_FACTORY_NAMESPACE

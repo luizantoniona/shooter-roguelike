@@ -6,11 +6,13 @@
             "attack": 10,
             "gold": 1
         },
-        "shape": {
-            "color": "red",
-            "sides": 3,
-            "size": 10.0
-        }
+        "shape": [
+            {
+                "color": "red",
+                "sides": 3,
+                "size": 10.0
+            }
+        ]
     },
     "square-1": {
         "status": {
@@ -19,11 +21,13 @@
             "attack": 10,
             "gold": 2
         },
-        "shape": {
-            "color": "blue",
-            "sides": 4,
-            "size": 10.0
-        }
+        "shape": [
+            {
+                "color": "blue",
+                "sides": 4,
+                "size": 10.0
+            }
+        ]
     },
     "icosagon-1": {
         "status": {
@@ -32,10 +36,12 @@
             "attack": 100,
             "gold": 15
         },
-        "shape": {
-            "color": "white",
-            "sides": 20,
-            "size": 50.0
-        }
+        "shape": [
+            {
+                "color": "white",
+                "sides": 20,
+                "size": 50.0
+            }
+        ]
     }
 }
